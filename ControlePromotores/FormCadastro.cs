@@ -90,6 +90,7 @@ namespace ControlePromotores
        
         private void editarButton_Click(object sender, EventArgs e)
         {
+            //Reseta o data grid
             resetDataGrid();
             resetFormDefault();
 
