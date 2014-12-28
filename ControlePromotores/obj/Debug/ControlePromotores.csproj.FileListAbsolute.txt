@@ -16,3 +16,9 @@ C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControleProm
 C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.FormCadastro.resources
 C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Properties.Resources.resources
 C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csproj.GenerateResource.Cache
+<<<<<<< HEAD
+=======
+C:\Users\Jales\Desktop\pret\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe.config
+C:\Users\Jales\Desktop\pret\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.exe
+C:\Users\Jales\Desktop\pret\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
+>>>>>>> 5681b68005056492434dc864fd9709ddc2e74d01
