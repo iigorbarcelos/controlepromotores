@@ -13,15 +13,15 @@ namespace ControlePromotores
         private String nome {get ; set;}
         private String endereco {get ; set;}
         private String empresa {get; set;}
-        private DateTime dataNascimento;
+        private String dataNascimento;
         private long codpromotor { get; set; }
         private String validaDigital { get; set; }
         private String celular { get; set; }
         private String telefone { get; set; }
 
-        public void setdataNascimento(String dataNascimento)
+        public void setdataNascimento(String dia, String mes, String ano)
         {
-           
+            this.dataNascimento = ano +"/"+ mes+"/" + dia;
         }
 
     }
