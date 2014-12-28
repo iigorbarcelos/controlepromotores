@@ -9,6 +9,7 @@ namespace ControlePromotores
 {
     class Promotor
     {
+        //Declara todos os atributos e seus gets e sets
         private String nome {get ; set;}
         private String endereco {get ; set;}
         private String empresa {get; set;}
