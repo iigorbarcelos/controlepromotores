@@ -7,3 +7,12 @@ C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\ControlePromotores\bin\Debug\ControlePromotores.pdb
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\ControlePromotores\obj\Debug\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\ControlePromotores\obj\Debug\ControlePromotores.pdb
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe.config
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.exe
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.pdb
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csprojResolveAssemblyReference.cache
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.FormCadastro.resources
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Properties.Resources.resources
+C:\Users\igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csproj.GenerateResource.Cache
