@@ -107,6 +107,9 @@ namespace ControlePromotores
 
         private void GravarButton_Click(object sender, EventArgs e)
         {
+            //Variavel de mensagem de retorno ao usuário
+            String mensagemRetorno = "Promotor cadastrado com sucesso.";
+           
             //Pega conexão no banco de dados
             SqlConnection conn = new ConnectionFactory().getConnection();
             //Cria comando do insert no banco.
@@ -134,15 +137,15 @@ namespace ControlePromotores
                                "', '" + emailSupervisorTextBox.Text +
                                "', '" + contatoSupervisorTextBox.Text + "')", conn);
 
-            resetFormDefault();
 
             try
             {
                 command.ExecuteNonQuery();
             }
-            catch (SqlException exc)
+            catch (SqlException)
             {
-                MessageBox.Show("Erro ao gravar promotor no banco. " + exc);
+                
+                mensagemRetorno = "Erro ao cadastrar Promotor, verifique se todos os campos foram preenchidos!";
              
             }
             finally
@@ -150,9 +153,14 @@ namespace ControlePromotores
                 //Verifica se a conexão está fechada, se false, fecha a conexão
                 if (conn != null)
                     conn.Close();
+
+                
             }
 
-            MessageBox.Show("Promotor cadastrado com sucesso.");
+  
+            MessageBox.Show(mensagemRetorno);
+            resetFormDefault();
+            monthCalendar1.Hide();
 
       
         }

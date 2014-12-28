@@ -34,6 +34,8 @@
             this.promotoresGrid = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.promotorGroupBox = new System.Windows.Forms.GroupBox();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.calendarioPictureBox = new System.Windows.Forms.PictureBox();
             this.SupervisorGroupBox = new System.Windows.Forms.GroupBox();
             this.emailSupervisorTextBox = new System.Windows.Forms.TextBox();
             this.emailSupervisorLabel = new System.Windows.Forms.Label();
@@ -46,6 +48,7 @@
             this.TelefoneLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
+            this.digitalPictureBox = new System.Windows.Forms.PictureBox();
             this.cadastraDigitalButton = new System.Windows.Forms.Button();
             this.CelularTextBox = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
@@ -61,20 +64,16 @@
             this.editarButton = new System.Windows.Forms.Button();
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
-            this.calendarioPictureBox = new System.Windows.Forms.PictureBox();
-            this.digitalPictureBox = new System.Windows.Forms.PictureBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.promotoresGrid)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.promotorGroupBox.SuspendLayout();
-            this.SupervisorGroupBox.SuspendLayout();
-            this.painelInferior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calendarioPictureBox)).BeginInit();
+            this.SupervisorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalPictureBox)).BeginInit();
+            this.painelInferior.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -153,7 +152,6 @@
             this.promotorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.promotorGroupBox.Controls.Add(this.button1);
             this.promotorGroupBox.Controls.Add(this.monthCalendar1);
             this.promotorGroupBox.Controls.Add(this.calendarioPictureBox);
             this.promotorGroupBox.Controls.Add(this.SupervisorGroupBox);
@@ -180,6 +178,29 @@
             this.promotorGroupBox.TabIndex = 12;
             this.promotorGroupBox.TabStop = false;
             this.promotorGroupBox.Text = "Dados do Promotor";
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.AnnuallyBoldedDates = new System.DateTime[] {
+        new System.DateTime(2014, 12, 10, 0, 0, 0, 0)};
+            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
+            this.monthCalendar1.Location = new System.Drawing.Point(103, 244);
+            this.monthCalendar1.MaxSelectionCount = 1;
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 20;
+            this.monthCalendar1.Visible = false;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
+            // calendarioPictureBox
+            // 
+            this.calendarioPictureBox.Image = global::ControlePromotores.Properties.Resources.calendario;
+            this.calendarioPictureBox.Location = new System.Drawing.Point(328, 211);
+            this.calendarioPictureBox.Name = "calendarioPictureBox";
+            this.calendarioPictureBox.Size = new System.Drawing.Size(28, 27);
+            this.calendarioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.calendarioPictureBox.TabIndex = 19;
+            this.calendarioPictureBox.TabStop = false;
+            this.calendarioPictureBox.Click += new System.EventHandler(this.calendarioPictureBox_Click);
             // 
             // SupervisorGroupBox
             // 
@@ -250,7 +271,7 @@
             // NascimentoTextBox
             // 
             this.NascimentoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.NascimentoTextBox.Location = new System.Drawing.Point(103, 212);
+            this.NascimentoTextBox.Location = new System.Drawing.Point(103, 218);
             this.NascimentoTextBox.Name = "NascimentoTextBox";
             this.NascimentoTextBox.ReadOnly = true;
             this.NascimentoTextBox.Size = new System.Drawing.Size(219, 20);
@@ -260,7 +281,7 @@
             // 
             this.NascimentoLabel.AutoSize = true;
             this.NascimentoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NascimentoLabel.Location = new System.Drawing.Point(21, 213);
+            this.NascimentoLabel.Location = new System.Drawing.Point(21, 219);
             this.NascimentoLabel.Name = "NascimentoLabel";
             this.NascimentoLabel.Size = new System.Drawing.Size(83, 16);
             this.NascimentoLabel.TabIndex = 16;
@@ -301,6 +322,16 @@
             this.emailLabel.Size = new System.Drawing.Size(45, 16);
             this.emailLabel.TabIndex = 12;
             this.emailLabel.Text = "Email:";
+            // 
+            // digitalPictureBox
+            // 
+            this.digitalPictureBox.Image = global::ControlePromotores.Properties.Resources.digital;
+            this.digitalPictureBox.Location = new System.Drawing.Point(430, 39);
+            this.digitalPictureBox.Name = "digitalPictureBox";
+            this.digitalPictureBox.Size = new System.Drawing.Size(133, 105);
+            this.digitalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.digitalPictureBox.TabIndex = 11;
+            this.digitalPictureBox.TabStop = false;
             // 
             // cadastraDigitalButton
             // 
@@ -450,48 +481,6 @@
             this.pesquisarButton.UseVisualStyleBackColor = true;
             this.pesquisarButton.Click += new System.EventHandler(this.pesquisaButton_Click);
             // 
-            // calendarioPictureBox
-            // 
-            this.calendarioPictureBox.Image = global::ControlePromotores.Properties.Resources.calendario;
-            this.calendarioPictureBox.Location = new System.Drawing.Point(328, 211);
-            this.calendarioPictureBox.Name = "calendarioPictureBox";
-            this.calendarioPictureBox.Size = new System.Drawing.Size(28, 27);
-            this.calendarioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.calendarioPictureBox.TabIndex = 19;
-            this.calendarioPictureBox.TabStop = false;
-            this.calendarioPictureBox.Click += new System.EventHandler(this.calendarioPictureBox_Click);
-            // 
-            // digitalPictureBox
-            // 
-            this.digitalPictureBox.Image = global::ControlePromotores.Properties.Resources.digital;
-            this.digitalPictureBox.Location = new System.Drawing.Point(430, 39);
-            this.digitalPictureBox.Name = "digitalPictureBox";
-            this.digitalPictureBox.Size = new System.Drawing.Size(133, 105);
-            this.digitalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.digitalPictureBox.TabIndex = 11;
-            this.digitalPictureBox.TabStop = false;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.AnnuallyBoldedDates = new System.DateTime[] {
-        new System.DateTime(2014, 12, 10, 0, 0, 0, 0)};
-            this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(103, 238);
-            this.monthCalendar1.MaxSelectionCount = 1;
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 20;
-            this.monthCalendar1.Visible = false;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(755, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,11 +500,11 @@
             this.tabPage2.ResumeLayout(false);
             this.promotorGroupBox.ResumeLayout(false);
             this.promotorGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarioPictureBox)).EndInit();
             this.SupervisorGroupBox.ResumeLayout(false);
             this.SupervisorGroupBox.PerformLayout();
-            this.painelInferior.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.calendarioPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.digitalPictureBox)).EndInit();
+            this.painelInferior.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,7 +548,6 @@
         private System.Windows.Forms.TextBox digitalTextBox;
         private System.Windows.Forms.PictureBox calendarioPictureBox;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Button button1;
     }
 }
 
