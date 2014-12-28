@@ -11,7 +11,7 @@ namespace ControlePromotores
     class ConnectionFactory
     {
         //String de conexão
-
+        //Teste de autorizacao
   
         private static string connString =
         @"server = IGOR\BIOMETRIC;
