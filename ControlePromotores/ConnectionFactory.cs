@@ -12,6 +12,8 @@ namespace ControlePromotores
     {
         //String de conexão
         //Teste de autorizacao
+
+        //preeeeeeeeeeto
   
         private static string connString =
         @"server = IGOR\BIOMETRIC;
