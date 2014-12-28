@@ -133,7 +133,7 @@
             this.promotoresGrid.Location = new System.Drawing.Point(7, 28);
             this.promotoresGrid.Name = "promotoresGrid";
             this.promotoresGrid.ReadOnly = true;
-            this.promotoresGrid.Size = new System.Drawing.Size(723, 271);
+            this.promotoresGrid.Size = new System.Drawing.Size(856, 393);
             this.promotoresGrid.TabIndex = 1;
             // 
             // tabPage2
@@ -195,6 +195,7 @@
             // 
             // emailSupervisorTextBox
             // 
+            this.emailSupervisorTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.emailSupervisorTextBox.Location = new System.Drawing.Point(95, 56);
             this.emailSupervisorTextBox.Name = "emailSupervisorTextBox";
             this.emailSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
@@ -215,6 +216,7 @@
             // 
             // contatoSupervisorTextBox
             // 
+            this.contatoSupervisorTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.contatoSupervisorTextBox.Location = new System.Drawing.Point(95, 27);
             this.contatoSupervisorTextBox.Name = "contatoSupervisorTextBox";
             this.contatoSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
@@ -237,13 +239,18 @@
             // 
             this.digitalTextBox.Location = new System.Drawing.Point(387, 179);
             this.digitalTextBox.Name = "digitalTextBox";
+            this.digitalTextBox.PasswordChar = '*';
+            this.digitalTextBox.ReadOnly = true;
             this.digitalTextBox.Size = new System.Drawing.Size(219, 20);
             this.digitalTextBox.TabIndex = 18;
+            this.digitalTextBox.UseSystemPasswordChar = true;
             // 
             // NascimentoTextBox
             // 
+            this.NascimentoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.NascimentoTextBox.Location = new System.Drawing.Point(103, 212);
             this.NascimentoTextBox.Name = "NascimentoTextBox";
+            this.NascimentoTextBox.ReadOnly = true;
             this.NascimentoTextBox.Size = new System.Drawing.Size(219, 20);
             this.NascimentoTextBox.TabIndex = 17;
             // 
@@ -259,6 +266,7 @@
             // 
             // telefoneTextBox
             // 
+            this.telefoneTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.telefoneTextBox.Location = new System.Drawing.Point(103, 185);
             this.telefoneTextBox.Name = "telefoneTextBox";
             this.telefoneTextBox.Size = new System.Drawing.Size(219, 20);
@@ -276,6 +284,7 @@
             // 
             // emailTextBox
             // 
+            this.emailTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.emailTextBox.Location = new System.Drawing.Point(103, 155);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(219, 20);
@@ -302,6 +311,7 @@
             // 
             // CelularTextBox
             // 
+            this.CelularTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.CelularTextBox.Location = new System.Drawing.Point(103, 124);
             this.CelularTextBox.Name = "CelularTextBox";
             this.CelularTextBox.Size = new System.Drawing.Size(219, 20);
@@ -319,6 +329,7 @@
             // 
             // nomeTextBox
             // 
+            this.nomeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.nomeTextBox.Location = new System.Drawing.Point(103, 22);
             this.nomeTextBox.Name = "nomeTextBox";
             this.nomeTextBox.Size = new System.Drawing.Size(219, 20);
@@ -326,6 +337,7 @@
             // 
             // EmpresaTextBox
             // 
+            this.EmpresaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EmpresaTextBox.Location = new System.Drawing.Point(103, 89);
             this.EmpresaTextBox.Name = "EmpresaTextBox";
             this.EmpresaTextBox.Size = new System.Drawing.Size(219, 20);
@@ -343,6 +355,7 @@
             // 
             // EnderecoTextBox
             // 
+            this.EnderecoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.EnderecoTextBox.Location = new System.Drawing.Point(103, 56);
             this.EnderecoTextBox.Name = "EnderecoTextBox";
             this.EnderecoTextBox.Size = new System.Drawing.Size(219, 20);
@@ -461,7 +474,7 @@
             this.monthCalendar1.AnnuallyBoldedDates = new System.DateTime[] {
         new System.DateTime(2014, 12, 10, 0, 0, 0, 0)};
             this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(95, 244);
+            this.monthCalendar1.Location = new System.Drawing.Point(103, 238);
             this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 20;

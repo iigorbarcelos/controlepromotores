@@ -14,9 +14,15 @@ namespace ControlePromotores
 {
     public partial class FormCadastro : Form
     {
+        //Variaveis que serão usadas para inserir a data de forma correta no banco
+        private String dia = null;
+        private String mes = null;
+        private String ano = null;
+
         public FormCadastro()
         {
             InitializeComponent();
+
         }
 
         private void novoButton_Click(object sender, EventArgs e)
@@ -77,6 +83,9 @@ namespace ControlePromotores
             contatoSupervisorTextBox.Text = "";
             NascimentoTextBox.Text = "";
             telefoneTextBox.Text = "";
+            dia = null;
+            mes = null;
+            ano = null;
            
         }
 
@@ -120,10 +129,12 @@ namespace ControlePromotores
                                "', '" + digitalTextBox.Text +
                                "', '" + CelularTextBox.Text +
                                "', '" + telefoneTextBox.Text +
-                               "', '" + NascimentoTextBox.Text +
+                               "', '" + ano+"/"+mes+"/"+ dia +
                                "', '" + emailTextBox.Text +
                                "', '" + emailSupervisorTextBox.Text +
                                "', '" + contatoSupervisorTextBox.Text + "')", conn);
+
+            resetFormDefault();
 
             try
             {
@@ -162,9 +173,9 @@ namespace ControlePromotores
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            String dia = monthCalendar1.SelectionStart.Day.ToString();
-            String mes = monthCalendar1.SelectionStart.Month.ToString();
-            String ano = monthCalendar1.SelectionStart.Year.ToString();
+            dia = monthCalendar1.SelectionStart.Day.ToString();
+            mes = monthCalendar1.SelectionStart.Month.ToString();
+            ano = monthCalendar1.SelectionStart.Year.ToString();
             NascimentoTextBox.Text = dia + "/" + mes + "/" + ano;
             
         }
