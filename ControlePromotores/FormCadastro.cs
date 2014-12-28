@@ -145,5 +145,28 @@ namespace ControlePromotores
 
       
         }
+
+        private void calendarioButton_Click(object sender, EventArgs e)
+        {
+            MonthCalendar calendario = new MonthCalendar();
+            calendario.Visible = true;
+
+        }
+
+        private void calendarioPictureBox_Click(object sender, EventArgs e)
+        {
+            if (monthCalendar1.Visible == false)
+                monthCalendar1.Visible = true;
+            else monthCalendar1.Visible = false;
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            String dia = monthCalendar1.SelectionStart.Day.ToString();
+            String mes = monthCalendar1.SelectionStart.Month.ToString();
+            String ano = monthCalendar1.SelectionStart.Year.ToString();
+            NascimentoTextBox.Text = dia + "/" + mes + "/" + ano;
+            
+        }
     }
 }
