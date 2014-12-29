@@ -12,15 +12,14 @@ namespace ControlePromotores
     public class interfaceBiometria
     {
         //Cria variáveis necessárias para as configurações da leitura,gravação e validação
-        NBioAPI m_NBioAPI;
-        short m_OpenedDeviceID;
-        NBioAPI.Type.HFIR m_hNewFIR;
-        NBioAPI.Type.FIR m_biFIR;
-        NBioAPI.Type.FIR_TEXTENCODE m_textFIR;
-        NBioAPI.Type.DEVICE_INFO_EX[] m_DeviceInfoEx;
-        NBioAPI.IndexSearch m_IndexSearch;
-        short iDeviceID;
-        String firDigital;
+        private NBioAPI m_NBioAPI;
+        private short m_OpenedDeviceID;
+        private NBioAPI.Type.HFIR m_hNewFIR;
+        private NBioAPI.Type.FIR_TEXTENCODE m_textFIR;
+        private NBioAPI.Type.DEVICE_INFO_EX[] m_DeviceInfoEx;
+        private NBioAPI.IndexSearch m_IndexSearch;
+        private short iDeviceID;
+        private String firDigital;
 
         public interfaceBiometria()
         {
@@ -65,19 +64,21 @@ namespace ControlePromotores
 
 
         //Ativa leitor pra cadastrar a digital
-        public void cadastraDigital()
+        public String cadastraDigital()
         {
 
             uint ret5 = m_NBioAPI.Enroll(out m_hNewFIR, null);
             if (ret5 == NBioAPI.Error.NONE)
             {
-                MessageBox.Show("Digital cadastrada com sucesso");
+                MessageBox.Show("Impressão Digital cadastrada com sucesso!");
                 //Converter FIR capturada para textoFIR
                 m_NBioAPI.GetTextFIRFromHandle(m_hNewFIR, out m_textFIR, true);
                 //Coloca o texto obtido na String para guardar no banco.
                 firDigital = m_textFIR.TextFIR;
- 
-            }
+                return firDigital;
+             }
+
+            return null;
         }
         
     }

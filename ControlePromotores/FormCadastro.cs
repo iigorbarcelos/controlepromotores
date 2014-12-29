@@ -83,6 +83,7 @@ namespace ControlePromotores
             contatoSupervisorTextBox.Text = "";
             NascimentoTextBox.Text = "";
             telefoneTextBox.Text = "";
+            digitalTextBox.Text = "";
             dia = null;
             mes = null;
             ano = null;
@@ -191,7 +192,7 @@ namespace ControlePromotores
         private void cadastraDigitalButton_Click(object sender, EventArgs e)
         {
             interfaceBiometria biometria = new interfaceBiometria();
-            biometria.cadastraDigital();
+            digitalTextBox.Text = biometria.cadastraDigital();
 
 
         }

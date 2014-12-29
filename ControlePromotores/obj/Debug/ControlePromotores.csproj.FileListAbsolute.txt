@@ -23,3 +23,5 @@ C:\Users\Jales\Desktop\pret\projetosmercado\ControlePromotores\obj\Debug\Control
 C:\Users\Jales\Desktop\pret\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
 >>>>>>> 5681b68005056492434dc864fd9709ddc2e74d01
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\ControlePromotores\obj\Debug\ControlePromotores.CadastraDigitalForm.resources
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\ControlePromotores\obj\Debug\ControlePromotores.CheckinPessoa.resources
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\ControlePromotores\ControlePromotores\obj\Debug\ControlePromotores.MenuPrincipal.resources
