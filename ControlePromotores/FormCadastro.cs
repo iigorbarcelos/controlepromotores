@@ -190,8 +190,10 @@ namespace ControlePromotores
 
         private void cadastraDigitalButton_Click(object sender, EventArgs e)
         {
-            CadastraDigitalForm cadastraDigital = new CadastraDigitalForm();
-            cadastraDigital.Show();
+            interfaceBiometria biometria = new interfaceBiometria();
+            biometria.cadastraDigital();
+
+
         }
     }
 }

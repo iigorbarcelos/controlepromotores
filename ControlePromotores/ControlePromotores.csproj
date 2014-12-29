@@ -48,12 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadastraDigitalForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CadastraDigitalForm.Designer.cs">
-      <DependentUpon>CadastraDigitalForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ConnectionFactory.cs" />
     <Compile Include="FormCadastro.cs">
       <SubType>Form</SubType>
@@ -61,6 +55,7 @@
     <Compile Include="FormCadastro.Designer.cs">
       <DependentUpon>FormCadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="interfaceBiometria.cs" />
     <Compile Include="masterDataSet.cs">
       <DependentUpon>masterDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -73,9 +68,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Promotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CadastraDigitalForm.resx">
-      <DependentUpon>CadastraDigitalForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormCadastro.resx">
       <DependentUpon>FormCadastro.cs</DependentUpon>
     </EmbeddedResource>

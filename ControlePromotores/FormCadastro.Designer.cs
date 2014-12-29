@@ -260,7 +260,7 @@
             // 
             // digitalTextBox
             // 
-            this.digitalTextBox.Location = new System.Drawing.Point(387, 179);
+            this.digitalTextBox.Location = new System.Drawing.Point(492, 179);
             this.digitalTextBox.Name = "digitalTextBox";
             this.digitalTextBox.PasswordChar = '*';
             this.digitalTextBox.ReadOnly = true;
@@ -326,16 +326,16 @@
             // digitalPictureBox
             // 
             this.digitalPictureBox.Image = global::ControlePromotores.Properties.Resources.digital;
-            this.digitalPictureBox.Location = new System.Drawing.Point(430, 39);
+            this.digitalPictureBox.Location = new System.Drawing.Point(521, 30);
             this.digitalPictureBox.Name = "digitalPictureBox";
-            this.digitalPictureBox.Size = new System.Drawing.Size(133, 105);
+            this.digitalPictureBox.Size = new System.Drawing.Size(164, 114);
             this.digitalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.digitalPictureBox.TabIndex = 11;
             this.digitalPictureBox.TabStop = false;
             // 
             // cadastraDigitalButton
             // 
-            this.cadastraDigitalButton.Location = new System.Drawing.Point(449, 150);
+            this.cadastraDigitalButton.Location = new System.Drawing.Point(554, 150);
             this.cadastraDigitalButton.Name = "cadastraDigitalButton";
             this.cadastraDigitalButton.Size = new System.Drawing.Size(98, 23);
             this.cadastraDigitalButton.TabIndex = 10;
@@ -489,10 +489,10 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(883, 533);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
             this.Name = "FormCadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Promotores";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
