@@ -341,6 +341,7 @@
             this.cadastraDigitalButton.TabIndex = 10;
             this.cadastraDigitalButton.Text = "Cadastrar Digital";
             this.cadastraDigitalButton.UseVisualStyleBackColor = true;
+            this.cadastraDigitalButton.Click += new System.EventHandler(this.cadastraDigitalButton_Click);
             // 
             // CelularTextBox
             // 

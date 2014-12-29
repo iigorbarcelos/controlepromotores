@@ -187,5 +187,11 @@ namespace ControlePromotores
             NascimentoTextBox.Text = dia + "/" + mes + "/" + ano;
             
         }
+
+        private void cadastraDigitalButton_Click(object sender, EventArgs e)
+        {
+            CadastraDigitalForm cadastraDigital = new CadastraDigitalForm();
+            cadastraDigital.Show();
+        }
     }
 }
