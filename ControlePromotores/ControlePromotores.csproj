@@ -50,7 +50,7 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NITGEN.SDK.NBioBSP, Version=1.2.2.0, Culture=neutral, PublicKeyToken=96eee45103d523d1, processorArchitecture=MSIL">
+    <Reference Include="NITGEN.SDK.NBioBSP, Version=1.2.3.0, Culture=neutral, PublicKeyToken=96eee45103d523d1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files\NITGEN eNBSP x64\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
     </Reference>
@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="img\menuprincipal.jpg" />
     <None Include="img\Configuration.jpg" />
     <None Include="img\configuracoes.png" />
     <None Include="img\relatorios.jpg" />

@@ -123,6 +123,16 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap menuprincipal {
+            get {
+                object obj = ResourceManager.GetObject("menuprincipal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap relatorios {
             get {
                 object obj = ResourceManager.GetObject("relatorios", resourceCulture);
