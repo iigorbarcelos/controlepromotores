@@ -18,11 +18,22 @@ namespace ControlePromotores
             
         }
 
-        [STAThread]
-        public static void main(String[] args)
+        private void sairButton_Click(object sender, EventArgs e)
         {
-            MenuPrincipal menuprincipal = new MenuPrincipal();
-            Application.Run(menuprincipal);
+            this.Dispose();
         }
+
+        private void CadastrarPromotorPicture_Click(object sender, EventArgs e)
+        {
+            FormCadastro cadastro = new FormCadastro();
+            cadastro.Show();
+        }
+
+        private void CadastrarPromotorLabel_Click(object sender, EventArgs e)
+        {
+            FormCadastro cadastro = new FormCadastro();
+            cadastro.Show();
+        }
+
     }
 }

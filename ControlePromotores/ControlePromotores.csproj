@@ -170,6 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="img\Configuration.jpg" />
+    <None Include="img\configuracoes.png" />
+    <None Include="img\relatorios.jpg" />
+    <None Include="img\imagemCadastrarPromotor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

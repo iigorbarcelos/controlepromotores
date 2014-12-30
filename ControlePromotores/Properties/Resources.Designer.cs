@@ -83,9 +83,49 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap configuracoes {
+            get {
+                object obj = ResourceManager.GetObject("configuracoes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Configuration {
+            get {
+                object obj = ResourceManager.GetObject("Configuration", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap digital {
             get {
                 object obj = ResourceManager.GetObject("digital", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imagemCadastrarPromotor {
+            get {
+                object obj = ResourceManager.GetObject("imagemCadastrarPromotor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap relatorios {
+            get {
+                object obj = ResourceManager.GetObject("relatorios", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
