@@ -33,6 +33,7 @@ namespace ControlePromotores
             defineDispositivo();
             fechaDispositivo();
             abreDispositivo();
+
         }
 
         private void defineDispositivo()
@@ -66,6 +67,8 @@ namespace ControlePromotores
         //Ativa leitor pra cadastrar a digital
         public String cadastraDigital()
         {
+            //Aciona método para chamar a dll traduzida da janela de coleta da digital.
+            mudaSkin();
 
             uint ret5 = m_NBioAPI.Enroll(out m_hNewFIR, null);
             if (ret5 == NBioAPI.Error.NONE)
@@ -80,6 +83,16 @@ namespace ControlePromotores
 
             return null;
         }
-        
+
+        //Muda a janela de coleta da digital para padrão em portugues.
+        public void mudaSkin()
+        {
+            string janelaTraduzida = "C:/Windows/System/NBSP2Por.dll";     
+            m_NBioAPI.SetSkinResource(janelaTraduzida);
+
+         }
+            
+
+        }
     }
-}
+

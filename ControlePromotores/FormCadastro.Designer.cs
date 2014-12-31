@@ -39,18 +39,15 @@
             this.SupervisorGroupBox = new System.Windows.Forms.GroupBox();
             this.emailSupervisorTextBox = new System.Windows.Forms.TextBox();
             this.emailSupervisorLabel = new System.Windows.Forms.Label();
-            this.contatoSupervisorTextBox = new System.Windows.Forms.TextBox();
             this.contatoSupervisorLabel = new System.Windows.Forms.Label();
             this.digitalTextBox = new System.Windows.Forms.TextBox();
             this.NascimentoTextBox = new System.Windows.Forms.TextBox();
             this.NascimentoLabel = new System.Windows.Forms.Label();
-            this.telefoneTextBox = new System.Windows.Forms.TextBox();
             this.TelefoneLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
             this.digitalPictureBox = new System.Windows.Forms.PictureBox();
             this.cadastraDigitalButton = new System.Windows.Forms.Button();
-            this.CelularTextBox = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.EmpresaTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +61,9 @@
             this.editarButton = new System.Windows.Forms.Button();
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
+            this.telefoneTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.CelularTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.contatoSupervisorTextBox = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -152,19 +152,19 @@
             this.promotorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.promotorGroupBox.Controls.Add(this.CelularTextBox);
+            this.promotorGroupBox.Controls.Add(this.telefoneTextBox);
             this.promotorGroupBox.Controls.Add(this.monthCalendar1);
             this.promotorGroupBox.Controls.Add(this.calendarioPictureBox);
             this.promotorGroupBox.Controls.Add(this.SupervisorGroupBox);
             this.promotorGroupBox.Controls.Add(this.digitalTextBox);
             this.promotorGroupBox.Controls.Add(this.NascimentoTextBox);
             this.promotorGroupBox.Controls.Add(this.NascimentoLabel);
-            this.promotorGroupBox.Controls.Add(this.telefoneTextBox);
             this.promotorGroupBox.Controls.Add(this.TelefoneLabel);
             this.promotorGroupBox.Controls.Add(this.emailTextBox);
             this.promotorGroupBox.Controls.Add(this.emailLabel);
             this.promotorGroupBox.Controls.Add(this.digitalPictureBox);
             this.promotorGroupBox.Controls.Add(this.cadastraDigitalButton);
-            this.promotorGroupBox.Controls.Add(this.CelularTextBox);
             this.promotorGroupBox.Controls.Add(this.nomeLabel);
             this.promotorGroupBox.Controls.Add(this.nomeTextBox);
             this.promotorGroupBox.Controls.Add(this.EmpresaTextBox);
@@ -184,7 +184,7 @@
             this.monthCalendar1.AnnuallyBoldedDates = new System.DateTime[] {
         new System.DateTime(2014, 12, 10, 0, 0, 0, 0)};
             this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(103, 244);
+            this.monthCalendar1.Location = new System.Drawing.Point(356, 232);
             this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 20;
@@ -205,9 +205,9 @@
             // SupervisorGroupBox
             // 
             this.SupervisorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.SupervisorGroupBox.Controls.Add(this.contatoSupervisorTextBox);
             this.SupervisorGroupBox.Controls.Add(this.emailSupervisorTextBox);
             this.SupervisorGroupBox.Controls.Add(this.emailSupervisorLabel);
-            this.SupervisorGroupBox.Controls.Add(this.contatoSupervisorTextBox);
             this.SupervisorGroupBox.Controls.Add(this.contatoSupervisorLabel);
             this.SupervisorGroupBox.Location = new System.Drawing.Point(8, 308);
             this.SupervisorGroupBox.Name = "SupervisorGroupBox";
@@ -237,14 +237,6 @@
             this.emailSupervisorLabel.TabIndex = 12;
             this.emailSupervisorLabel.Text = "Email:";
             // 
-            // contatoSupervisorTextBox
-            // 
-            this.contatoSupervisorTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.contatoSupervisorTextBox.Location = new System.Drawing.Point(95, 27);
-            this.contatoSupervisorTextBox.Name = "contatoSupervisorTextBox";
-            this.contatoSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
-            this.contatoSupervisorTextBox.TabIndex = 11;
-            // 
             // contatoSupervisorLabel
             // 
             this.contatoSupervisorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -254,9 +246,9 @@
             this.contatoSupervisorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contatoSupervisorLabel.Location = new System.Drawing.Point(13, 28);
             this.contatoSupervisorLabel.Name = "contatoSupervisorLabel";
-            this.contatoSupervisorLabel.Size = new System.Drawing.Size(57, 16);
+            this.contatoSupervisorLabel.Size = new System.Drawing.Size(65, 16);
             this.contatoSupervisorLabel.TabIndex = 4;
-            this.contatoSupervisorLabel.Text = "Contato:";
+            this.contatoSupervisorLabel.Text = "Telefone:";
             // 
             // digitalTextBox
             // 
@@ -286,14 +278,6 @@
             this.NascimentoLabel.Size = new System.Drawing.Size(83, 16);
             this.NascimentoLabel.TabIndex = 16;
             this.NascimentoLabel.Text = "Nascimento:";
-            // 
-            // telefoneTextBox
-            // 
-            this.telefoneTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.telefoneTextBox.Location = new System.Drawing.Point(103, 185);
-            this.telefoneTextBox.Name = "telefoneTextBox";
-            this.telefoneTextBox.Size = new System.Drawing.Size(219, 20);
-            this.telefoneTextBox.TabIndex = 15;
             // 
             // TelefoneLabel
             // 
@@ -342,14 +326,6 @@
             this.cadastraDigitalButton.Text = "Cadastrar Digital";
             this.cadastraDigitalButton.UseVisualStyleBackColor = true;
             this.cadastraDigitalButton.Click += new System.EventHandler(this.cadastraDigitalButton_Click);
-            // 
-            // CelularTextBox
-            // 
-            this.CelularTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.CelularTextBox.Location = new System.Drawing.Point(103, 124);
-            this.CelularTextBox.Name = "CelularTextBox";
-            this.CelularTextBox.Size = new System.Drawing.Size(219, 20);
-            this.CelularTextBox.TabIndex = 9;
             // 
             // nomeLabel
             // 
@@ -482,6 +458,30 @@
             this.pesquisarButton.UseVisualStyleBackColor = true;
             this.pesquisarButton.Click += new System.EventHandler(this.pesquisaButton_Click);
             // 
+            // telefoneTextBox
+            // 
+            this.telefoneTextBox.Location = new System.Drawing.Point(103, 185);
+            this.telefoneTextBox.Mask = "(99)0000-0000";
+            this.telefoneTextBox.Name = "telefoneTextBox";
+            this.telefoneTextBox.Size = new System.Drawing.Size(219, 20);
+            this.telefoneTextBox.TabIndex = 21;
+            // 
+            // CelularTextBox
+            // 
+            this.CelularTextBox.Location = new System.Drawing.Point(103, 126);
+            this.CelularTextBox.Mask = "(99)0000-0000";
+            this.CelularTextBox.Name = "CelularTextBox";
+            this.CelularTextBox.Size = new System.Drawing.Size(219, 20);
+            this.CelularTextBox.TabIndex = 22;
+            // 
+            // contatoSupervisorTextBox
+            // 
+            this.contatoSupervisorTextBox.Location = new System.Drawing.Point(95, 27);
+            this.contatoSupervisorTextBox.Mask = "(99)0000-0000";
+            this.contatoSupervisorTextBox.Name = "contatoSupervisorTextBox";
+            this.contatoSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
+            this.contatoSupervisorTextBox.TabIndex = 23;
+            // 
             // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,8 +525,6 @@
         private System.Windows.Forms.DataGridView promotoresGrid;
         private System.Windows.Forms.GroupBox SupervisorGroupBox;
         private System.Windows.Forms.GroupBox promotorGroupBox;
-        private System.Windows.Forms.TextBox CelularTextBox;
-        private System.Windows.Forms.TextBox contatoSupervisorTextBox;
         private System.Windows.Forms.Label contatoSupervisorLabel;
         private System.Windows.Forms.Label nomeLabel;
         private System.Windows.Forms.TextBox nomeTextBox;
@@ -542,13 +540,15 @@
         private System.Windows.Forms.Button GravarButton;
         private System.Windows.Forms.TextBox emailSupervisorTextBox;
         private System.Windows.Forms.Label emailSupervisorLabel;
-        private System.Windows.Forms.TextBox telefoneTextBox;
         private System.Windows.Forms.Label TelefoneLabel;
         private System.Windows.Forms.TextBox NascimentoTextBox;
         private System.Windows.Forms.Label NascimentoLabel;
         private System.Windows.Forms.TextBox digitalTextBox;
         private System.Windows.Forms.PictureBox calendarioPictureBox;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MaskedTextBox telefoneTextBox;
+        private System.Windows.Forms.MaskedTextBox CelularTextBox;
+        private System.Windows.Forms.MaskedTextBox contatoSupervisorTextBox;
     }
 }
 
