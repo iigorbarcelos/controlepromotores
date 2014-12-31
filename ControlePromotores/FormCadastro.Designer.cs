@@ -34,9 +34,14 @@
             this.promotoresGrid = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.promotorGroupBox = new System.Windows.Forms.GroupBox();
+            this.cpfTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.cpfLabel = new System.Windows.Forms.Label();
+            this.CelularTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.telefoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.calendarioPictureBox = new System.Windows.Forms.PictureBox();
             this.SupervisorGroupBox = new System.Windows.Forms.GroupBox();
+            this.contatoSupervisorTextBox = new System.Windows.Forms.MaskedTextBox();
             this.emailSupervisorTextBox = new System.Windows.Forms.TextBox();
             this.emailSupervisorLabel = new System.Windows.Forms.Label();
             this.contatoSupervisorLabel = new System.Windows.Forms.Label();
@@ -61,11 +66,6 @@
             this.editarButton = new System.Windows.Forms.Button();
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
-            this.telefoneTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.CelularTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.contatoSupervisorTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.cpfLabel = new System.Windows.Forms.Label();
-            this.cpfTextBox = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -109,6 +109,7 @@
             this.tabControl1.Size = new System.Drawing.Size(881, 453);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -127,16 +128,18 @@
             this.promotoresGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.promotoresGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.promotoresGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.promotoresGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.promotoresGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.promotoresGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.promotoresGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.promotoresGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.promotoresGrid.Location = new System.Drawing.Point(7, 28);
+            this.promotoresGrid.MultiSelect = false;
             this.promotoresGrid.Name = "promotoresGrid";
             this.promotoresGrid.ReadOnly = true;
             this.promotoresGrid.Size = new System.Drawing.Size(856, 393);
             this.promotoresGrid.TabIndex = 1;
+            this.promotoresGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.promotoresGrid_CellContentClick);
             // 
             // tabPage2
             // 
@@ -183,6 +186,40 @@
             this.promotorGroupBox.TabStop = false;
             this.promotorGroupBox.Text = "Dados do Promotor";
             // 
+            // cpfTextBox
+            // 
+            this.cpfTextBox.Location = new System.Drawing.Point(103, 51);
+            this.cpfTextBox.Mask = "000.000.000-00";
+            this.cpfTextBox.Name = "cpfTextBox";
+            this.cpfTextBox.Size = new System.Drawing.Size(219, 20);
+            this.cpfTextBox.TabIndex = 24;
+            // 
+            // cpfLabel
+            // 
+            this.cpfLabel.AutoSize = true;
+            this.cpfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpfLabel.Location = new System.Drawing.Point(21, 52);
+            this.cpfLabel.Name = "cpfLabel";
+            this.cpfLabel.Size = new System.Drawing.Size(37, 16);
+            this.cpfLabel.TabIndex = 23;
+            this.cpfLabel.Text = "CPF:";
+            // 
+            // CelularTextBox
+            // 
+            this.CelularTextBox.Location = new System.Drawing.Point(103, 139);
+            this.CelularTextBox.Mask = "(99)0000-0000";
+            this.CelularTextBox.Name = "CelularTextBox";
+            this.CelularTextBox.Size = new System.Drawing.Size(219, 20);
+            this.CelularTextBox.TabIndex = 22;
+            // 
+            // telefoneTextBox
+            // 
+            this.telefoneTextBox.Location = new System.Drawing.Point(103, 199);
+            this.telefoneTextBox.Mask = "(99)0000-0000";
+            this.telefoneTextBox.Name = "telefoneTextBox";
+            this.telefoneTextBox.Size = new System.Drawing.Size(219, 20);
+            this.telefoneTextBox.TabIndex = 21;
+            // 
             // monthCalendar1
             // 
             this.monthCalendar1.AnnuallyBoldedDates = new System.DateTime[] {
@@ -219,6 +256,14 @@
             this.SupervisorGroupBox.TabIndex = 13;
             this.SupervisorGroupBox.TabStop = false;
             this.SupervisorGroupBox.Text = "Dados do Supervisor";
+            // 
+            // contatoSupervisorTextBox
+            // 
+            this.contatoSupervisorTextBox.Location = new System.Drawing.Point(95, 27);
+            this.contatoSupervisorTextBox.Mask = "(99)0000-0000";
+            this.contatoSupervisorTextBox.Name = "contatoSupervisorTextBox";
+            this.contatoSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
+            this.contatoSupervisorTextBox.TabIndex = 23;
             // 
             // emailSupervisorTextBox
             // 
@@ -413,6 +458,7 @@
             // 
             // GravarButton
             // 
+            this.GravarButton.Enabled = false;
             this.GravarButton.Location = new System.Drawing.Point(300, 13);
             this.GravarButton.Name = "GravarButton";
             this.GravarButton.Size = new System.Drawing.Size(75, 23);
@@ -461,48 +507,6 @@
             this.pesquisarButton.Text = "Pesquisar";
             this.pesquisarButton.UseVisualStyleBackColor = true;
             this.pesquisarButton.Click += new System.EventHandler(this.pesquisaButton_Click);
-            // 
-            // telefoneTextBox
-            // 
-            this.telefoneTextBox.Location = new System.Drawing.Point(103, 199);
-            this.telefoneTextBox.Mask = "(99)0000-0000";
-            this.telefoneTextBox.Name = "telefoneTextBox";
-            this.telefoneTextBox.Size = new System.Drawing.Size(219, 20);
-            this.telefoneTextBox.TabIndex = 21;
-            // 
-            // CelularTextBox
-            // 
-            this.CelularTextBox.Location = new System.Drawing.Point(103, 139);
-            this.CelularTextBox.Mask = "(99)0000-0000";
-            this.CelularTextBox.Name = "CelularTextBox";
-            this.CelularTextBox.Size = new System.Drawing.Size(219, 20);
-            this.CelularTextBox.TabIndex = 22;
-            // 
-            // contatoSupervisorTextBox
-            // 
-            this.contatoSupervisorTextBox.Location = new System.Drawing.Point(95, 27);
-            this.contatoSupervisorTextBox.Mask = "(99)0000-0000";
-            this.contatoSupervisorTextBox.Name = "contatoSupervisorTextBox";
-            this.contatoSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
-            this.contatoSupervisorTextBox.TabIndex = 23;
-            // 
-            // cpfLabel
-            // 
-            this.cpfLabel.AutoSize = true;
-            this.cpfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpfLabel.Location = new System.Drawing.Point(21, 52);
-            this.cpfLabel.Name = "cpfLabel";
-            this.cpfLabel.Size = new System.Drawing.Size(37, 16);
-            this.cpfLabel.TabIndex = 23;
-            this.cpfLabel.Text = "CPF:";
-            // 
-            // cpfTextBox
-            // 
-            this.cpfTextBox.Location = new System.Drawing.Point(103, 51);
-            this.cpfTextBox.Mask = "000.000.000-00";
-            this.cpfTextBox.Name = "cpfTextBox";
-            this.cpfTextBox.Size = new System.Drawing.Size(219, 20);
-            this.cpfTextBox.TabIndex = 24;
             // 
             // FormCadastro
             // 
