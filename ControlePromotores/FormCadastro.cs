@@ -18,10 +18,15 @@ namespace ControlePromotores
         private String dia = null;
         private String mes = null;
         private String ano = null;
-        //Variavel para edição de promotor cadastrado.
-        private int selecao;
+        //Variavel para guardar o código do promotor selecionado.
+        private int selecao = 0;
+        //Variavel para edição de promotor cadastrado
+        private int linha = -1;
         //DataTable pra receber promotores pesquisados.
         DataTable dados;
+
+        //Variável para definir se será insert ou update
+        bool editar = false;
 
         public FormCadastro()
         {
@@ -32,15 +37,29 @@ namespace ControlePromotores
 
         private void novoButton_Click(object sender, EventArgs e)
         {
-            resetFormDefault();
-            GravarButton.Enabled = true;
-            resetDataGrid();
-            tabControl1.SelectedTab = tabPage2;
-            nomeTextBox.Focus();
+            
+            MessageBoxButtons botao = MessageBoxButtons.YesNo;
+            DialogResult resposta = MessageBox.Show("Deseja cadastrar um novo promotor ?", "Cadastrar novo", botao);
+            if (resposta == DialogResult.Yes)
+            {
+                resetFormDefault();
+                resetDataGrid();
+                tabControl1.SelectedTab = tabPage2;
+                nomeTextBox.Focus();
+                GravarButton.Enabled = true;
+            }
+            else
+            {
+                resetFormDefault();
+                tabControl1.SelectedTab = tabPage1;
+            }
+            
         }
 
         private void pesquisaButton_Click(object sender, EventArgs e)
         {
+            //Limpa o form
+            resetFormDefault();
             //Verifica se o botao gravar está habilitado, se sim, desabilita.
             if (GravarButton.Enabled == true)
                 GravarButton.Enabled = false;
@@ -97,7 +116,9 @@ namespace ControlePromotores
             dia = null;
             mes = null;
             ano = null;
-           
+            editar = false;
+            GravarButton.Enabled = false;
+            
            
         }
 
@@ -111,62 +132,101 @@ namespace ControlePromotores
        
         private void editarButton_Click(object sender, EventArgs e)
         {
-            //Reseta o data grid
-            resetFormDefault();
-            //Define os campos de texto com os valores do promotor a ser editado.
-            nomeTextBox.Text = dados.Rows[selecao]["nome"].ToString();
-            cpfTextBox.Text = dados.Rows[selecao]["cpf"].ToString();
-            EnderecoTextBox.Text = dados.Rows[selecao]["endereco"].ToString();
-            EmpresaTextBox.Text = dados.Rows[selecao]["empresa"].ToString();
-            CelularTextBox.Text = dados.Rows[selecao]["celular"].ToString();
-            emailTextBox.Text = dados.Rows[selecao]["email"].ToString();
-            telefoneTextBox.Text = dados.Rows[selecao]["telefone"].ToString();
-            NascimentoTextBox.Text = dados.Rows[selecao]["dtnascimento"].ToString();
-            digitalTextBox.Text = dados.Rows[selecao]["impressaodigital"].ToString();
-            contatoSupervisorTextBox.Text = dados.Rows[selecao]["contatosupervisor"].ToString();
-            emailSupervisorTextBox.Text = dados.Rows[selecao]["emailsupervisor"].ToString();
 
-            //Habilita a gravação do promotor.
-            GravarButton.Enabled = true;
+            
+            if (linha == -1)
+            {
+                MessageBox.Show("Favor selecionar um fornecedor para editar !");
+            }
+            else
+            {
+                //Define que será atualização de cadastro e não inserção
+                editar = true;
+                
+                //Define os campos de texto com os valores do promotor a ser editado.
+                nomeTextBox.Text = dados.Rows[linha]["nome"].ToString();
+                cpfTextBox.Text = dados.Rows[linha]["cpf"].ToString();
+                EnderecoTextBox.Text = dados.Rows[linha]["endereco"].ToString();
+                EmpresaTextBox.Text = dados.Rows[linha]["empresa"].ToString();
+                CelularTextBox.Text = dados.Rows[linha]["celular"].ToString();
+                emailTextBox.Text = dados.Rows[linha]["email"].ToString();
+                telefoneTextBox.Text = dados.Rows[linha]["telefone"].ToString();
+                NascimentoTextBox.Text = dados.Rows[linha]["dtnascimento"].ToString();//.IndexOf(' ').ToString();;
+                digitalTextBox.Text = dados.Rows[linha]["impressaodigital"].ToString();
+                contatoSupervisorTextBox.Text = dados.Rows[linha]["contatosupervisor"].ToString();
+                emailSupervisorTextBox.Text = dados.Rows[linha]["emailsupervisor"].ToString();
 
-            tabControl1.SelectedTab = tabPage2;
+                //Muda para página de edição do formulario
+                tabControl1.SelectedTab = tabPage2;
+
+                //Habilita a gravação do promotor.
+                GravarButton.Enabled = true;
+            }
+
+
+
+
+            
 
         }
 
         private void GravarButton_Click(object sender, EventArgs e)
         {
+            //Variavel pra indicar se há erro
+            bool erro = false;
+            //Comando sql
+            SqlCommand command;
             //Variavel de mensagem de retorno ao usuário
             String mensagemRetorno = "Promotor cadastrado com sucesso.";
            
             //Pega conexão no banco de dados
             SqlConnection conn = new ConnectionFactory().getConnection();
-            //Cria comando do insert no banco.
             
-            SqlCommand command = new SqlCommand("INSERT INTO PROMOTORES" +
-                               "(nome," +
-                               "endereco," +
-                               "empresa," +
-                               "impressaoDigital," +
-                               "celular," +
-                               "telefone," +
-                               "dtnascimento," +
-                               "email," +
-                               "emailSupervisor," +
-                               "contatoSupervisor," +
-                               "cpf)" +
+            //Cria comando do insert no banco.
+            if (editar == false)
+            {
+                command = new SqlCommand("INSERT INTO PROMOTORES" +
+                              "(nome," +
+                              "endereco," +
+                              "empresa," +
+                              "impressaoDigital," +
+                              "celular," +
+                              "telefone," +
+                              "dtnascimento," +
+                              "email," +
+                              "emailSupervisor," +
+                              "contatoSupervisor," +
+                              "cpf)" +
 
-                               " values" +
-                               "('" + nomeTextBox.Text +
-                               "', '" + EnderecoTextBox.Text +
-                               "', '" + EmpresaTextBox.Text +
-                               "', '" + digitalTextBox.Text +
-                               "', '" + CelularTextBox.Text +
-                               "', '" + telefoneTextBox.Text +
-                               "', '" + ano + "/" + mes + "/" + dia +
-                               "', '" + emailTextBox.Text +
-                               "', '" + emailSupervisorTextBox.Text +
-                               "', '" + contatoSupervisorTextBox.Text + 
-                               "', '" + cpfTextBox.Text+ "')", conn);
+                              " values" +
+                              "('" + nomeTextBox.Text +
+                              "', '" + EnderecoTextBox.Text +
+                              "', '" + EmpresaTextBox.Text +
+                              "', '" + digitalTextBox.Text +
+                              "', '" + CelularTextBox.Text +
+                              "', '" + telefoneTextBox.Text +
+                              "', '" + ano + "/" + mes + "/" + dia +
+                              "', '" + emailTextBox.Text +
+                              "', '" + emailSupervisorTextBox.Text +
+                              "', '" + contatoSupervisorTextBox.Text +
+                              "', '" + cpfTextBox.Text + "')", conn);
+            }
+            else
+            {
+                command = new SqlCommand("update promotores set nome = '" + nomeTextBox.Text + "'," +
+                                          "endereco = '" + EnderecoTextBox.Text + "'," +
+                                          "empresa = '" + EmpresaTextBox.Text + "'," +
+                                          "impressaodigital = '" + digitalTextBox.Text + "'," +
+                                          "celular = '" + CelularTextBox.Text + "'," +
+                                          "telefone = '" + telefoneTextBox.Text + "'," +
+                                       //   "dtnascimento = '" + NascimentoTextBox.Text + "'," +
+                                          "email = '" + emailTextBox.Text + "'," +
+                                          "emailsupervisor = '" + emailSupervisorTextBox.Text + "'," +
+                                          "contatosupervisor = '" + contatoSupervisorTextBox.Text + "'," +
+                                          "cpf = '" + cpfTextBox.Text + "'" +
+                                          " where codpromotor = " + selecao.ToString(), conn);
+            }
+           
 
 
             try
@@ -177,7 +237,7 @@ namespace ControlePromotores
             {
                 
                 mensagemRetorno = "Erro ao cadastrar Promotor, verifique se todos os campos foram preenchidos!\n"+ exc;
-             
+                erro = true;
             }
             finally
             {
@@ -185,15 +245,17 @@ namespace ControlePromotores
                 if (conn != null)
                     conn.Close();
 
-                
             }
 
-  
-            MessageBox.Show(mensagemRetorno);
-            //Reseta todo o fomulario e fecha o calendário caso esteja aberto.
-            resetFormDefault();
-            monthCalendar1.Hide();
-
+            if (erro == false)
+            {
+                MessageBox.Show(mensagemRetorno);
+                //Reseta todo o fomulario e fecha o calendário caso esteja aberto.
+                resetFormDefault();
+                monthCalendar1.Hide();
+                selecao = 0;
+                linha = -1;
+            } 
       
         }
 
@@ -249,18 +311,8 @@ namespace ControlePromotores
 
         }
 
-        private void promotoresGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selecao = int.Parse(e.RowIndex.ToString());
-            //MessageBox.Show(promotoresGrid.Rows[selecao].Cells[0].Value.ToString());
-        }
 
-        private void tabControl1_PaddingChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl1_MouseClick(object sender, MouseEventArgs e)
         {
             if (tabControl1.SelectedTab == tabPage1)
             {
@@ -268,13 +320,15 @@ namespace ControlePromotores
             }
             else
             {
-                MessageBoxButtons botao = MessageBoxButtons.YesNo;
-                DialogResult resposta = MessageBox.Show("Deseja cadastrar um novo promotor ?", "Cadastrar novo", botao);
-                if (resposta == DialogResult.Yes)
-                    novoButton.PerformClick();
+                novoButton.PerformClick();
             }
-   
-           
+        }
+
+        private void promotoresGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            linha = promotoresGrid.CurrentRow.Index;
+            selecao = int.Parse(promotoresGrid.CurrentRow.Cells[0].Value.ToString());
+            
         }
     }
 }

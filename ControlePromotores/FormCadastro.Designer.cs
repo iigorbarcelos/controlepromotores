@@ -109,7 +109,7 @@
             this.tabControl1.Size = new System.Drawing.Size(881, 453);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseClick);
             // 
             // tabPage1
             // 
@@ -139,7 +139,7 @@
             this.promotoresGrid.ReadOnly = true;
             this.promotoresGrid.Size = new System.Drawing.Size(856, 393);
             this.promotoresGrid.TabIndex = 1;
-            this.promotoresGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.promotoresGrid_CellContentClick);
+            this.promotoresGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.promotoresGrid_CellClick);
             // 
             // tabPage2
             // 
