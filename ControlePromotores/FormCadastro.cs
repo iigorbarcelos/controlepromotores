@@ -22,6 +22,7 @@ namespace ControlePromotores
         public FormCadastro()
         {
             InitializeComponent();
+            tabIndex();
 
         }
 
@@ -84,9 +85,11 @@ namespace ControlePromotores
             NascimentoTextBox.Text = "";
             telefoneTextBox.Text = "";
             digitalTextBox.Text = "";
+            cpfTextBox.Text = "";
             dia = null;
             mes = null;
             ano = null;
+           
            
         }
 
@@ -122,9 +125,10 @@ namespace ControlePromotores
                                "celular," +
                                "telefone," +
                                "dtnascimento," +
-                               "emailPromotor," +
+                               "email," +
                                "emailSupervisor," +
-                               "contatoSupervisor)" +
+                               "contatoSupervisor," +
+                               "cpf)" +
 
                                " values" +
                                "('" + nomeTextBox.Text +
@@ -133,20 +137,21 @@ namespace ControlePromotores
                                "', '" + digitalTextBox.Text +
                                "', '" + CelularTextBox.Text +
                                "', '" + telefoneTextBox.Text +
-                               "', '" + ano+"/"+mes+"/"+ dia +
+                               "', '" + ano + "/" + mes + "/" + dia +
                                "', '" + emailTextBox.Text +
                                "', '" + emailSupervisorTextBox.Text +
-                               "', '" + contatoSupervisorTextBox.Text + "')", conn);
+                               "', '" + contatoSupervisorTextBox.Text + 
+                               "', '" + cpfTextBox.Text+ "')", conn);
 
 
             try
             {
                 command.ExecuteNonQuery();
             }
-            catch (SqlException)
+            catch (SqlException exc)
             {
                 
-                mensagemRetorno = "Erro ao cadastrar Promotor, verifique se todos os campos foram preenchidos!";
+                mensagemRetorno = "Erro ao cadastrar Promotor, verifique se todos os campos foram preenchidos!\n"+ exc;
              
             }
             finally
@@ -160,6 +165,7 @@ namespace ControlePromotores
 
   
             MessageBox.Show(mensagemRetorno);
+            //Reseta todo o fomulario e fecha o calendário caso esteja aberto.
             resetFormDefault();
             monthCalendar1.Hide();
 
@@ -194,6 +200,25 @@ namespace ControlePromotores
             interfaceBiometria biometria = new interfaceBiometria();
             digitalTextBox.Text = biometria.cadastraDigital();
 
+
+        }
+
+        //Método para alterar a sequencia do atalho tab quando o usuario apertar.
+        //Apenas para facilitar a vida do usuário no cadastro de um novo promotor.
+        private void tabIndex()
+        {
+            nomeTextBox.TabIndex = 0;
+            cpfTextBox.TabIndex = 1;
+            EnderecoTextBox.TabIndex = 2;
+            EmpresaTextBox.TabIndex = 3;
+            CelularTextBox.TabIndex = 4;
+            emailTextBox.TabIndex = 5;
+            telefoneTextBox.TabIndex = 6;
+            NascimentoTextBox.TabIndex = 7;
+            contatoSupervisorTextBox.TabIndex = 8;
+            emailSupervisorTextBox.TabIndex = 9;
+            digitalTextBox.TabIndex = 10;
+            cadastraDigitalButton.TabIndex = 11;
 
         }
     }

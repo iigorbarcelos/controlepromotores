@@ -64,6 +64,8 @@
             this.telefoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.CelularTextBox = new System.Windows.Forms.MaskedTextBox();
             this.contatoSupervisorTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.cpfLabel = new System.Windows.Forms.Label();
+            this.cpfTextBox = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -152,6 +154,8 @@
             this.promotorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.promotorGroupBox.Controls.Add(this.cpfTextBox);
+            this.promotorGroupBox.Controls.Add(this.cpfLabel);
             this.promotorGroupBox.Controls.Add(this.CelularTextBox);
             this.promotorGroupBox.Controls.Add(this.telefoneTextBox);
             this.promotorGroupBox.Controls.Add(this.monthCalendar1);
@@ -184,7 +188,7 @@
             this.monthCalendar1.AnnuallyBoldedDates = new System.DateTime[] {
         new System.DateTime(2014, 12, 10, 0, 0, 0, 0)};
             this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(356, 232);
+            this.monthCalendar1.Location = new System.Drawing.Point(355, 253);
             this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 20;
@@ -194,7 +198,7 @@
             // calendarioPictureBox
             // 
             this.calendarioPictureBox.Image = global::ControlePromotores.Properties.Resources.calendario;
-            this.calendarioPictureBox.Location = new System.Drawing.Point(328, 211);
+            this.calendarioPictureBox.Location = new System.Drawing.Point(328, 227);
             this.calendarioPictureBox.Name = "calendarioPictureBox";
             this.calendarioPictureBox.Size = new System.Drawing.Size(28, 27);
             this.calendarioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -252,7 +256,7 @@
             // 
             // digitalTextBox
             // 
-            this.digitalTextBox.Location = new System.Drawing.Point(492, 179);
+            this.digitalTextBox.Location = new System.Drawing.Point(623, 191);
             this.digitalTextBox.Name = "digitalTextBox";
             this.digitalTextBox.PasswordChar = '*';
             this.digitalTextBox.ReadOnly = true;
@@ -263,7 +267,7 @@
             // NascimentoTextBox
             // 
             this.NascimentoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.NascimentoTextBox.Location = new System.Drawing.Point(103, 218);
+            this.NascimentoTextBox.Location = new System.Drawing.Point(103, 230);
             this.NascimentoTextBox.Name = "NascimentoTextBox";
             this.NascimentoTextBox.ReadOnly = true;
             this.NascimentoTextBox.Size = new System.Drawing.Size(219, 20);
@@ -273,7 +277,7 @@
             // 
             this.NascimentoLabel.AutoSize = true;
             this.NascimentoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NascimentoLabel.Location = new System.Drawing.Point(21, 219);
+            this.NascimentoLabel.Location = new System.Drawing.Point(21, 231);
             this.NascimentoLabel.Name = "NascimentoLabel";
             this.NascimentoLabel.Size = new System.Drawing.Size(83, 16);
             this.NascimentoLabel.TabIndex = 16;
@@ -283,7 +287,7 @@
             // 
             this.TelefoneLabel.AutoSize = true;
             this.TelefoneLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TelefoneLabel.Location = new System.Drawing.Point(21, 186);
+            this.TelefoneLabel.Location = new System.Drawing.Point(21, 200);
             this.TelefoneLabel.Name = "TelefoneLabel";
             this.TelefoneLabel.Size = new System.Drawing.Size(65, 16);
             this.TelefoneLabel.TabIndex = 14;
@@ -292,7 +296,7 @@
             // emailTextBox
             // 
             this.emailTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.emailTextBox.Location = new System.Drawing.Point(103, 155);
+            this.emailTextBox.Location = new System.Drawing.Point(103, 169);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(219, 20);
             this.emailTextBox.TabIndex = 13;
@@ -301,7 +305,7 @@
             // 
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailLabel.Location = new System.Drawing.Point(21, 156);
+            this.emailLabel.Location = new System.Drawing.Point(21, 170);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(45, 16);
             this.emailLabel.TabIndex = 12;
@@ -310,7 +314,7 @@
             // digitalPictureBox
             // 
             this.digitalPictureBox.Image = global::ControlePromotores.Properties.Resources.digital;
-            this.digitalPictureBox.Location = new System.Drawing.Point(521, 30);
+            this.digitalPictureBox.Location = new System.Drawing.Point(652, 42);
             this.digitalPictureBox.Name = "digitalPictureBox";
             this.digitalPictureBox.Size = new System.Drawing.Size(164, 114);
             this.digitalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -319,7 +323,7 @@
             // 
             // cadastraDigitalButton
             // 
-            this.cadastraDigitalButton.Location = new System.Drawing.Point(554, 150);
+            this.cadastraDigitalButton.Location = new System.Drawing.Point(685, 162);
             this.cadastraDigitalButton.Name = "cadastraDigitalButton";
             this.cadastraDigitalButton.Size = new System.Drawing.Size(98, 23);
             this.cadastraDigitalButton.TabIndex = 10;
@@ -348,7 +352,7 @@
             // EmpresaTextBox
             // 
             this.EmpresaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.EmpresaTextBox.Location = new System.Drawing.Point(103, 89);
+            this.EmpresaTextBox.Location = new System.Drawing.Point(103, 108);
             this.EmpresaTextBox.Name = "EmpresaTextBox";
             this.EmpresaTextBox.Size = new System.Drawing.Size(219, 20);
             this.EmpresaTextBox.TabIndex = 8;
@@ -357,7 +361,7 @@
             // 
             this.enderecoLabel.AutoSize = true;
             this.enderecoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.enderecoLabel.Location = new System.Drawing.Point(21, 59);
+            this.enderecoLabel.Location = new System.Drawing.Point(21, 83);
             this.enderecoLabel.Name = "enderecoLabel";
             this.enderecoLabel.Size = new System.Drawing.Size(70, 16);
             this.enderecoLabel.TabIndex = 2;
@@ -366,7 +370,7 @@
             // EnderecoTextBox
             // 
             this.EnderecoTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.EnderecoTextBox.Location = new System.Drawing.Point(103, 56);
+            this.EnderecoTextBox.Location = new System.Drawing.Point(103, 80);
             this.EnderecoTextBox.Name = "EnderecoTextBox";
             this.EnderecoTextBox.Size = new System.Drawing.Size(219, 20);
             this.EnderecoTextBox.TabIndex = 7;
@@ -375,7 +379,7 @@
             // 
             this.empresaLabel.AutoSize = true;
             this.empresaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empresaLabel.Location = new System.Drawing.Point(21, 92);
+            this.empresaLabel.Location = new System.Drawing.Point(21, 109);
             this.empresaLabel.Name = "empresaLabel";
             this.empresaLabel.Size = new System.Drawing.Size(66, 16);
             this.empresaLabel.TabIndex = 3;
@@ -385,7 +389,7 @@
             // 
             this.calularLabel.AutoSize = true;
             this.calularLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calularLabel.Location = new System.Drawing.Point(21, 127);
+            this.calularLabel.Location = new System.Drawing.Point(21, 140);
             this.calularLabel.Name = "calularLabel";
             this.calularLabel.Size = new System.Drawing.Size(56, 16);
             this.calularLabel.TabIndex = 6;
@@ -460,7 +464,7 @@
             // 
             // telefoneTextBox
             // 
-            this.telefoneTextBox.Location = new System.Drawing.Point(103, 185);
+            this.telefoneTextBox.Location = new System.Drawing.Point(103, 199);
             this.telefoneTextBox.Mask = "(99)0000-0000";
             this.telefoneTextBox.Name = "telefoneTextBox";
             this.telefoneTextBox.Size = new System.Drawing.Size(219, 20);
@@ -468,7 +472,7 @@
             // 
             // CelularTextBox
             // 
-            this.CelularTextBox.Location = new System.Drawing.Point(103, 126);
+            this.CelularTextBox.Location = new System.Drawing.Point(103, 139);
             this.CelularTextBox.Mask = "(99)0000-0000";
             this.CelularTextBox.Name = "CelularTextBox";
             this.CelularTextBox.Size = new System.Drawing.Size(219, 20);
@@ -481,6 +485,24 @@
             this.contatoSupervisorTextBox.Name = "contatoSupervisorTextBox";
             this.contatoSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
             this.contatoSupervisorTextBox.TabIndex = 23;
+            // 
+            // cpfLabel
+            // 
+            this.cpfLabel.AutoSize = true;
+            this.cpfLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpfLabel.Location = new System.Drawing.Point(21, 52);
+            this.cpfLabel.Name = "cpfLabel";
+            this.cpfLabel.Size = new System.Drawing.Size(37, 16);
+            this.cpfLabel.TabIndex = 23;
+            this.cpfLabel.Text = "CPF:";
+            // 
+            // cpfTextBox
+            // 
+            this.cpfTextBox.Location = new System.Drawing.Point(103, 51);
+            this.cpfTextBox.Mask = "000.000.000-00";
+            this.cpfTextBox.Name = "cpfTextBox";
+            this.cpfTextBox.Size = new System.Drawing.Size(219, 20);
+            this.cpfTextBox.TabIndex = 24;
             // 
             // FormCadastro
             // 
@@ -549,6 +571,8 @@
         private System.Windows.Forms.MaskedTextBox telefoneTextBox;
         private System.Windows.Forms.MaskedTextBox CelularTextBox;
         private System.Windows.Forms.MaskedTextBox contatoSupervisorTextBox;
+        private System.Windows.Forms.MaskedTextBox cpfTextBox;
+        private System.Windows.Forms.Label cpfLabel;
     }
 }
 
