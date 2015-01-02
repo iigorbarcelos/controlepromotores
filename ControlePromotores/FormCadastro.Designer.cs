@@ -54,7 +54,6 @@
             this.digitalPictureBox = new System.Windows.Forms.PictureBox();
             this.cadastraDigitalButton = new System.Windows.Forms.Button();
             this.nomeLabel = new System.Windows.Forms.Label();
-            this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.EmpresaTextBox = new System.Windows.Forms.TextBox();
             this.enderecoLabel = new System.Windows.Forms.Label();
             this.EnderecoTextBox = new System.Windows.Forms.TextBox();
@@ -66,6 +65,8 @@
             this.editarButton = new System.Windows.Forms.Button();
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
+            this.nomeTextBox = new System.Windows.Forms.TextBox();
+            this.validaCPFLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,6 +158,8 @@
             this.promotorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.promotorGroupBox.Controls.Add(this.validaCPFLabel);
+            this.promotorGroupBox.Controls.Add(this.nomeTextBox);
             this.promotorGroupBox.Controls.Add(this.cpfTextBox);
             this.promotorGroupBox.Controls.Add(this.cpfLabel);
             this.promotorGroupBox.Controls.Add(this.CelularTextBox);
@@ -173,7 +176,6 @@
             this.promotorGroupBox.Controls.Add(this.digitalPictureBox);
             this.promotorGroupBox.Controls.Add(this.cadastraDigitalButton);
             this.promotorGroupBox.Controls.Add(this.nomeLabel);
-            this.promotorGroupBox.Controls.Add(this.nomeTextBox);
             this.promotorGroupBox.Controls.Add(this.EmpresaTextBox);
             this.promotorGroupBox.Controls.Add(this.enderecoLabel);
             this.promotorGroupBox.Controls.Add(this.EnderecoTextBox);
@@ -193,6 +195,7 @@
             this.cpfTextBox.Name = "cpfTextBox";
             this.cpfTextBox.Size = new System.Drawing.Size(219, 20);
             this.cpfTextBox.TabIndex = 24;
+            this.cpfTextBox.Leave += new System.EventHandler(this.cpfTextBox_Leave);
             // 
             // cpfLabel
             // 
@@ -230,7 +233,7 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 20;
             this.monthCalendar1.Visible = false;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // calendarioPictureBox
             // 
@@ -386,14 +389,6 @@
             this.nomeLabel.TabIndex = 0;
             this.nomeLabel.Text = "Nome:";
             // 
-            // nomeTextBox
-            // 
-            this.nomeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.nomeTextBox.Location = new System.Drawing.Point(103, 22);
-            this.nomeTextBox.Name = "nomeTextBox";
-            this.nomeTextBox.Size = new System.Drawing.Size(219, 20);
-            this.nomeTextBox.TabIndex = 1;
-            // 
             // EmpresaTextBox
             // 
             this.EmpresaTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -508,6 +503,26 @@
             this.pesquisarButton.UseVisualStyleBackColor = true;
             this.pesquisarButton.Click += new System.EventHandler(this.pesquisaButton_Click);
             // 
+            // nomeTextBox
+            // 
+            this.nomeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.nomeTextBox.Location = new System.Drawing.Point(103, 21);
+            this.nomeTextBox.Name = "nomeTextBox";
+            this.nomeTextBox.Size = new System.Drawing.Size(219, 20);
+            this.nomeTextBox.TabIndex = 25;
+            this.nomeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nomeTextBox_KeyPress);
+            // 
+            // validaCPFLabel
+            // 
+            this.validaCPFLabel.AutoSize = true;
+            this.validaCPFLabel.ForeColor = System.Drawing.Color.Red;
+            this.validaCPFLabel.Location = new System.Drawing.Point(329, 57);
+            this.validaCPFLabel.Name = "validaCPFLabel";
+            this.validaCPFLabel.Size = new System.Drawing.Size(121, 13);
+            this.validaCPFLabel.TabIndex = 26;
+            this.validaCPFLabel.Text = "CPF digitado é inválido !";
+            this.validaCPFLabel.Visible = false;
+            // 
             // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,7 +568,6 @@
         private System.Windows.Forms.GroupBox promotorGroupBox;
         private System.Windows.Forms.Label contatoSupervisorLabel;
         private System.Windows.Forms.Label nomeLabel;
-        private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.TextBox EmpresaTextBox;
         private System.Windows.Forms.Label enderecoLabel;
         private System.Windows.Forms.TextBox EnderecoTextBox;
@@ -577,6 +591,8 @@
         private System.Windows.Forms.MaskedTextBox contatoSupervisorTextBox;
         private System.Windows.Forms.MaskedTextBox cpfTextBox;
         private System.Windows.Forms.Label cpfLabel;
+        private System.Windows.Forms.TextBox nomeTextBox;
+        private System.Windows.Forms.Label validaCPFLabel;
     }
 }
 

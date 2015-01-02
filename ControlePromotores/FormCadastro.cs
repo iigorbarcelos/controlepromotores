@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using System.Text.RegularExpressions;
 
 namespace ControlePromotores
 {
@@ -27,6 +28,9 @@ namespace ControlePromotores
 
         //Variável para definir se será insert ou update
         bool editar = false;
+
+        
+        
 
         public FormCadastro()
         {
@@ -60,6 +64,10 @@ namespace ControlePromotores
         {
             //Limpa o form
             resetFormDefault();
+            
+            //Omite a impressaodigital na pesquisa de promotores
+            promotoresGrid.Columns["impressaodigital"].Visible=false;
+ 
             //Verifica se o botao gravar está habilitado, se sim, desabilita.
             if (GravarButton.Enabled == true)
                 GravarButton.Enabled = false;
@@ -151,7 +159,8 @@ namespace ControlePromotores
                 CelularTextBox.Text = dados.Rows[linha]["celular"].ToString();
                 emailTextBox.Text = dados.Rows[linha]["email"].ToString();
                 telefoneTextBox.Text = dados.Rows[linha]["telefone"].ToString();
-                NascimentoTextBox.Text = dados.Rows[linha]["dtnascimento"].ToString();//.IndexOf(' ').ToString();;
+                //Ajuste da data para não gravar em formato incorreto no banco ao gravar o promotor atualizado.
+                NascimentoTextBox.Text = dados.Rows[linha]["dtnascimento"].ToString().Replace('0', ' ').Replace(':', ' ');
                 digitalTextBox.Text = dados.Rows[linha]["impressaodigital"].ToString();
                 contatoSupervisorTextBox.Text = dados.Rows[linha]["contatosupervisor"].ToString();
                 emailSupervisorTextBox.Text = dados.Rows[linha]["emailsupervisor"].ToString();
@@ -275,15 +284,6 @@ namespace ControlePromotores
             else monthCalendar1.Visible = false;
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            dia = monthCalendar1.SelectionStart.Day.ToString();
-            mes = monthCalendar1.SelectionStart.Month.ToString();
-            ano = monthCalendar1.SelectionStart.Year.ToString();
-            NascimentoTextBox.Text = dia + "/" + mes + "/" + ano;
-            
-        }
-
         private void cadastraDigitalButton_Click(object sender, EventArgs e)
         {
             interfaceBiometria biometria = new interfaceBiometria();
@@ -329,6 +329,50 @@ namespace ControlePromotores
             linha = promotoresGrid.CurrentRow.Index;
             selecao = int.Parse(promotoresGrid.CurrentRow.Cells[0].Value.ToString());
             
+        }
+
+        private void nomeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (((e.KeyChar >='0' && e.KeyChar <='9') || (e.KeyChar == '-') || (e.KeyChar== ',' ) || (e.KeyChar == '.')))
+            {
+                e.Handled = true;
+            } 
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            dia = monthCalendar1.SelectionStart.Day.ToString();
+            mes = monthCalendar1.SelectionStart.Month.ToString();
+            ano = monthCalendar1.SelectionStart.Year.ToString();
+            NascimentoTextBox.Text = dia + "/" + mes + "/" + ano;
+
+
+            if (monthCalendar1.Visible == false)
+                monthCalendar1.Visible = true;
+            else monthCalendar1.Visible = false;
+        }
+
+
+        private void cpfTextBox_Leave(object sender, EventArgs e)
+        {
+
+            StringBuilder sb = new StringBuilder(cpfTextBox.Text);
+            sb.Remove(3, 1);
+            sb.Remove(6,1);
+            sb.Remove(9, 1);
+
+            
+            if (!Validacoes.IsCpf(sb.ToString()))
+            {
+                validaCPFLabel.Visible = true;
+                cpfTextBox.Focus();
+
+            }
+            else
+            {
+                validaCPFLabel.Visible = false;
+            }
         }
     }
 }
