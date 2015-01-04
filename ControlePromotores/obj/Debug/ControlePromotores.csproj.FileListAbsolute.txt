@@ -2,6 +2,7 @@ C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\Con
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.pdb
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.CheckinPessoa.resources
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Controle.resources
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.FormCadastro.resources
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.MenuPrincipal.resources
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Properties.Resources.resources

@@ -11,6 +11,7 @@
     <AssemblyName>ControlePromotores</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,15 +47,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>icone.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="NITGEN.SDK.NBioBSP, Version=1.2.3.0, Culture=neutral, PublicKeyToken=96eee45103d523d1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files\NITGEN eNBSP x64\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +76,12 @@
       <DependentUpon>CheckinPessoa.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionFactory.cs" />
+    <Compile Include="Controle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controle.Designer.cs">
+      <DependentUpon>Controle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,9 +107,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Promotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Validacoes.cs" />
     <EmbeddedResource Include="CheckinPessoa.resx">
       <DependentUpon>CheckinPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controle.resx">
+      <DependentUpon>Controle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadastro.resx">
       <DependentUpon>FormCadastro.cs</DependentUpon>
@@ -110,14 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="masterDataSet.xsc">
       <DependentUpon>masterDataSet.xsd</DependentUpon>
@@ -150,9 +162,6 @@
     <None Include="img\calendario.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="img\checkinimg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
@@ -171,11 +180,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="icone.ico" />
+    <None Include="img\indigente.jpg" />
+    <None Include="img\MenuprincipalBG.png" />
+    <None Include="img\titulo.png" />
+    <None Include="img\catraca.png" />
+    <None Include="img\relatorios.png" />
+    <None Include="img\cadastro.png" />
+    <None Include="img\sair.png" />
     <None Include="img\menuprincipal.jpg" />
-    <None Include="img\Configuration.jpg" />
     <None Include="img\configuracoes.png" />
-    <None Include="img\relatorios.jpg" />
-    <None Include="img\imagemCadastrarPromotor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

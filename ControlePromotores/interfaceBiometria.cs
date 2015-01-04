@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NITGEN.SDK.NBioBSP;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.Sql;
+using System.Threading;
 
 namespace ControlePromotores
 {
@@ -16,39 +18,43 @@ namespace ControlePromotores
         private short m_OpenedDeviceID;
         private NBioAPI.Type.HFIR m_hNewFIR;
         private NBioAPI.Type.FIR_TEXTENCODE m_textFIR;
-        private NBioAPI.Type.DEVICE_INFO_EX[] m_DeviceInfoEx;
         private NBioAPI.IndexSearch m_IndexSearch;
         private short iDeviceID;
         private String firDigital;
-
+        private NBioAPI.Type.WINDOW_OPTION m_WinOption;
+        private long idusuario = 0;
+        
         public interfaceBiometria()
         {
             //Inicializa leitor e ja pega uma conexão com o banco
             m_NBioAPI = new NBioAPI();
             m_OpenedDeviceID = NBioAPI.Type.DEVICE_ID.NONE;
             m_IndexSearch = new NBioAPI.IndexSearch(m_NBioAPI);
-            SqlConnection conn = new ConnectionFactory().getConnection();
+            defineDispositivo();
+
+            //Inicia o sistema de busca de digitais cadastradas.
+            m_IndexSearch.InitEngine();
 
             //Inicializa o módulo para captura da Digital
-            defineDispositivo();
-            fechaDispositivo();
-            abreDispositivo();
-
+            
+            m_WinOption = new NBioAPI.Type.WINDOW_OPTION();
+            m_WinOption.WindowStyle = NBioAPI.Type.WINDOW_STYLE.INVISIBLE;
+            
         }
 
-        private void defineDispositivo()
+        public void defineDispositivo()
         {
             //Define o ID do dispositivo automaticamente
             iDeviceID = NBioAPI.Type.DEVICE_ID.AUTO;
         }
 
-        private void fechaDispositivo()
+        public void fechaDispositivo()
         {
             //Fecha o dispositivo para o caso de ele ja estar aberto
             m_NBioAPI.CloseDevice(m_OpenedDeviceID);
         }
 
-        private void abreDispositivo()
+        public void abreDispositivo()
         {
             //Abre o dispositivo
             uint ret3 = m_NBioAPI.OpenDevice(iDeviceID);
@@ -67,6 +73,7 @@ namespace ControlePromotores
         //Ativa leitor pra cadastrar a digital
         public String cadastraDigital()
         {
+            abreDispositivo();
             //Aciona método para chamar a dll traduzida da janela de coleta da digital.
             mudaSkin();
 
@@ -78,10 +85,109 @@ namespace ControlePromotores
                 m_NBioAPI.GetTextFIRFromHandle(m_hNewFIR, out m_textFIR, true);
                 //Coloca o texto obtido na String para guardar no banco.
                 firDigital = m_textFIR.TextFIR;
+                fechaDispositivo();
                 return firDigital;
              }
 
             return null;
+        }
+
+        //@return ID do usuário.
+
+        
+        public void verificaIdentidade()
+        {
+            abreDispositivo();
+
+            //Carrega digitais cadastradas no banco, para a memória
+            carregaFIRCadastrada();
+
+            //Variavel que vai estar com o template capturado pelo leitor
+            NBioAPI.Type.HFIR digitalCapturada;
+                      
+            //Captura a digital do promotor
+            m_NBioAPI.Capture(out digitalCapturada, NBioAPI.Type.TIMEOUT.INFINITE, m_WinOption);
+
+            //Cria variável do callback
+            NBioAPI.IndexSearch.CALLBACK_INFO_0 cbInfo0 = new NBioAPI.IndexSearch.CALLBACK_INFO_0();
+
+            //Cria variável que vai receber as informações da digital
+            NBioAPI.IndexSearch.FP_INFO fpInfo;
+
+            //Pega a digital capturada, e compara para ver se é encontrada uma digital compatível no banco
+            m_IndexSearch.IdentifyData(digitalCapturada, NBioAPI.Type.FIR_SECURITY_LEVEL.NORMAL, out fpInfo, cbInfo0);
+
+            //Converte para inteiro o valor do ID do usuário, caso ele esteja cadastrado.
+            setID(Convert.ToUInt32(fpInfo.ID));
+            fechaDispositivo();
+           
+        }
+
+        public void setID(long userID)
+        {
+            this.idusuario = userID;
+        }
+
+        public long getID()
+        {
+            return this.idusuario;
+        }
+        
+        public void carregaFIRCadastrada()
+        {
+            
+            //Variável que vai receber o template da digital capturada pelo leitor
+            string template;
+            //Variável que vai receber o id do usuário, caso ele esteja cadastrado no banco
+            uint codpromotor = 0;
+
+            //Variável que vai receber o FIR em texto, do banco de dados
+            NBioAPI.Type.FIR_TEXTENCODE templatefromDB = new NBioAPI.Type.FIR_TEXTENCODE();
+
+            //Informações da Fingerprint
+            NBioAPI.IndexSearch.FP_INFO[] fpInfo;
+            
+            //Solicita conexão com o banco
+            SqlConnection conn = new ConnectionFactory().getConnection();
+
+            //Comando sql para buscar cadastro do banco
+            String command = "select codpromotor, impressaodigital from promotores";
+
+            //Prepara o comando e a conexão para ser executado no banco.
+            SqlCommand query = new SqlCommand(command, conn);
+
+            //Cria um reader para ler os dados encontrados.
+            SqlDataReader reader = query.ExecuteReader();
+           
+            try
+            {
+                while (reader.Read())
+                {
+
+                    //Pega código do promotor da consulta
+                    codpromotor = Convert.ToUInt32(reader["codpromotor"].ToString(), 10);
+
+                    //Pega a string correspondente da digital do banco
+                    template = reader["impressaodigital"].ToString();
+
+                    //Guarda na memória a impressao digital pegada do banco
+                    templatefromDB.TextFIR = template;
+
+                    //Adiciona as digitais encontradas na memória.
+                    m_IndexSearch.AddFIR(templatefromDB, codpromotor, out fpInfo);                  
+                }
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Erro ao carregar dados do banco.\n" + exc);
+            }
+            finally
+            {
+                conn.Close();
+                reader.Close();
+                
+            }
+
         }
 
         //Muda a janela de coleta da digital para padrão em portugues.

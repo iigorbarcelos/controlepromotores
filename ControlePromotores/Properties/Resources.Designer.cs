@@ -63,6 +63,16 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cadastro {
+            get {
+                object obj = ResourceManager.GetObject("cadastro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendario {
             get {
                 object obj = ResourceManager.GetObject("calendario", resourceCulture);
@@ -73,19 +83,9 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap checkinimg {
+        internal static System.Drawing.Bitmap catraca1 {
             get {
-                object obj = ResourceManager.GetObject("checkinimg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap configuracoes {
-            get {
-                object obj = ResourceManager.GetObject("configuracoes", resourceCulture);
+                object obj = ResourceManager.GetObject("catraca1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap imagemCadastrarPromotor {
+        internal static System.Drawing.Bitmap indigente {
             get {
-                object obj = ResourceManager.GetObject("imagemCadastrarPromotor", resourceCulture);
+                object obj = ResourceManager.GetObject("indigente", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menuprincipal {
+        internal static System.Drawing.Bitmap MenuprincipalBG {
             get {
-                object obj = ResourceManager.GetObject("menuprincipal", resourceCulture);
+                object obj = ResourceManager.GetObject("MenuprincipalBG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,29 @@ namespace ControlePromotores.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap relatorios {
+        internal static System.Drawing.Bitmap relatorios1 {
             get {
-                object obj = ResourceManager.GetObject("relatorios", resourceCulture);
+                object obj = ResourceManager.GetObject("relatorios1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sair {
+            get {
+                object obj = ResourceManager.GetObject("sair", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap titulo {
+            get {
+                object obj = ResourceManager.GetObject("titulo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

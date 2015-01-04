@@ -65,8 +65,6 @@ namespace ControlePromotores
             //Limpa o form
             resetFormDefault();
             
-            //Omite a impressaodigital na pesquisa de promotores
-            promotoresGrid.Columns["impressaodigital"].Visible=false;
  
             //Verifica se o botao gravar está habilitado, se sim, desabilita.
             if (GravarButton.Enabled == true)
@@ -97,7 +95,10 @@ namespace ControlePromotores
             adaptador.Fill(dados);
             //Preenche o dataGrid, com os dados do DataTable
             promotoresGrid.DataSource=dados;
-            
+
+            //Omite a impressaodigital na pesquisa de promotores
+            promotoresGrid.Columns["impressaodigital"].Visible = false;
+            promotoresGrid.Columns["foto"].Visible = false;
 
         }
 
@@ -160,7 +161,7 @@ namespace ControlePromotores
                 emailTextBox.Text = dados.Rows[linha]["email"].ToString();
                 telefoneTextBox.Text = dados.Rows[linha]["telefone"].ToString();
                 //Ajuste da data para não gravar em formato incorreto no banco ao gravar o promotor atualizado.
-                NascimentoTextBox.Text = dados.Rows[linha]["dtnascimento"].ToString().Replace('0', ' ').Replace(':', ' ');
+                NascimentoTextBox.Text = (Convert.ToDateTime(dados.Rows[linha]["dtnascimento"])).ToString("dd / MM / yyyy");
                 digitalTextBox.Text = dados.Rows[linha]["impressaodigital"].ToString();
                 contatoSupervisorTextBox.Text = dados.Rows[linha]["contatosupervisor"].ToString();
                 emailSupervisorTextBox.Text = dados.Rows[linha]["emailsupervisor"].ToString();
@@ -288,8 +289,6 @@ namespace ControlePromotores
         {
             interfaceBiometria biometria = new interfaceBiometria();
             digitalTextBox.Text = biometria.cadastraDigital();
-
-
         }
 
         //Método para alterar a sequencia do atalho tab quando o usuario apertar.
@@ -373,6 +372,12 @@ namespace ControlePromotores
             {
                 validaCPFLabel.Visible = false;
             }
+        }
+
+        private void FormCadastro_Load(object sender, EventArgs e)
+        {
+
+            //this.reportViewer1.RefreshReport();
         }
     }
 }

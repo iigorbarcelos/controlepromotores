@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCadastro));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.promotoresGrid = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.promotorGroupBox = new System.Windows.Forms.GroupBox();
+            this.validaCPFLabel = new System.Windows.Forms.Label();
+            this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.cpfTextBox = new System.Windows.Forms.MaskedTextBox();
             this.cpfLabel = new System.Windows.Forms.Label();
             this.CelularTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -65,8 +68,6 @@
             this.editarButton = new System.Windows.Forms.Button();
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
-            this.nomeTextBox = new System.Windows.Forms.TextBox();
-            this.validaCPFLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -187,6 +188,26 @@
             this.promotorGroupBox.TabIndex = 12;
             this.promotorGroupBox.TabStop = false;
             this.promotorGroupBox.Text = "Dados do Promotor";
+            // 
+            // validaCPFLabel
+            // 
+            this.validaCPFLabel.AutoSize = true;
+            this.validaCPFLabel.ForeColor = System.Drawing.Color.Red;
+            this.validaCPFLabel.Location = new System.Drawing.Point(329, 57);
+            this.validaCPFLabel.Name = "validaCPFLabel";
+            this.validaCPFLabel.Size = new System.Drawing.Size(121, 13);
+            this.validaCPFLabel.TabIndex = 26;
+            this.validaCPFLabel.Text = "CPF digitado é inválido !";
+            this.validaCPFLabel.Visible = false;
+            // 
+            // nomeTextBox
+            // 
+            this.nomeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.nomeTextBox.Location = new System.Drawing.Point(103, 21);
+            this.nomeTextBox.Name = "nomeTextBox";
+            this.nomeTextBox.Size = new System.Drawing.Size(219, 20);
+            this.nomeTextBox.TabIndex = 25;
+            this.nomeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nomeTextBox_KeyPress);
             // 
             // cpfTextBox
             // 
@@ -503,26 +524,6 @@
             this.pesquisarButton.UseVisualStyleBackColor = true;
             this.pesquisarButton.Click += new System.EventHandler(this.pesquisaButton_Click);
             // 
-            // nomeTextBox
-            // 
-            this.nomeTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.nomeTextBox.Location = new System.Drawing.Point(103, 21);
-            this.nomeTextBox.Name = "nomeTextBox";
-            this.nomeTextBox.Size = new System.Drawing.Size(219, 20);
-            this.nomeTextBox.TabIndex = 25;
-            this.nomeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nomeTextBox_KeyPress);
-            // 
-            // validaCPFLabel
-            // 
-            this.validaCPFLabel.AutoSize = true;
-            this.validaCPFLabel.ForeColor = System.Drawing.Color.Red;
-            this.validaCPFLabel.Location = new System.Drawing.Point(329, 57);
-            this.validaCPFLabel.Name = "validaCPFLabel";
-            this.validaCPFLabel.Size = new System.Drawing.Size(121, 13);
-            this.validaCPFLabel.TabIndex = 26;
-            this.validaCPFLabel.Text = "CPF digitado é inválido !";
-            this.validaCPFLabel.Visible = false;
-            // 
             // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,10 +531,12 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(883, 533);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormCadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Promotores";
+            this.Load += new System.EventHandler(this.FormCadastro_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);

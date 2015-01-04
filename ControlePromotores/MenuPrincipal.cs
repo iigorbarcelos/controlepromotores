@@ -18,11 +18,6 @@ namespace ControlePromotores
             
         }
 
-        private void sairButton_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
         private void CadastrarPromotorPicture_Click(object sender, EventArgs e)
         {
             FormCadastro cadastro = new FormCadastro();
@@ -34,6 +29,29 @@ namespace ControlePromotores
             FormCadastro cadastro = new FormCadastro();
             cadastro.Show();
         }
+
+        private void sairPictureBox_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void sairLabel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void catracaPictureBox_Click(object sender, EventArgs e)
+        {
+            Controle controle = new Controle();
+            controle.Show();
+        }
+
+        private void catracaLabel_Click(object sender, EventArgs e)
+        {
+            Controle controle = new Controle();
+            controle.Show();
+        }
+
 
     }
 }

@@ -28,102 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.MenuPainel = new System.Windows.Forms.Panel();
-            this.configuracoesLabel = new System.Windows.Forms.Label();
-            this.configuracoesPictureBox = new System.Windows.Forms.PictureBox();
-            this.relatorioLabel = new System.Windows.Forms.Label();
-            this.relatorioPictureBox = new System.Windows.Forms.PictureBox();
-            this.CadastrarPromotorLabel = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.CadastrarPromotorPicture = new System.Windows.Forms.PictureBox();
-            this.sairButton = new System.Windows.Forms.Button();
-            this.tituloLabel = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.MenuPainel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configuracoesPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.relatorioPictureBox)).BeginInit();
+            this.CadastrarPromotorLabel = new System.Windows.Forms.Label();
+            this.relatorioPictureBox = new System.Windows.Forms.PictureBox();
+            this.relatorioLabel = new System.Windows.Forms.Label();
+            this.configuracoesPictureBox = new System.Windows.Forms.PictureBox();
+            this.configuracoesLabel = new System.Windows.Forms.Label();
+            this.catracaPictureBox = new System.Windows.Forms.PictureBox();
+            this.catracaLabel = new System.Windows.Forms.Label();
+            this.sairPictureBox = new System.Windows.Forms.PictureBox();
+            this.sairLabel = new System.Windows.Forms.Label();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.CadastrarPromotorPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relatorioPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configuracoesPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catracaPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sairPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // CadastrarPromotorPicture
             // 
-            this.panel1.BackgroundImage = global::ControlePromotores.Properties.Resources.menuprincipal;
-            this.panel1.Controls.Add(this.MenuPainel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(929, 635);
-            this.panel1.TabIndex = 0;
-            // 
-            // MenuPainel
-            // 
-            this.MenuPainel.AutoSize = true;
-            this.MenuPainel.BackColor = System.Drawing.Color.Transparent;
-            this.MenuPainel.Controls.Add(this.configuracoesLabel);
-            this.MenuPainel.Controls.Add(this.configuracoesPictureBox);
-            this.MenuPainel.Controls.Add(this.relatorioLabel);
-            this.MenuPainel.Controls.Add(this.relatorioPictureBox);
-            this.MenuPainel.Controls.Add(this.CadastrarPromotorLabel);
-            this.MenuPainel.Controls.Add(this.CadastrarPromotorPicture);
-            this.MenuPainel.Controls.Add(this.sairButton);
-            this.MenuPainel.Controls.Add(this.tituloLabel);
-            this.MenuPainel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MenuPainel.Location = new System.Drawing.Point(0, 0);
-            this.MenuPainel.Name = "MenuPainel";
-            this.MenuPainel.Size = new System.Drawing.Size(929, 635);
-            this.MenuPainel.TabIndex = 1;
-            // 
-            // configuracoesLabel
-            // 
-            this.configuracoesLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.configuracoesLabel.AutoSize = true;
-            this.configuracoesLabel.BackColor = System.Drawing.Color.Transparent;
-            this.configuracoesLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.configuracoesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.configuracoesLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.configuracoesLabel.Location = new System.Drawing.Point(620, 382);
-            this.configuracoesLabel.Name = "configuracoesLabel";
-            this.configuracoesLabel.Size = new System.Drawing.Size(145, 24);
-            this.configuracoesLabel.TabIndex = 6;
-            this.configuracoesLabel.Text = "Configurações";
-            // 
-            // configuracoesPictureBox
-            // 
-            this.configuracoesPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.configuracoesPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.configuracoesPictureBox.Image = global::ControlePromotores.Properties.Resources.configuracoes;
-            this.configuracoesPictureBox.Location = new System.Drawing.Point(620, 229);
-            this.configuracoesPictureBox.Name = "configuracoesPictureBox";
-            this.configuracoesPictureBox.Size = new System.Drawing.Size(145, 136);
-            this.configuracoesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.configuracoesPictureBox.TabIndex = 5;
-            this.configuracoesPictureBox.TabStop = false;
-            // 
-            // relatorioLabel
-            // 
-            this.relatorioLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.relatorioLabel.AutoSize = true;
-            this.relatorioLabel.BackColor = System.Drawing.Color.Transparent;
-            this.relatorioLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.relatorioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.relatorioLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.relatorioLabel.Location = new System.Drawing.Point(403, 382);
-            this.relatorioLabel.Name = "relatorioLabel";
-            this.relatorioLabel.Size = new System.Drawing.Size(103, 24);
-            this.relatorioLabel.TabIndex = 4;
-            this.relatorioLabel.Text = "Relatórios";
-            // 
-            // relatorioPictureBox
-            // 
-            this.relatorioPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.relatorioPictureBox.BackColor = System.Drawing.Color.Transparent;
-            this.relatorioPictureBox.Image = global::ControlePromotores.Properties.Resources.relatorios;
-            this.relatorioPictureBox.Location = new System.Drawing.Point(383, 229);
-            this.relatorioPictureBox.Name = "relatorioPictureBox";
-            this.relatorioPictureBox.Size = new System.Drawing.Size(145, 136);
-            this.relatorioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.relatorioPictureBox.TabIndex = 3;
-            this.relatorioPictureBox.TabStop = false;
+            this.CadastrarPromotorPicture.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CadastrarPromotorPicture.BackColor = System.Drawing.Color.Transparent;
+            this.CadastrarPromotorPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CadastrarPromotorPicture.Image = global::ControlePromotores.Properties.Resources.cadastro;
+            this.CadastrarPromotorPicture.Location = new System.Drawing.Point(299, 280);
+            this.CadastrarPromotorPicture.Name = "CadastrarPromotorPicture";
+            this.CadastrarPromotorPicture.Size = new System.Drawing.Size(145, 136);
+            this.CadastrarPromotorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CadastrarPromotorPicture.TabIndex = 0;
+            this.CadastrarPromotorPicture.TabStop = false;
+            this.CadastrarPromotorPicture.Click += new System.EventHandler(this.CadastrarPromotorPicture_Click);
             // 
             // CadastrarPromotorLabel
             // 
@@ -133,85 +70,188 @@
             this.CadastrarPromotorLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CadastrarPromotorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadastrarPromotorLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CadastrarPromotorLabel.Location = new System.Drawing.Point(148, 382);
+            this.CadastrarPromotorLabel.Location = new System.Drawing.Point(312, 433);
             this.CadastrarPromotorLabel.Name = "CadastrarPromotorLabel";
             this.CadastrarPromotorLabel.Size = new System.Drawing.Size(117, 24);
             this.CadastrarPromotorLabel.TabIndex = 1;
             this.CadastrarPromotorLabel.Text = "Promotores";
             this.CadastrarPromotorLabel.Click += new System.EventHandler(this.CadastrarPromotorLabel_Click);
             // 
-            // CadastrarPromotorPicture
+            // relatorioPictureBox
             // 
-            this.CadastrarPromotorPicture.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CadastrarPromotorPicture.BackColor = System.Drawing.Color.Transparent;
-            this.CadastrarPromotorPicture.Image = global::ControlePromotores.Properties.Resources.imagemCadastrarPromotor;
-            this.CadastrarPromotorPicture.Location = new System.Drawing.Point(135, 229);
-            this.CadastrarPromotorPicture.Name = "CadastrarPromotorPicture";
-            this.CadastrarPromotorPicture.Size = new System.Drawing.Size(145, 136);
-            this.CadastrarPromotorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CadastrarPromotorPicture.TabIndex = 0;
-            this.CadastrarPromotorPicture.TabStop = false;
-            this.CadastrarPromotorPicture.Click += new System.EventHandler(this.CadastrarPromotorPicture_Click);
+            this.relatorioPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.relatorioPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.relatorioPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.relatorioPictureBox.Image = global::ControlePromotores.Properties.Resources.relatorios1;
+            this.relatorioPictureBox.Location = new System.Drawing.Point(505, 280);
+            this.relatorioPictureBox.Name = "relatorioPictureBox";
+            this.relatorioPictureBox.Size = new System.Drawing.Size(145, 136);
+            this.relatorioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.relatorioPictureBox.TabIndex = 3;
+            this.relatorioPictureBox.TabStop = false;
             // 
-            // sairButton
+            // relatorioLabel
             // 
-            this.sairButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sairButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.sairButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sairButton.Location = new System.Drawing.Point(785, 563);
-            this.sairButton.Name = "sairButton";
-            this.sairButton.Size = new System.Drawing.Size(104, 36);
-            this.sairButton.TabIndex = 2;
-            this.sairButton.Text = "Sair";
-            this.sairButton.UseVisualStyleBackColor = true;
-            this.sairButton.Click += new System.EventHandler(this.sairButton_Click);
+            this.relatorioLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.relatorioLabel.AutoSize = true;
+            this.relatorioLabel.BackColor = System.Drawing.Color.Transparent;
+            this.relatorioLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.relatorioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.relatorioLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.relatorioLabel.Location = new System.Drawing.Point(526, 433);
+            this.relatorioLabel.Name = "relatorioLabel";
+            this.relatorioLabel.Size = new System.Drawing.Size(103, 24);
+            this.relatorioLabel.TabIndex = 4;
+            this.relatorioLabel.Text = "Relatórios";
             // 
-            // tituloLabel
+            // configuracoesPictureBox
             // 
-            this.tituloLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tituloLabel.AutoSize = true;
-            this.tituloLabel.BackColor = System.Drawing.Color.Transparent;
-            this.tituloLabel.Font = new System.Drawing.Font("Adobe Gothic Std B", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tituloLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tituloLabel.Location = new System.Drawing.Point(196, 53);
-            this.tituloLabel.Name = "tituloLabel";
-            this.tituloLabel.Size = new System.Drawing.Size(539, 60);
-            this.tituloLabel.TabIndex = 0;
-            this.tituloLabel.Text = "Controle de Frequência\r\n";
+            this.configuracoesPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.configuracoesPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.configuracoesPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.configuracoesPictureBox.ErrorImage = null;
+            this.configuracoesPictureBox.Image = global::ControlePromotores.Properties.Resources.Configuration;
+            this.configuracoesPictureBox.Location = new System.Drawing.Point(701, 280);
+            this.configuracoesPictureBox.Name = "configuracoesPictureBox";
+            this.configuracoesPictureBox.Size = new System.Drawing.Size(145, 136);
+            this.configuracoesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.configuracoesPictureBox.TabIndex = 5;
+            this.configuracoesPictureBox.TabStop = false;
+            // 
+            // configuracoesLabel
+            // 
+            this.configuracoesLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.configuracoesLabel.AutoSize = true;
+            this.configuracoesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.configuracoesLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.configuracoesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.configuracoesLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.configuracoesLabel.Location = new System.Drawing.Point(701, 433);
+            this.configuracoesLabel.Name = "configuracoesLabel";
+            this.configuracoesLabel.Size = new System.Drawing.Size(145, 24);
+            this.configuracoesLabel.TabIndex = 6;
+            this.configuracoesLabel.Text = "Configurações";
+            // 
+            // catracaPictureBox
+            // 
+            this.catracaPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.catracaPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.catracaPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.catracaPictureBox.Image = global::ControlePromotores.Properties.Resources.catraca1;
+            this.catracaPictureBox.Location = new System.Drawing.Point(87, 280);
+            this.catracaPictureBox.Name = "catracaPictureBox";
+            this.catracaPictureBox.Size = new System.Drawing.Size(145, 136);
+            this.catracaPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.catracaPictureBox.TabIndex = 7;
+            this.catracaPictureBox.TabStop = false;
+            this.catracaPictureBox.Click += new System.EventHandler(this.catracaPictureBox_Click);
+            // 
+            // catracaLabel
+            // 
+            this.catracaLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.catracaLabel.AutoSize = true;
+            this.catracaLabel.BackColor = System.Drawing.Color.Transparent;
+            this.catracaLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.catracaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catracaLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.catracaLabel.Location = new System.Drawing.Point(116, 433);
+            this.catracaLabel.Name = "catracaLabel";
+            this.catracaLabel.Size = new System.Drawing.Size(89, 24);
+            this.catracaLabel.TabIndex = 8;
+            this.catracaLabel.Text = "Controle";
+            this.catracaLabel.Click += new System.EventHandler(this.catracaLabel_Click);
+            // 
+            // sairPictureBox
+            // 
+            this.sairPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sairPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.sairPictureBox.Image = global::ControlePromotores.Properties.Resources.sair;
+            this.sairPictureBox.Location = new System.Drawing.Point(851, 537);
+            this.sairPictureBox.Name = "sairPictureBox";
+            this.sairPictureBox.Size = new System.Drawing.Size(53, 57);
+            this.sairPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.sairPictureBox.TabIndex = 9;
+            this.sairPictureBox.TabStop = false;
+            this.sairPictureBox.Tag = "";
+            this.sairPictureBox.Click += new System.EventHandler(this.sairPictureBox_Click);
+            // 
+            // sairLabel
+            // 
+            this.sairLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sairLabel.AutoSize = true;
+            this.sairLabel.BackColor = System.Drawing.Color.Transparent;
+            this.sairLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sairLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.sairLabel.Location = new System.Drawing.Point(864, 597);
+            this.sairLabel.Name = "sairLabel";
+            this.sairLabel.Size = new System.Drawing.Size(42, 24);
+            this.sairLabel.TabIndex = 10;
+            this.sairLabel.Text = "Sair";
+            this.sairLabel.Click += new System.EventHandler(this.sairLabel_Click);
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.logoPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logoPictureBox.Image = global::ControlePromotores.Properties.Resources.titulo;
+            this.logoPictureBox.Location = new System.Drawing.Point(138, 16);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(611, 160);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPictureBox.TabIndex = 11;
+            this.logoPictureBox.TabStop = false;
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 635);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.logoPictureBox);
+            this.Controls.Add(this.sairLabel);
+            this.Controls.Add(this.sairPictureBox);
+            this.Controls.Add(this.CadastrarPromotorPicture);
+            this.Controls.Add(this.configuracoesPictureBox);
+            this.Controls.Add(this.catracaLabel);
+            this.Controls.Add(this.relatorioLabel);
+            this.Controls.Add(this.CadastrarPromotorLabel);
+            this.Controls.Add(this.configuracoesLabel);
+            this.Controls.Add(this.catracaPictureBox);
+            this.Controls.Add(this.relatorioPictureBox);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.MenuPainel.ResumeLayout(false);
-            this.MenuPainel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.configuracoesPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.relatorioPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CadastrarPromotorPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relatorioPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.configuracoesPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.catracaPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sairPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label tituloLabel;
-        private System.Windows.Forms.Panel MenuPainel;
-        private System.Windows.Forms.Button sairButton;
+        private System.Windows.Forms.PictureBox logoPictureBox;
+        private System.Windows.Forms.Label sairLabel;
+        private System.Windows.Forms.PictureBox sairPictureBox;
         private System.Windows.Forms.PictureBox CadastrarPromotorPicture;
+        private System.Windows.Forms.Label catracaLabel;
         private System.Windows.Forms.Label CadastrarPromotorLabel;
+        private System.Windows.Forms.PictureBox catracaPictureBox;
         private System.Windows.Forms.PictureBox relatorioPictureBox;
+        private System.Windows.Forms.Label configuracoesLabel;
         private System.Windows.Forms.Label relatorioLabel;
         private System.Windows.Forms.PictureBox configuracoesPictureBox;
-        private System.Windows.Forms.Label configuracoesLabel;
     }
 }

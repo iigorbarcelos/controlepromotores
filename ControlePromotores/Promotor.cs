@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace ControlePromotores
 {
-    class Promotor
+    public class Promotor
     {
         //Declara todos os atributos e seus gets e sets
-        private long codpromotor { get; set; }
-        private String nome {get ; set;}
-        private String endereco {get ; set;}
-        private String cpf { get; set; }
-        private String empresa {get; set;}
-        private String dataNascimento;      
-        private String impressaoDigital { get; set; }
-        private String celular { get; set; }
-        private String telefone { get; set; }
-        private String email { get; set; }
-        private int horainicial { get; set; }
-        private int horafinal { get; set; }
-        private String contatoSupervisor { get; set; }
-        private String emailSupervisor { get; set; }
+        public long codpromotor { get; set; }
+        public  String nome {get ; set;}
+        public String endereco {get ; set;}
+        public String cpf { get; set; }
+        public String empresa { get; set; }
+        public String dataNascimento;
+        public String impressaoDigital { get; set; }
+        public String celular { get; set; }
+        public String telefone { get; set; }
+        public String email { get; set; }
+        public int horainicial { get; set; }
+        public int horafinal { get; set; }
+        public String contatoSupervisor { get; set; }
+        public String emailSupervisor { get; set; }
 
         public void setdataNascimento(String dia, String mes, String ano)
         {
