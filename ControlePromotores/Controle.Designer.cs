@@ -75,6 +75,7 @@
             // sairButton
             // 
             this.sairButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.sairButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.sairButton.Location = new System.Drawing.Point(762, 452);
             this.sairButton.Name = "sairButton";
             this.sairButton.Size = new System.Drawing.Size(95, 36);

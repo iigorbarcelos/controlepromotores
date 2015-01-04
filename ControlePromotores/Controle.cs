@@ -27,31 +27,30 @@ namespace ControlePromotores
                       
         private void sairButton_Click(object sender, EventArgs e)
         {
-            
-            this.Dispose();
-            
+            this.Dispose();           
         }
 
-        ////Ativa o leitor para fazer a captura da digital e informa os dados do promotor
-        
+        //Ativa o leitor para fazer a captura da digital e informa os dados do promotor        
         public void ativaCaptura()
         {
+            interfaceBiometria biometria = new interfaceBiometria();
+            biometria.carregaFIRCadastrada();
             while (ativa.IsAlive)
             {
                 try
                 {
-                    interfaceBiometria biometria = new interfaceBiometria();
+                    biometria.abreDispositivo();
                     biometria.verificaIdentidade();
                     codpromotor = biometria.getID();
                     buscaDadosPromotor(codpromotor);
                     registraEntrada(codpromotor, nomeTextBox.Text, empresaTextBox.Text);
                     Thread.Sleep(3500);
-                    biometria = null;
                     limpaFormulario();
+                    biometria.fechaDispositivo();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Erro ao reconhecer impressao digital, aguarde 5 segundos e tente novamente");
+                   // MessageBox.Show("Erro ao reconhecer impressao digital, aguarde 5 segundos e tente novamente");
                     ativa.Abort();
                 }
             }
@@ -64,7 +63,7 @@ namespace ControlePromotores
             SqlConnection conn = new ConnectionFactory().getConnection();
 
             SqlCommand command = new SqlCommand(
-                "select codpromotor, nome, empresa, foto from promotores where codpromotor = @codpromotor", conn);
+                "select codpromotor, nome, empresa, isnull(foto, 'C:/Users/Igor Barcelos/Documents/Visual Studio 2012/Projects/projetosmercado/ControlePromotores/img/indigente.jpg') as foto from promotores where codpromotor = @codpromotor", conn);
 
             //Substitui o parametro pelo código do promotor identificado.
             SqlParameter parametro = new SqlParameter();
@@ -85,6 +84,7 @@ namespace ControlePromotores
                         nomeTextBox.Text = reader.GetString(1);
                         empresaTextBox.Text = reader.GetString(2);
                         fotoPictureBox.ImageLocation = reader.GetString(3);
+                       
                     }));
                 }
 
@@ -92,7 +92,7 @@ namespace ControlePromotores
             }
             catch (SqlException)
             {
-                MessageBox.Show("Não foi possível reconhecer sua digital, favor posicione o dedo novamente no leitor !");
+                //MessageBox.Show("Não foi possível reconhecer sua digital, favor posicione o dedo novamente no leitor !");
 
             }
             finally
@@ -127,16 +127,12 @@ namespace ControlePromotores
                 }
                 catch (SqlException)
                 {
-                    MessageBox.Show("Erro ao capturar a sua digital, por favor aguarde 5 segundos e tente novamente.");
+                    
                 }
                 finally
                 {
                     conn.Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Erro ao capturar a sua digital, por favor aguarde 5 segundos e tente novamente.");
             }
            
 

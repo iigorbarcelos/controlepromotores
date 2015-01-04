@@ -97,10 +97,9 @@ namespace ControlePromotores
         
         public void verificaIdentidade()
         {
-            abreDispositivo();
 
             //Carrega digitais cadastradas no banco, para a memória
-            carregaFIRCadastrada();
+            //carregaFIRCadastrada();
 
             //Variavel que vai estar com o template capturado pelo leitor
             NBioAPI.Type.HFIR digitalCapturada;
@@ -119,7 +118,7 @@ namespace ControlePromotores
 
             //Converte para inteiro o valor do ID do usuário, caso ele esteja cadastrado.
             setID(Convert.ToUInt32(fpInfo.ID));
-            fechaDispositivo();
+            
            
         }
 
