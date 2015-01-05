@@ -37,8 +37,7 @@ namespace ControlePromotores
             //Inicializa o módulo para captura da Digital           
             //Inicializa a variável da opção da janela, e define a janela de captura como invisivel
             m_WinOption = new NBioAPI.Type.WINDOW_OPTION();
-            m_WinOption.WindowStyle = NBioAPI.Type.WINDOW_STYLE.INVISIBLE;
-            
+            m_WinOption.WindowStyle = NBioAPI.Type.WINDOW_STYLE.INVISIBLE;           
         }
 
         public void defineDispositivo()
@@ -67,6 +66,15 @@ namespace ControlePromotores
             {
                 MessageBox.Show("Erro ao acessar dispositivo:\n" + ret3);
             }
+        }
+
+        public bool checkFinger()
+        {
+            bool verificadedo;
+            abreDispositivo();
+            m_NBioAPI.CheckFinger(out verificadedo);
+            fechaDispositivo();
+            return verificadedo;                            
         }
 
 
@@ -172,16 +180,17 @@ namespace ControlePromotores
 
         }
 
+        
+
+
         //Muda a janela de coleta da digital para padrão em portugues.
         public void mudaSkin()
         {
             string janelaTraduzida = "C:/Windows/System/NBSP2Por.dll";     
             m_NBioAPI.SetSkinResource(janelaTraduzida);
             m_WinOption.WindowStyle = NBioAPI.Type.WINDOW_STYLE.NO_WELCOME;
-
-         }
-            
-
+        }
+           
         }
     }
 

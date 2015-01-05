@@ -17,6 +17,7 @@ namespace ControlePromotores
     {
         private long codpromotor = 0;
         Thread ativa = null;
+        interfaceBiometria biometria = new interfaceBiometria();
      
         public Controle()
         {
@@ -33,7 +34,7 @@ namespace ControlePromotores
         //Ativa o leitor para fazer a captura da digital e informa os dados do promotor        
         public void ativaCaptura()
         {
-            interfaceBiometria biometria = new interfaceBiometria();
+            biometria = new interfaceBiometria();
             biometria.carregaFIRCadastrada();
             while (ativa.IsAlive)
             {
@@ -170,6 +171,16 @@ namespace ControlePromotores
             {
                 MessageBox.Show("Voce parou a thread com sucesso !");
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
+            if(biometria.checkFinger() == true)
+                MessageBox.Show("Verdadeiro!");
+            else
+                MessageBox.Show("Falso!");
+
         }
 
     }

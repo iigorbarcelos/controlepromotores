@@ -32,5 +32,15 @@ namespace ControlePromotores.Properties {
                 return ((string)(this["biometricConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=IGOR\\BIOMETRIC;Initial Catalog=biometria;Integrated Security=True")]
+        public string biometriaConnectionString {
+            get {
+                return ((string)(this["biometriaConnectionString"]));
+            }
+        }
     }
 }
