@@ -7,7 +7,7 @@ using NITGEN.SDK.NBioBSP;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data.Sql;
-using System.Threading;
+
 
 namespace ControlePromotores
 {
@@ -49,7 +49,7 @@ namespace ControlePromotores
         public void fechaDispositivo()
         {
             //Fecha o dispositivo para o caso de ele ja estar aberto
-            m_NBioAPI.CloseDevice(iDeviceID);
+            m_NBioAPI.CloseDevice(m_OpenedDeviceID);
             
         }
 
@@ -69,10 +69,12 @@ namespace ControlePromotores
         }
 
         public bool checkFinger()
-        {
-            bool verificadedo;
+        {        
+            bool verificadedo = false;
             abreDispositivo();
+
             m_NBioAPI.CheckFinger(out verificadedo);
+ 
             fechaDispositivo();
             return verificadedo;                            
         }
@@ -179,9 +181,6 @@ namespace ControlePromotores
             }
 
         }
-
-        
-
 
         //Muda a janela de coleta da digital para padrão em portugues.
         public void mudaSkin()

@@ -16,14 +16,13 @@ namespace ControlePromotores
     public partial class Controle : Form
     {
         private long codpromotor = 0;
-        Thread ativa = null;
         interfaceBiometria biometria = new interfaceBiometria();
+        
      
         public Controle()
         {
             InitializeComponent();
-            codigoTextBox.TabIndex = 0;
-            
+            codigoTextBox.TabIndex = 0;          
         }
                       
         private void sairButton_Click(object sender, EventArgs e)
@@ -34,24 +33,33 @@ namespace ControlePromotores
         //Ativa o leitor para fazer a captura da digital e informa os dados do promotor        
         public void ativaCaptura()
         {
-            biometria = new interfaceBiometria();
             biometria.carregaFIRCadastrada();
-            while (ativa.IsAlive)
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 5000;
+            timer.Start();
+            timer.Tick += new EventHandler(timer_Tick);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            limpaFormulario(); 
+            //Entra no laço quando houver um dedo no leitor.
+            while (biometria.checkFinger() == true)
             {
                 try
-                {
+                {                      
                     biometria.abreDispositivo();
                     codpromotor = biometria.verificaIdentidade();
+                    biometria.fechaDispositivo();
                     buscaDadosPromotor(codpromotor);
                     registraEntrada(codpromotor, nomeTextBox.Text, empresaTextBox.Text);
-                    Thread.Sleep(3500);
-                    limpaFormulario();
-                    biometria.fechaDispositivo();
                 }
                 catch (Exception)
                 {
-                    
+
                 }
+
+                
             }
         }        
         
@@ -77,14 +85,10 @@ namespace ControlePromotores
 
                 while (reader.Read())
                 {
-                    this.Invoke(new MethodInvoker(delegate
-                    {
                         codigoTextBox.Text = codpromotor.ToString();
                         nomeTextBox.Text = reader.GetString(1);
                         empresaTextBox.Text = reader.GetString(2);
                         fotoPictureBox.ImageLocation = reader.GetString(3);
-                       
-                    }));
                 }
 
                 reader.Close();
@@ -142,44 +146,21 @@ namespace ControlePromotores
 
         public void limpaFormulario()
         {
-            this.Invoke(new MethodInvoker(delegate
-            {
                 codigoTextBox.Text = "";
                 nomeTextBox.Text = "";
                 empresaTextBox.Text = "";
                 fotoPictureBox.ImageLocation = "C:/Users/Igor Barcelos/Documents/Visual Studio 2012/Projects/projetosmercado/ControlePromotores/img/indigente.jpg";
                 codpromotor = 0;
-                
-            }));
-
         }
 
         
         private void ativaButton_Click(object sender, EventArgs e)
         {
-            ativa = new Thread(ativaCaptura);
-            ativa.Start();
+            ativaCaptura();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void desativaButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                
-                ativa.Abort();
-            }catch (ThreadAbortException)
-            {
-                MessageBox.Show("Voce parou a thread com sucesso !");
-            }
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            
-            if(biometria.checkFinger() == true)
-                MessageBox.Show("Verdadeiro!");
-            else
-                MessageBox.Show("Falso!");
 
         }
 

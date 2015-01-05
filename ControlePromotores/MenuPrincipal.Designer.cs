@@ -40,12 +40,15 @@
             this.sairPictureBox = new System.Windows.Forms.PictureBox();
             this.sairLabel = new System.Windows.Forms.Label();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.emailPictureBox = new System.Windows.Forms.PictureBox();
+            this.emailLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CadastrarPromotorPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.relatorioPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.configuracoesPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.catracaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sairPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emailPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // CadastrarPromotorPicture
@@ -54,7 +57,7 @@
             this.CadastrarPromotorPicture.BackColor = System.Drawing.Color.Transparent;
             this.CadastrarPromotorPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CadastrarPromotorPicture.Image = global::ControlePromotores.Properties.Resources.cadastro;
-            this.CadastrarPromotorPicture.Location = new System.Drawing.Point(299, 280);
+            this.CadastrarPromotorPicture.Location = new System.Drawing.Point(301, 218);
             this.CadastrarPromotorPicture.Name = "CadastrarPromotorPicture";
             this.CadastrarPromotorPicture.Size = new System.Drawing.Size(145, 136);
             this.CadastrarPromotorPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -70,7 +73,7 @@
             this.CadastrarPromotorLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CadastrarPromotorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadastrarPromotorLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CadastrarPromotorLabel.Location = new System.Drawing.Point(312, 433);
+            this.CadastrarPromotorLabel.Location = new System.Drawing.Point(314, 371);
             this.CadastrarPromotorLabel.Name = "CadastrarPromotorLabel";
             this.CadastrarPromotorLabel.Size = new System.Drawing.Size(117, 24);
             this.CadastrarPromotorLabel.TabIndex = 1;
@@ -83,7 +86,7 @@
             this.relatorioPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.relatorioPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.relatorioPictureBox.Image = global::ControlePromotores.Properties.Resources.relatorios1;
-            this.relatorioPictureBox.Location = new System.Drawing.Point(505, 280);
+            this.relatorioPictureBox.Location = new System.Drawing.Point(507, 218);
             this.relatorioPictureBox.Name = "relatorioPictureBox";
             this.relatorioPictureBox.Size = new System.Drawing.Size(145, 136);
             this.relatorioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -99,7 +102,7 @@
             this.relatorioLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.relatorioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.relatorioLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.relatorioLabel.Location = new System.Drawing.Point(526, 433);
+            this.relatorioLabel.Location = new System.Drawing.Point(528, 371);
             this.relatorioLabel.Name = "relatorioLabel";
             this.relatorioLabel.Size = new System.Drawing.Size(103, 24);
             this.relatorioLabel.TabIndex = 4;
@@ -113,7 +116,7 @@
             this.configuracoesPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.configuracoesPictureBox.ErrorImage = null;
             this.configuracoesPictureBox.Image = global::ControlePromotores.Properties.Resources.Configuration;
-            this.configuracoesPictureBox.Location = new System.Drawing.Point(701, 280);
+            this.configuracoesPictureBox.Location = new System.Drawing.Point(703, 218);
             this.configuracoesPictureBox.Name = "configuracoesPictureBox";
             this.configuracoesPictureBox.Size = new System.Drawing.Size(145, 136);
             this.configuracoesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -128,7 +131,7 @@
             this.configuracoesLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.configuracoesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.configuracoesLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.configuracoesLabel.Location = new System.Drawing.Point(701, 433);
+            this.configuracoesLabel.Location = new System.Drawing.Point(703, 371);
             this.configuracoesLabel.Name = "configuracoesLabel";
             this.configuracoesLabel.Size = new System.Drawing.Size(145, 24);
             this.configuracoesLabel.TabIndex = 6;
@@ -140,7 +143,7 @@
             this.catracaPictureBox.BackColor = System.Drawing.Color.Transparent;
             this.catracaPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.catracaPictureBox.Image = global::ControlePromotores.Properties.Resources.catraca1;
-            this.catracaPictureBox.Location = new System.Drawing.Point(87, 280);
+            this.catracaPictureBox.Location = new System.Drawing.Point(89, 218);
             this.catracaPictureBox.Name = "catracaPictureBox";
             this.catracaPictureBox.Size = new System.Drawing.Size(145, 136);
             this.catracaPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -156,7 +159,7 @@
             this.catracaLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.catracaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catracaLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.catracaLabel.Location = new System.Drawing.Point(116, 433);
+            this.catracaLabel.Location = new System.Drawing.Point(118, 371);
             this.catracaLabel.Name = "catracaLabel";
             this.catracaLabel.Size = new System.Drawing.Size(89, 24);
             this.catracaLabel.TabIndex = 8;
@@ -204,6 +207,35 @@
             this.logoPictureBox.TabIndex = 11;
             this.logoPictureBox.TabStop = false;
             // 
+            // emailPictureBox
+            // 
+            this.emailPictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emailPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.emailPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.emailPictureBox.Image = global::ControlePromotores.Properties.Resources.email;
+            this.emailPictureBox.Location = new System.Drawing.Point(89, 423);
+            this.emailPictureBox.Name = "emailPictureBox";
+            this.emailPictureBox.Size = new System.Drawing.Size(145, 136);
+            this.emailPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.emailPictureBox.TabIndex = 12;
+            this.emailPictureBox.TabStop = false;
+            this.emailPictureBox.Click += new System.EventHandler(this.emailPictureBox_Click);
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.BackColor = System.Drawing.Color.Transparent;
+            this.emailLabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.emailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.emailLabel.Location = new System.Drawing.Point(80, 570);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(165, 24);
+            this.emailLabel.TabIndex = 13;
+            this.emailLabel.Text = "Configurar Email";
+            this.emailLabel.Click += new System.EventHandler(this.emailLabel_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +246,8 @@
             this.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(929, 635);
+            this.Controls.Add(this.emailLabel);
+            this.Controls.Add(this.emailPictureBox);
             this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.sairLabel);
             this.Controls.Add(this.sairPictureBox);
@@ -237,6 +271,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.catracaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sairPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emailPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,5 +290,7 @@
         private System.Windows.Forms.Label configuracoesLabel;
         private System.Windows.Forms.Label relatorioLabel;
         private System.Windows.Forms.PictureBox configuracoesPictureBox;
+        private System.Windows.Forms.PictureBox emailPictureBox;
+        private System.Windows.Forms.Label emailLabel;
     }
 }

@@ -38,6 +38,7 @@
             this.empresaLabel = new System.Windows.Forms.Label();
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
+            this.desativaButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,6 +136,16 @@
             this.nomeLabel.TabIndex = 4;
             this.nomeLabel.Text = "NOME:";
             // 
+            // desativaButton
+            // 
+            this.desativaButton.Location = new System.Drawing.Point(104, 467);
+            this.desativaButton.Name = "desativaButton";
+            this.desativaButton.Size = new System.Drawing.Size(75, 26);
+            this.desativaButton.TabIndex = 9;
+            this.desativaButton.Text = "Desativar";
+            this.desativaButton.UseVisualStyleBackColor = true;
+            this.desativaButton.Click += new System.EventHandler(this.desativaButton_Click);
+            // 
             // Controle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,6 +153,7 @@
             this.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(892, 505);
+            this.Controls.Add(this.desativaButton);
             this.Controls.Add(this.sairButton);
             this.Controls.Add(this.ativaButton);
             this.Controls.Add(this.fotoPictureBox);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Label empresaLabel;
         private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.Label nomeLabel;
+        private System.Windows.Forms.Button desativaButton;
     }
 }

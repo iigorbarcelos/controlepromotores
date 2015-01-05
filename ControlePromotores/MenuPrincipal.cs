@@ -64,6 +64,18 @@ namespace ControlePromotores
             relatorio.Show();
         }
 
+        private void emailPictureBox_Click(object sender, EventArgs e)
+        {
+            ConfiguraEmail configuraEmail = new ConfiguraEmail();
+            configuraEmail.Show();
+        }
+
+        private void emailLabel_Click(object sender, EventArgs e)
+        {
+            ConfiguraEmail configuraEmail = new ConfiguraEmail();
+            configuraEmail.Show();
+        }
+
 
     }
 }

@@ -28,7 +28,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,6 +76,12 @@
     <Compile Include="CheckinPessoa.Designer.cs">
       <DependentUpon>CheckinPessoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfiguraEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfiguraEmail.Designer.cs">
+      <DependentUpon>ConfiguraEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionFactory.cs" />
     <Compile Include="Controle.cs">
       <SubType>Form</SubType>
@@ -112,6 +119,9 @@
     <Compile Include="Validacoes.cs" />
     <EmbeddedResource Include="CheckinPessoa.resx">
       <DependentUpon>CheckinPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfiguraEmail.resx">
+      <DependentUpon>ConfiguraEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controle.resx">
       <DependentUpon>Controle.cs</DependentUpon>
@@ -168,8 +178,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="favicon.ico" />
     <Content Include="icone.ico" />
+    <None Include="img\email.png" />
+    <None Include="img\gmail.png" />
     <None Include="img\indigente.jpg" />
     <None Include="img\MenuprincipalBG.png" />
     <None Include="img\titulo.png" />
