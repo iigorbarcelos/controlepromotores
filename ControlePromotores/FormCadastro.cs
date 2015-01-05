@@ -29,14 +29,10 @@ namespace ControlePromotores
         //Variável para definir se será insert ou update
         bool editar = false;
 
-        
-        
-
         public FormCadastro()
         {
             InitializeComponent();
             tabIndex();
-
         }
 
         private void novoButton_Click(object sender, EventArgs e)
@@ -65,7 +61,6 @@ namespace ControlePromotores
             //Limpa o form
             resetFormDefault();
             
- 
             //Verifica se o botao gravar está habilitado, se sim, desabilita.
             if (GravarButton.Enabled == true)
                 GravarButton.Enabled = false;
@@ -122,13 +117,12 @@ namespace ControlePromotores
             telefoneTextBox.Text = "";
             digitalTextBox.Text = "";
             cpfTextBox.Text = "";
+            fotoTextBox.Text = "";
             dia = null;
             mes = null;
             ano = null;
             editar = false;
-            GravarButton.Enabled = false;
-            
-           
+            GravarButton.Enabled = false;          
         }
 
         private void resetDataGrid()
@@ -141,7 +135,6 @@ namespace ControlePromotores
        
         private void editarButton_Click(object sender, EventArgs e)
         {
-
             
             if (linha == -1)
             {
@@ -173,11 +166,6 @@ namespace ControlePromotores
                 GravarButton.Enabled = true;
             }
 
-
-
-
-            
-
         }
 
         private void GravarButton_Click(object sender, EventArgs e)
@@ -206,7 +194,8 @@ namespace ControlePromotores
                               "email," +
                               "emailSupervisor," +
                               "contatoSupervisor," +
-                              "cpf)" +
+                              "cpf"+
+                              "foto)" +
 
                               " values" +
                               "('" + nomeTextBox.Text +
@@ -219,7 +208,8 @@ namespace ControlePromotores
                               "', '" + emailTextBox.Text +
                               "', '" + emailSupervisorTextBox.Text +
                               "', '" + contatoSupervisorTextBox.Text +
-                              "', '" + cpfTextBox.Text + "')", conn);
+                              "', '" + cpfTextBox.Text +
+                              "', '" + fotoTextBox.Text+")", conn);
             }
             else
             {
@@ -229,15 +219,13 @@ namespace ControlePromotores
                                           "impressaodigital = '" + digitalTextBox.Text + "'," +
                                           "celular = '" + CelularTextBox.Text + "'," +
                                           "telefone = '" + telefoneTextBox.Text + "'," +
-                                       //   "dtnascimento = '" + NascimentoTextBox.Text + "'," +
                                           "email = '" + emailTextBox.Text + "'," +
                                           "emailsupervisor = '" + emailSupervisorTextBox.Text + "'," +
                                           "contatosupervisor = '" + contatoSupervisorTextBox.Text + "'," +
-                                          "cpf = '" + cpfTextBox.Text + "'" +
+                                          "cpf = '" + cpfTextBox.Text + "'," +
+                                          "foto = '"+ fotoTextBox.Text+ "'" +
                                           " where codpromotor = " + selecao.ToString(), conn);
             }
-           
-
 
             try
             {
@@ -245,16 +233,22 @@ namespace ControlePromotores
             }
             catch (SqlException exc)
             {
-                
-                mensagemRetorno = "Erro ao cadastrar Promotor, verifique se todos os campos foram preenchidos!\n"+ exc;
-                erro = true;
+                if (editar == false)
+                {
+                    mensagemRetorno = "Erro ao cadastrar Promotor, verifique se todos os campos foram preenchidos!\n" + exc;
+                    erro = true;
+                }
+                else
+                {
+                    mensagemRetorno = "Erro ao atualizar dados do promotor, favor verifique as informações inseridas.\n" + exc;
+                    erro = true;
+                }
             }
             finally
             {
                 //Verifica se a conexão está fechada, se false, fecha a conexão
                 if (conn != null)
                     conn.Close();
-
             }
 
             if (erro == false)
@@ -265,6 +259,8 @@ namespace ControlePromotores
                 monthCalendar1.Hide();
                 selecao = 0;
                 linha = -1;
+                editar = false;
+               
             } 
       
         }
@@ -332,7 +328,6 @@ namespace ControlePromotores
 
         private void nomeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (((e.KeyChar >='0' && e.KeyChar <='9') || (e.KeyChar == '-') || (e.KeyChar== ',' ) || (e.KeyChar == '.')))
             {
                 e.Handled = true;
@@ -345,7 +340,6 @@ namespace ControlePromotores
             mes = monthCalendar1.SelectionStart.Month.ToString();
             ano = monthCalendar1.SelectionStart.Year.ToString();
             NascimentoTextBox.Text = dia + "/" + mes + "/" + ano;
-
 
             if (monthCalendar1.Visible == false)
                 monthCalendar1.Visible = true;
@@ -366,7 +360,6 @@ namespace ControlePromotores
             {
                 validaCPFLabel.Visible = true;
                 cpfTextBox.Focus();
-
             }
             else
             {
@@ -378,6 +371,18 @@ namespace ControlePromotores
         {
 
             //this.reportViewer1.RefreshReport();
+        }
+
+        private void fotoButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog buscarFoto = new OpenFileDialog();
+            buscarFoto.Filter = "Imagem JPG|*.jpg| Imagem BMP|*.bmp| Imagem JPEG|*.jpeg| Imagem PNG|*.png;";
+            buscarFoto.Title = "Buscar foto do promotor";
+            if (buscarFoto.ShowDialog() == DialogResult.OK)
+            {
+                fotoTextBox.Text = buscarFoto.FileName;
+                fotoPictureBox.ImageLocation = fotoTextBox.Text;
+            }
         }
     }
 }

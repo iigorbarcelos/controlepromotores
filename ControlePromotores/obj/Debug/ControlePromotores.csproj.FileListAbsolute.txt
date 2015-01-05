@@ -10,3 +10,4 @@ C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\Con
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csprojResolveAssemblyReference.cache
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Relatorios.resources

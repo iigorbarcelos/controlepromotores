@@ -52,6 +52,18 @@ namespace ControlePromotores
             controle.Show();
         }
 
+        private void relatorioPictureBox_Click(object sender, EventArgs e)
+        {
+            Relatorios relatorio = new Relatorios();
+            relatorio.Show();
+        }
+
+        private void relatorioLabel_Click(object sender, EventArgs e)
+        {
+            Relatorios relatorio = new Relatorios();
+            relatorio.Show();
+        }
+
 
     }
 }

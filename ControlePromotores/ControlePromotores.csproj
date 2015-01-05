@@ -112,6 +112,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios.Designer.cs">
+      <DependentUpon>Relatorios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validacoes.cs" />
     <EmbeddedResource Include="CheckinPessoa.resx">
       <DependentUpon>CheckinPessoa.cs</DependentUpon>
@@ -129,6 +135,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios.resx">
+      <DependentUpon>Relatorios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="masterDataSet.xsc">

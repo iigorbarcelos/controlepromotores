@@ -89,6 +89,7 @@
             this.relatorioPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.relatorioPictureBox.TabIndex = 3;
             this.relatorioPictureBox.TabStop = false;
+            this.relatorioPictureBox.Click += new System.EventHandler(this.relatorioPictureBox_Click);
             // 
             // relatorioLabel
             // 
@@ -103,6 +104,7 @@
             this.relatorioLabel.Size = new System.Drawing.Size(103, 24);
             this.relatorioLabel.TabIndex = 4;
             this.relatorioLabel.Text = "Relatórios";
+            this.relatorioLabel.Click += new System.EventHandler(this.relatorioLabel_Click);
             // 
             // configuracoesPictureBox
             // 

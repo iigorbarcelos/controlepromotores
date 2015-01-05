@@ -68,6 +68,9 @@
             this.editarButton = new System.Windows.Forms.Button();
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
+            this.fotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.fotoButton = new System.Windows.Forms.Button();
+            this.fotoTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -78,6 +81,7 @@
             this.SupervisorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalPictureBox)).BeginInit();
             this.painelInferior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -95,7 +99,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.53846F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.46154F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(887, 531);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(936, 531);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tabControl1
@@ -108,7 +112,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(881, 453);
+            this.tabControl1.Size = new System.Drawing.Size(930, 453);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 1;
             this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseClick);
@@ -149,7 +153,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(873, 427);
+            this.tabPage2.Size = new System.Drawing.Size(922, 427);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Novo";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -159,6 +163,9 @@
             this.promotorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.promotorGroupBox.Controls.Add(this.fotoTextBox);
+            this.promotorGroupBox.Controls.Add(this.fotoButton);
+            this.promotorGroupBox.Controls.Add(this.fotoPictureBox);
             this.promotorGroupBox.Controls.Add(this.validaCPFLabel);
             this.promotorGroupBox.Controls.Add(this.nomeTextBox);
             this.promotorGroupBox.Controls.Add(this.cpfTextBox);
@@ -184,7 +191,7 @@
             this.promotorGroupBox.Controls.Add(this.calularLabel);
             this.promotorGroupBox.Location = new System.Drawing.Point(6, 3);
             this.promotorGroupBox.Name = "promotorGroupBox";
-            this.promotorGroupBox.Size = new System.Drawing.Size(864, 428);
+            this.promotorGroupBox.Size = new System.Drawing.Size(910, 428);
             this.promotorGroupBox.TabIndex = 12;
             this.promotorGroupBox.TabStop = false;
             this.promotorGroupBox.Text = "Dados do Promotor";
@@ -325,7 +332,7 @@
             // 
             // digitalTextBox
             // 
-            this.digitalTextBox.Location = new System.Drawing.Point(623, 191);
+            this.digitalTextBox.Location = new System.Drawing.Point(688, 191);
             this.digitalTextBox.Name = "digitalTextBox";
             this.digitalTextBox.PasswordChar = '*';
             this.digitalTextBox.ReadOnly = true;
@@ -383,7 +390,7 @@
             // digitalPictureBox
             // 
             this.digitalPictureBox.Image = global::ControlePromotores.Properties.Resources.digital;
-            this.digitalPictureBox.Location = new System.Drawing.Point(652, 42);
+            this.digitalPictureBox.Location = new System.Drawing.Point(717, 42);
             this.digitalPictureBox.Name = "digitalPictureBox";
             this.digitalPictureBox.Size = new System.Drawing.Size(164, 114);
             this.digitalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -392,7 +399,7 @@
             // 
             // cadastraDigitalButton
             // 
-            this.cadastraDigitalButton.Location = new System.Drawing.Point(685, 162);
+            this.cadastraDigitalButton.Location = new System.Drawing.Point(750, 162);
             this.cadastraDigitalButton.Name = "cadastraDigitalButton";
             this.cadastraDigitalButton.Size = new System.Drawing.Size(98, 23);
             this.cadastraDigitalButton.TabIndex = 10;
@@ -469,7 +476,7 @@
             this.painelInferior.Controls.Add(this.pesquisarButton);
             this.painelInferior.Location = new System.Drawing.Point(3, 462);
             this.painelInferior.Name = "painelInferior";
-            this.painelInferior.Size = new System.Drawing.Size(881, 66);
+            this.painelInferior.Size = new System.Drawing.Size(930, 66);
             this.painelInferior.TabIndex = 0;
             // 
             // GravarButton
@@ -486,7 +493,7 @@
             // sairButton
             // 
             this.sairButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sairButton.Location = new System.Drawing.Point(782, 13);
+            this.sairButton.Location = new System.Drawing.Point(831, 13);
             this.sairButton.Name = "sairButton";
             this.sairButton.Size = new System.Drawing.Size(75, 23);
             this.sairButton.TabIndex = 3;
@@ -524,12 +531,40 @@
             this.pesquisarButton.UseVisualStyleBackColor = true;
             this.pesquisarButton.Click += new System.EventHandler(this.pesquisaButton_Click);
             // 
+            // fotoPictureBox
+            // 
+            this.fotoPictureBox.Image = global::ControlePromotores.Properties.Resources.indigente;
+            this.fotoPictureBox.Location = new System.Drawing.Point(486, 42);
+            this.fotoPictureBox.Name = "fotoPictureBox";
+            this.fotoPictureBox.Size = new System.Drawing.Size(164, 114);
+            this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.fotoPictureBox.TabIndex = 27;
+            this.fotoPictureBox.TabStop = false;
+            // 
+            // fotoButton
+            // 
+            this.fotoButton.Location = new System.Drawing.Point(520, 162);
+            this.fotoButton.Name = "fotoButton";
+            this.fotoButton.Size = new System.Drawing.Size(98, 23);
+            this.fotoButton.TabIndex = 28;
+            this.fotoButton.Text = "Cadastrar Foto";
+            this.fotoButton.UseVisualStyleBackColor = true;
+            this.fotoButton.Click += new System.EventHandler(this.fotoButton_Click);
+            // 
+            // fotoTextBox
+            // 
+            this.fotoTextBox.Location = new System.Drawing.Point(463, 191);
+            this.fotoTextBox.Name = "fotoTextBox";
+            this.fotoTextBox.ReadOnly = true;
+            this.fotoTextBox.Size = new System.Drawing.Size(219, 20);
+            this.fotoTextBox.TabIndex = 29;
+            // 
             // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(883, 533);
+            this.ClientSize = new System.Drawing.Size(932, 533);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -550,6 +585,7 @@
             this.SupervisorGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalPictureBox)).EndInit();
             this.painelInferior.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,6 +632,9 @@
         private System.Windows.Forms.Label cpfLabel;
         private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.Label validaCPFLabel;
+        private System.Windows.Forms.Button fotoButton;
+        private System.Windows.Forms.PictureBox fotoPictureBox;
+        private System.Windows.Forms.TextBox fotoTextBox;
     }
 }
 

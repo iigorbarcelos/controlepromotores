@@ -22,7 +22,6 @@ namespace ControlePromotores
         private short iDeviceID;
         private String firDigital;
         private NBioAPI.Type.WINDOW_OPTION m_WinOption;
-        private long idusuario = 0;
         
         public interfaceBiometria()
         {
@@ -35,8 +34,8 @@ namespace ControlePromotores
             //Inicia o sistema de busca de digitais cadastradas.
             m_IndexSearch.InitEngine();
 
-            //Inicializa o módulo para captura da Digital
-            
+            //Inicializa o módulo para captura da Digital           
+            //Inicializa a variável da opção da janela, e define a janela de captura como invisivel
             m_WinOption = new NBioAPI.Type.WINDOW_OPTION();
             m_WinOption.WindowStyle = NBioAPI.Type.WINDOW_STYLE.INVISIBLE;
             
@@ -51,7 +50,8 @@ namespace ControlePromotores
         public void fechaDispositivo()
         {
             //Fecha o dispositivo para o caso de ele ja estar aberto
-            m_NBioAPI.CloseDevice(m_OpenedDeviceID);
+            m_NBioAPI.CloseDevice(iDeviceID);
+            
         }
 
         public void abreDispositivo()
@@ -71,16 +71,16 @@ namespace ControlePromotores
 
 
         //Ativa leitor pra cadastrar a digital
+        //return Template da digital capturada.
         public String cadastraDigital()
         {
             abreDispositivo();
             //Aciona método para chamar a dll traduzida da janela de coleta da digital.
             mudaSkin();
-
-            uint ret5 = m_NBioAPI.Enroll(out m_hNewFIR, null);
+            //Método que faz a captura da digitasl.
+            uint ret5 = m_NBioAPI.Enroll(null, out m_hNewFIR, null, NBioAPI.Type.TIMEOUT.DEFAULT, null, m_WinOption);
             if (ret5 == NBioAPI.Error.NONE)
             {
-                MessageBox.Show("Impressão Digital cadastrada com sucesso!");
                 //Converter FIR capturada para textoFIR
                 m_NBioAPI.GetTextFIRFromHandle(m_hNewFIR, out m_textFIR, true);
                 //Coloca o texto obtido na String para guardar no banco.
@@ -88,18 +88,14 @@ namespace ControlePromotores
                 fechaDispositivo();
                 return firDigital;
              }
-
+            //Retorna nulo, caso de algum erro no meio do processo.
             return null;
         }
 
-        //@return ID do usuário.
-
-        
-        public void verificaIdentidade()
+        //Captura uma digital e verifica se bate com alguma FIR cadastrada no banco, caso sim, retorna o ID do usuário.
+        //@return ID do usuário.      
+        public long verificaIdentidade()
         {
-
-            //Carrega digitais cadastradas no banco, para a memória
-            //carregaFIRCadastrada();
 
             //Variavel que vai estar com o template capturado pelo leitor
             NBioAPI.Type.HFIR digitalCapturada;
@@ -116,20 +112,8 @@ namespace ControlePromotores
             //Pega a digital capturada, e compara para ver se é encontrada uma digital compatível no banco
             m_IndexSearch.IdentifyData(digitalCapturada, NBioAPI.Type.FIR_SECURITY_LEVEL.NORMAL, out fpInfo, cbInfo0);
 
-            //Converte para inteiro o valor do ID do usuário, caso ele esteja cadastrado.
-            setID(Convert.ToUInt32(fpInfo.ID));
-            
-           
-        }
-
-        public void setID(long userID)
-        {
-            this.idusuario = userID;
-        }
-
-        public long getID()
-        {
-            return this.idusuario;
+            //retorna o id do usuário como inteiro
+            return Convert.ToUInt32(fpInfo.ID);
         }
         
         public void carregaFIRCadastrada()
@@ -183,8 +167,7 @@ namespace ControlePromotores
             finally
             {
                 conn.Close();
-                reader.Close();
-                
+                reader.Close();             
             }
 
         }
@@ -194,6 +177,7 @@ namespace ControlePromotores
         {
             string janelaTraduzida = "C:/Windows/System/NBSP2Por.dll";     
             m_NBioAPI.SetSkinResource(janelaTraduzida);
+            m_WinOption.WindowStyle = NBioAPI.Type.WINDOW_STYLE.NO_WELCOME;
 
          }
             

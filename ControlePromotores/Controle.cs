@@ -17,7 +17,7 @@ namespace ControlePromotores
     {
         private long codpromotor = 0;
         Thread ativa = null;
-        
+     
         public Controle()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace ControlePromotores
                       
         private void sairButton_Click(object sender, EventArgs e)
         {
-            this.Dispose();           
+            this.Dispose();         
         }
 
         //Ativa o leitor para fazer a captura da digital e informa os dados do promotor        
@@ -40,8 +40,7 @@ namespace ControlePromotores
                 try
                 {
                     biometria.abreDispositivo();
-                    biometria.verificaIdentidade();
-                    codpromotor = biometria.getID();
+                    codpromotor = biometria.verificaIdentidade();
                     buscaDadosPromotor(codpromotor);
                     registraEntrada(codpromotor, nomeTextBox.Text, empresaTextBox.Text);
                     Thread.Sleep(3500);
@@ -50,8 +49,7 @@ namespace ControlePromotores
                 }
                 catch (Exception)
                 {
-                   // MessageBox.Show("Erro ao reconhecer impressao digital, aguarde 5 segundos e tente novamente");
-                    ativa.Abort();
+                    
                 }
             }
         }        
@@ -110,24 +108,27 @@ namespace ControlePromotores
                 SqlConnection conn = new ConnectionFactory().getConnection();
 
                 SqlCommand command = new SqlCommand(
-                    "INSERT INTO movpromotores(codpromotor, nome, empresa, data) values (@codpromotor, @nome, @empresa, @data)", conn);
+                    "INSERT INTO movpromotores(codpromotor, nome, empresa, data, hora) "+
+                    "values(@codpromotor, @nome, @empresa, @data, @hora)", conn);
                 SqlParameter codparam = new SqlParameter("@codpromotor", codpromotor);
                 SqlParameter nomparam = new SqlParameter("@nome", nome);
                 SqlParameter empresaparam = new SqlParameter("@empresa", empresa);
                 SqlParameter dataparam = new SqlParameter("@data", DateTime.Now);
+                SqlParameter horaparam = new SqlParameter("@hora", DateTime.Now.TimeOfDay);
 
                 command.Parameters.Add(codparam);
                 command.Parameters.Add(nomparam);
                 command.Parameters.Add(empresaparam);
                 command.Parameters.Add(dataparam);
+                command.Parameters.Add(horaparam);
 
                 try
                 {
                     command.ExecuteNonQuery();
                 }
-                catch (SqlException)
+                catch (SqlException exc)
                 {
-                    
+                    MessageBox.Show("Erro " + exc);
                 }
                 finally
                 {
@@ -156,7 +157,19 @@ namespace ControlePromotores
         private void ativaButton_Click(object sender, EventArgs e)
         {
             ativa = new Thread(ativaCaptura);
-            ativa.Start();        
+            ativa.Start();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                ativa.Abort();
+            }catch (ThreadAbortException)
+            {
+                MessageBox.Show("Voce parou a thread com sucesso !");
+            }
         }
 
     }
