@@ -35,6 +35,8 @@
             this.promotoresGrid = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.promotorGroupBox = new System.Windows.Forms.GroupBox();
+            this.emailSupervisorInvalidoLabel = new System.Windows.Forms.Label();
+            this.emailInvalidoLabel = new System.Windows.Forms.Label();
             this.fotoTextBox = new System.Windows.Forms.TextBox();
             this.fotoButton = new System.Windows.Forms.Button();
             this.fotoPictureBox = new System.Windows.Forms.PictureBox();
@@ -71,6 +73,10 @@
             this.novoButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
             this.tituloLabel = new System.Windows.Forms.Label();
+            this.jornadaGroupBox = new System.Windows.Forms.GroupBox();
+            this.cargaLabel = new System.Windows.Forms.Label();
+            this.enviaRelatorioCheckBox = new System.Windows.Forms.CheckBox();
+            this.cargaHorariaTextBox = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -81,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.calendarioPictureBox)).BeginInit();
             this.SupervisorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalPictureBox)).BeginInit();
+            this.jornadaGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -161,6 +168,9 @@
             this.promotorGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.promotorGroupBox.Controls.Add(this.jornadaGroupBox);
+            this.promotorGroupBox.Controls.Add(this.emailSupervisorInvalidoLabel);
+            this.promotorGroupBox.Controls.Add(this.emailInvalidoLabel);
             this.promotorGroupBox.Controls.Add(this.fotoTextBox);
             this.promotorGroupBox.Controls.Add(this.fotoButton);
             this.promotorGroupBox.Controls.Add(this.fotoPictureBox);
@@ -193,6 +203,28 @@
             this.promotorGroupBox.TabIndex = 12;
             this.promotorGroupBox.TabStop = false;
             this.promotorGroupBox.Text = "Dados do Promotor";
+            // 
+            // emailSupervisorInvalidoLabel
+            // 
+            this.emailSupervisorInvalidoLabel.AutoSize = true;
+            this.emailSupervisorInvalidoLabel.ForeColor = System.Drawing.Color.Red;
+            this.emailSupervisorInvalidoLabel.Location = new System.Drawing.Point(329, 436);
+            this.emailSupervisorInvalidoLabel.Name = "emailSupervisorInvalidoLabel";
+            this.emailSupervisorInvalidoLabel.Size = new System.Drawing.Size(128, 13);
+            this.emailSupervisorInvalidoLabel.TabIndex = 31;
+            this.emailSupervisorInvalidoLabel.Text = "Email Digitado é inválido !";
+            this.emailSupervisorInvalidoLabel.Visible = false;
+            // 
+            // emailInvalidoLabel
+            // 
+            this.emailInvalidoLabel.AutoSize = true;
+            this.emailInvalidoLabel.ForeColor = System.Drawing.Color.Red;
+            this.emailInvalidoLabel.Location = new System.Drawing.Point(329, 172);
+            this.emailInvalidoLabel.Name = "emailInvalidoLabel";
+            this.emailInvalidoLabel.Size = new System.Drawing.Size(128, 13);
+            this.emailInvalidoLabel.TabIndex = 30;
+            this.emailInvalidoLabel.Text = "Email Digitado é inválido !";
+            this.emailInvalidoLabel.Visible = false;
             // 
             // fotoTextBox
             // 
@@ -332,6 +364,7 @@
             this.emailSupervisorTextBox.Name = "emailSupervisorTextBox";
             this.emailSupervisorTextBox.Size = new System.Drawing.Size(219, 20);
             this.emailSupervisorTextBox.TabIndex = 13;
+            this.emailSupervisorTextBox.Leave += new System.EventHandler(this.emailSupervisorTextBox_Leave);
             // 
             // emailSupervisorLabel
             // 
@@ -406,6 +439,7 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(219, 20);
             this.emailTextBox.TabIndex = 13;
+            this.emailTextBox.Leave += new System.EventHandler(this.emailTextBox_Leave_1);
             // 
             // emailLabel
             // 
@@ -564,6 +598,47 @@
             this.tituloLabel.TabIndex = 1;
             this.tituloLabel.Text = "Cadastro de Promotores";
             // 
+            // jornadaGroupBox
+            // 
+            this.jornadaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.jornadaGroupBox.Controls.Add(this.cargaHorariaTextBox);
+            this.jornadaGroupBox.Controls.Add(this.enviaRelatorioCheckBox);
+            this.jornadaGroupBox.Controls.Add(this.cargaLabel);
+            this.jornadaGroupBox.Location = new System.Drawing.Point(8, 270);
+            this.jornadaGroupBox.Name = "jornadaGroupBox";
+            this.jornadaGroupBox.Size = new System.Drawing.Size(335, 100);
+            this.jornadaGroupBox.TabIndex = 32;
+            this.jornadaGroupBox.TabStop = false;
+            this.jornadaGroupBox.Text = "Carga Horária";
+            // 
+            // cargaLabel
+            // 
+            this.cargaLabel.AutoSize = true;
+            this.cargaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cargaLabel.Location = new System.Drawing.Point(13, 28);
+            this.cargaLabel.Name = "cargaLabel";
+            this.cargaLabel.Size = new System.Drawing.Size(115, 16);
+            this.cargaLabel.TabIndex = 33;
+            this.cargaLabel.Text = "Horas Semanais: ";
+            // 
+            // enviaRelatorioCheckBox
+            // 
+            this.enviaRelatorioCheckBox.AutoSize = true;
+            this.enviaRelatorioCheckBox.Location = new System.Drawing.Point(16, 64);
+            this.enviaRelatorioCheckBox.Name = "enviaRelatorioCheckBox";
+            this.enviaRelatorioCheckBox.Size = new System.Drawing.Size(144, 17);
+            this.enviaRelatorioCheckBox.TabIndex = 34;
+            this.enviaRelatorioCheckBox.Text = "Envia relatorio semanal ?";
+            this.enviaRelatorioCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // cargaHorariaTextBox
+            // 
+            this.cargaHorariaTextBox.Location = new System.Drawing.Point(129, 27);
+            this.cargaHorariaTextBox.Mask = "00";
+            this.cargaHorariaTextBox.Name = "cargaHorariaTextBox";
+            this.cargaHorariaTextBox.Size = new System.Drawing.Size(52, 20);
+            this.cargaHorariaTextBox.TabIndex = 33;
+            // 
             // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -597,6 +672,8 @@
             this.SupervisorGroupBox.ResumeLayout(false);
             this.SupervisorGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.digitalPictureBox)).EndInit();
+            this.jornadaGroupBox.ResumeLayout(false);
+            this.jornadaGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,6 +723,12 @@
         private System.Windows.Forms.PictureBox fotoPictureBox;
         private System.Windows.Forms.TextBox fotoTextBox;
         private System.Windows.Forms.Label tituloLabel;
+        private System.Windows.Forms.Label emailInvalidoLabel;
+        private System.Windows.Forms.Label emailSupervisorInvalidoLabel;
+        private System.Windows.Forms.GroupBox jornadaGroupBox;
+        private System.Windows.Forms.CheckBox enviaRelatorioCheckBox;
+        private System.Windows.Forms.Label cargaLabel;
+        private System.Windows.Forms.MaskedTextBox cargaHorariaTextBox;
     }
 }
 

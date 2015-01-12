@@ -1,0 +1,11 @@
+SELECT
+nome 
+, DATA
+, MIN(HORA) AS ENTRADA
+, MAX(HORA) AS SAIDA
+, convert(varchar(2),DATEDIFF(HH, min(hora), max(hora)))
+  + ':' + convert(varchar(2), dbo.MINUTOS(MIN(hora), MAX(hora))%60) AS tempo
+
+ 
+FROM MOVPROMOTORES
+GROUP BY DATA, NOME;

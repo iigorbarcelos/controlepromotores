@@ -19,10 +19,16 @@ namespace ControlePromotores
         private String dia = null;
         private String mes = null;
         private String ano = null;
+        
+        //Variável para auxilio, da gravação do envia relatorio
+        char enviaRelatorio;
+
         //Variavel para guardar o código do promotor selecionado.
         private int selecao = 0;
+
         //Variavel para edição de promotor cadastrado
         private int linha = -1;
+
         //DataTable pra receber promotores pesquisados.
         DataTable dados;
 
@@ -118,11 +124,12 @@ namespace ControlePromotores
             digitalTextBox.Text = "";
             cpfTextBox.Text = "";
             fotoTextBox.Text = "";
+            enviaRelatorioCheckBox.Checked = true;
             dia = null;
             mes = null;
             ano = null;
             editar = false;
-            GravarButton.Enabled = false;          
+            GravarButton.Enabled = false;         
         }
 
         private void resetDataGrid()
@@ -158,6 +165,11 @@ namespace ControlePromotores
                 digitalTextBox.Text = dados.Rows[linha]["impressaodigital"].ToString();
                 contatoSupervisorTextBox.Text = dados.Rows[linha]["contatosupervisor"].ToString();
                 emailSupervisorTextBox.Text = dados.Rows[linha]["emailsupervisor"].ToString();
+                cargaHorariaTextBox.Text = dados.Rows[linha]["cargaHoraria"].ToString();
+                if (dados.Rows[linha]["enviaRelatorio"].ToString().Equals("S"))
+                    enviaRelatorioCheckBox.Checked = true;
+                else
+                    enviaRelatorioCheckBox.Checked = false;
 
                 //Muda para página de edição do formulario
                 tabControl1.SelectedTab = tabPage2;
@@ -172,6 +184,13 @@ namespace ControlePromotores
         {
             //Variavel pra indicar se há erro
             bool erro = false;
+
+            //Verifica se o usuário quer que envie relatório ou não.
+            if (enviaRelatorioCheckBox.Checked == true)
+                enviaRelatorio = 'S';
+            else
+                enviaRelatorio = 'N';
+
             //Comando sql
             SqlCommand command;
             //Variavel de mensagem de retorno ao usuário
@@ -194,8 +213,10 @@ namespace ControlePromotores
                               "email," +
                               "emailSupervisor," +
                               "contatoSupervisor," +
-                              "cpf"+
-                              "foto)" +
+                              "cpf,"+
+                              "foto,"+
+                              "cargaHoraria,"+
+                              "enviaRelatorio)" +
 
                               " values" +
                               "('" + nomeTextBox.Text +
@@ -208,8 +229,10 @@ namespace ControlePromotores
                               "', '" + emailTextBox.Text +
                               "', '" + emailSupervisorTextBox.Text +
                               "', '" + contatoSupervisorTextBox.Text +
-                              "', '" + cpfTextBox.Text +
-                              "', '" + fotoTextBox.Text+")", conn);
+                              "', '" + cpfTextBox.Text  +
+                              "', '" + fotoTextBox.Text +
+                              "', '" + cargaHorariaTextBox.Text + "'"+
+                              " , '" + enviaRelatorio +"')", conn);
             }
             else
             {
@@ -223,7 +246,9 @@ namespace ControlePromotores
                                           "emailsupervisor = '" + emailSupervisorTextBox.Text + "'," +
                                           "contatosupervisor = '" + contatoSupervisorTextBox.Text + "'," +
                                           "cpf = '" + cpfTextBox.Text + "'," +
-                                          "foto = '"+ fotoTextBox.Text+ "'" +
+                                          "foto = '"+ fotoTextBox.Text+ "'," +
+                                          "cargaHoraria = '"+ cargaHorariaTextBox.Text + "',"+
+                                          "enviaRelatorio = '"+ enviaRelatorio + "'"+
                                           " where codpromotor = " + selecao.ToString(), conn);
             }
 
@@ -382,6 +407,32 @@ namespace ControlePromotores
             {
                 fotoTextBox.Text = buscarFoto.FileName;
                 fotoPictureBox.ImageLocation = fotoTextBox.Text;
+            }
+        }
+
+        private void emailTextBox_Leave_1(object sender, EventArgs e)
+        {
+            if (!Validacoes.ValidaEnderecoEmail(emailTextBox.Text))
+            {
+                emailInvalidoLabel.Visible = true;
+                emailTextBox.Focus();
+            }
+            else
+            {
+                emailInvalidoLabel.Visible = false;
+            }
+        }
+
+        private void emailSupervisorTextBox_Leave(object sender, EventArgs e)
+        {
+            if (!Validacoes.ValidaEnderecoEmail(emailSupervisorTextBox.Text))
+            {
+                emailSupervisorInvalidoLabel.Visible = true;
+                emailSupervisorTextBox.Focus();
+            }
+            else
+            {
+                emailSupervisorInvalidoLabel.Visible = false;
             }
         }
     }

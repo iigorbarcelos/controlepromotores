@@ -17,7 +17,7 @@ namespace ControlePromotores
     {
         private long codpromotor = 0;
         interfaceBiometria biometria = new interfaceBiometria();
-        
+        ConfiguraEmail email = new ConfiguraEmail();
      
         public Controle()
         {
@@ -33,6 +33,7 @@ namespace ControlePromotores
         //Ativa o leitor para fazer a captura da digital e informa os dados do promotor        
         public void ativaCaptura()
         {
+           
             biometria.carregaFIRCadastrada();
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = 5000;
@@ -53,13 +54,17 @@ namespace ControlePromotores
                     biometria.fechaDispositivo();
                     buscaDadosPromotor(codpromotor);
                     registraEntrada(codpromotor, nomeTextBox.Text, empresaTextBox.Text);
+                    email.enviaEmail(emailSupervisorTextBox.ToString(), 
+                                    "Atividade do funcionario "+nomeTextBox.Text.ToString()+ " - Atacadao DiaDia", 
+                                    "Nova atividade do funcionário "+ nomeTextBox.Text +
+                                    "\n Dia - "+ DateTime.Now.ToString().Substring(0,10)+ "\n"+
+                                    "Hora: "+ DateTime.Now.TimeOfDay.ToString().Substring(0,5));
+
                 }
                 catch (Exception)
                 {
 
-                }
-
-                
+                }               
             }
         }        
         
@@ -70,7 +75,10 @@ namespace ControlePromotores
             SqlConnection conn = new ConnectionFactory().getConnection();
 
             SqlCommand command = new SqlCommand(
-                "select codpromotor, nome, empresa, isnull(foto, 'C:/Users/Igor Barcelos/Documents/Visual Studio 2012/Projects/projetosmercado/ControlePromotores/img/indigente.jpg') as foto from promotores where codpromotor = @codpromotor", conn);
+                "select codpromotor, nome, empresa, "+
+                " isnull(foto, 'C:/Users/Igor Barcelos/Documents/Visual Studio 2012/Projects/projetosmercado/ControlePromotores/img/indigente.jpg') as foto "+
+                ", emailsupervisor "+
+                "from promotores where codpromotor = @codpromotor", conn);
 
             //Substitui o parametro pelo código do promotor identificado.
             SqlParameter parametro = new SqlParameter();
@@ -89,6 +97,7 @@ namespace ControlePromotores
                         nomeTextBox.Text = reader.GetString(1);
                         empresaTextBox.Text = reader.GetString(2);
                         fotoPictureBox.ImageLocation = reader.GetString(3);
+                        emailSupervisorTextBox.Text = reader.GetString(4);
                 }
 
                 reader.Close();

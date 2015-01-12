@@ -39,6 +39,8 @@
             this.nomeTextBox = new System.Windows.Forms.TextBox();
             this.nomeLabel = new System.Windows.Forms.Label();
             this.desativaButton = new System.Windows.Forms.Button();
+            this.emailSupervisorTextBox = new System.Windows.Forms.TextBox();
+            this.emailSupervisorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             this.codigoLabel.BackColor = System.Drawing.Color.Transparent;
             this.codigoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codigoLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.codigoLabel.Location = new System.Drawing.Point(35, 13);
+            this.codigoLabel.Location = new System.Drawing.Point(68, 13);
             this.codigoLabel.Name = "codigoLabel";
             this.codigoLabel.Size = new System.Drawing.Size(80, 18);
             this.codigoLabel.TabIndex = 3;
@@ -90,7 +92,7 @@
             // 
             // empresaTextBox
             // 
-            this.empresaTextBox.Location = new System.Drawing.Point(142, 66);
+            this.empresaTextBox.Location = new System.Drawing.Point(175, 66);
             this.empresaTextBox.Name = "empresaTextBox";
             this.empresaTextBox.ReadOnly = true;
             this.empresaTextBox.Size = new System.Drawing.Size(320, 20);
@@ -98,7 +100,7 @@
             // 
             // codigoTextBox
             // 
-            this.codigoTextBox.Location = new System.Drawing.Point(142, 14);
+            this.codigoTextBox.Location = new System.Drawing.Point(175, 14);
             this.codigoTextBox.Name = "codigoTextBox";
             this.codigoTextBox.ReadOnly = true;
             this.codigoTextBox.Size = new System.Drawing.Size(320, 20);
@@ -110,7 +112,7 @@
             this.empresaLabel.BackColor = System.Drawing.Color.Transparent;
             this.empresaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.empresaLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.empresaLabel.Location = new System.Drawing.Point(22, 68);
+            this.empresaLabel.Location = new System.Drawing.Point(55, 68);
             this.empresaLabel.Name = "empresaLabel";
             this.empresaLabel.Size = new System.Drawing.Size(93, 18);
             this.empresaLabel.TabIndex = 5;
@@ -118,7 +120,7 @@
             // 
             // nomeTextBox
             // 
-            this.nomeTextBox.Location = new System.Drawing.Point(142, 40);
+            this.nomeTextBox.Location = new System.Drawing.Point(175, 40);
             this.nomeTextBox.Name = "nomeTextBox";
             this.nomeTextBox.ReadOnly = true;
             this.nomeTextBox.Size = new System.Drawing.Size(320, 20);
@@ -130,7 +132,7 @@
             this.nomeLabel.BackColor = System.Drawing.Color.Transparent;
             this.nomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nomeLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.nomeLabel.Location = new System.Drawing.Point(52, 42);
+            this.nomeLabel.Location = new System.Drawing.Point(85, 42);
             this.nomeLabel.Name = "nomeLabel";
             this.nomeLabel.Size = new System.Drawing.Size(63, 18);
             this.nomeLabel.TabIndex = 4;
@@ -146,6 +148,28 @@
             this.desativaButton.UseVisualStyleBackColor = true;
             this.desativaButton.Click += new System.EventHandler(this.desativaButton_Click);
             // 
+            // emailSupervisorTextBox
+            // 
+            this.emailSupervisorTextBox.Location = new System.Drawing.Point(175, 92);
+            this.emailSupervisorTextBox.Name = "emailSupervisorTextBox";
+            this.emailSupervisorTextBox.ReadOnly = true;
+            this.emailSupervisorTextBox.Size = new System.Drawing.Size(320, 20);
+            this.emailSupervisorTextBox.TabIndex = 10;
+            this.emailSupervisorTextBox.Visible = false;
+            // 
+            // emailSupervisorLabel
+            // 
+            this.emailSupervisorLabel.AutoSize = true;
+            this.emailSupervisorLabel.BackColor = System.Drawing.Color.Transparent;
+            this.emailSupervisorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailSupervisorLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.emailSupervisorLabel.Location = new System.Drawing.Point(28, 94);
+            this.emailSupervisorLabel.Name = "emailSupervisorLabel";
+            this.emailSupervisorLabel.Size = new System.Drawing.Size(120, 18);
+            this.emailSupervisorLabel.TabIndex = 11;
+            this.emailSupervisorLabel.Text = "SUPERVISOR:";
+            this.emailSupervisorLabel.Visible = false;
+            // 
             // Controle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +177,8 @@
             this.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(892, 505);
+            this.Controls.Add(this.emailSupervisorLabel);
+            this.Controls.Add(this.emailSupervisorTextBox);
             this.Controls.Add(this.desativaButton);
             this.Controls.Add(this.sairButton);
             this.Controls.Add(this.ativaButton);
@@ -187,5 +213,7 @@
         private System.Windows.Forms.TextBox nomeTextBox;
         private System.Windows.Forms.Label nomeLabel;
         private System.Windows.Forms.Button desativaButton;
+        private System.Windows.Forms.TextBox emailSupervisorTextBox;
+        private System.Windows.Forms.Label emailSupervisorLabel;
     }
 }

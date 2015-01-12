@@ -89,6 +89,7 @@
             this.imprimirButton.TabIndex = 2;
             this.imprimirButton.Text = "Imprimir";
             this.imprimirButton.UseVisualStyleBackColor = true;
+            this.imprimirButton.Click += new System.EventHandler(this.imprimirButton_Click);
             // 
             // pesquisarButton
             // 

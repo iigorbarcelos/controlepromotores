@@ -14,6 +14,9 @@ namespace ControlePromotores
 {
     public partial class Relatorios : Form
     {
+
+        DataSet DataSetPromotores = null;
+
         public Relatorios()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace ControlePromotores
             //Criao dataset pra receber a tabela movpromotor
             DataSet DataSetPromotores = new DataSet();
             //Preenche a datatable movpromotores com os resultados do adaptador.
-            adaptador.Fill(movpromotores);
+            //adaptador.Fill(movpromotores);
  
             adaptador.Fill(DataSetPromotores);
             //Preenche a grid com os dados
@@ -47,6 +50,12 @@ namespace ControlePromotores
 
             //Preenche o dataset com os dados do adaptador.
             
+        }
+
+        private void imprimirButton_Click(object sender, EventArgs e)
+        {
+            RelatorioMovimentacoes movimentacoes = new RelatorioMovimentacoes();
+            movimentacoes.Show();
         }
     }
 }

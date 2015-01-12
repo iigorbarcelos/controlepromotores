@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace ControlePromotores
 {
@@ -50,6 +51,30 @@ namespace ControlePromotores
                 resto = 11 - resto;
             digito = digito + resto.ToString();
             return cpf.EndsWith(digito);
+        }
+
+        public static bool ValidaEnderecoEmail(string enderecoEmail)
+        {
+            try
+            {
+                //Define a expressão regulara para validar o email
+                string texto_Validar = enderecoEmail;
+                Regex expressaoRegex = new Regex(@"\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}");
+
+                // Testa o email com a expressão
+                if (expressaoRegex.IsMatch(texto_Validar))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
