@@ -36,6 +36,7 @@
             this.pesquisarButton = new System.Windows.Forms.Button();
             this.workPanel = new System.Windows.Forms.Panel();
             this.entradasGrid = new System.Windows.Forms.DataGridView();
+            this.enviaRelatorioEmail = new System.Windows.Forms.Button();
             this.backgroundPanel.SuspendLayout();
             this.workPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entradasGrid)).BeginInit();
@@ -45,6 +46,7 @@
             // 
             this.backgroundPanel.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
             this.backgroundPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backgroundPanel.Controls.Add(this.enviaRelatorioEmail);
             this.backgroundPanel.Controls.Add(this.tituloLabel);
             this.backgroundPanel.Controls.Add(this.sairButton);
             this.backgroundPanel.Controls.Add(this.imprimirButton);
@@ -83,7 +85,7 @@
             // imprimirButton
             // 
             this.imprimirButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.imprimirButton.Location = new System.Drawing.Point(102, 545);
+            this.imprimirButton.Location = new System.Drawing.Point(93, 545);
             this.imprimirButton.Name = "imprimirButton";
             this.imprimirButton.Size = new System.Drawing.Size(75, 26);
             this.imprimirButton.TabIndex = 2;
@@ -128,6 +130,17 @@
             this.entradasGrid.Size = new System.Drawing.Size(958, 440);
             this.entradasGrid.TabIndex = 0;
             // 
+            // enviaRelatorioEmail
+            // 
+            this.enviaRelatorioEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.enviaRelatorioEmail.Location = new System.Drawing.Point(426, 545);
+            this.enviaRelatorioEmail.Name = "enviaRelatorioEmail";
+            this.enviaRelatorioEmail.Size = new System.Drawing.Size(106, 26);
+            this.enviaRelatorioEmail.TabIndex = 5;
+            this.enviaRelatorioEmail.Text = "Enviar emails";
+            this.enviaRelatorioEmail.UseVisualStyleBackColor = true;
+            this.enviaRelatorioEmail.Click += new System.EventHandler(this.enviaRelatorioEmail_Click);
+            // 
             // Relatorios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,5 +169,6 @@
         private System.Windows.Forms.Button pesquisarButton;
         private System.Windows.Forms.DataGridView entradasGrid;
         private System.Windows.Forms.Label tituloLabel;
+        private System.Windows.Forms.Button enviaRelatorioEmail;
     }
 }

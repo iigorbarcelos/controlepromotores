@@ -1,0 +1,28 @@
+;WITH Lancamentoshoras As (
+SELECT
+    codpromotor, Data, hora,
+    ROW_NUMBER() OVER (
+        PARTITION BY Data, codpromotor
+        ORDER BY Data, codpromotor, hora) As Pos
+FROM movpromotores),
+
+LancamentosOrganizados As (
+
+SELECT
+    L1.codpromotor, L1.Data,
+    L1.hora As Entrada, L2.hora As Saida
+FROM
+    Lancamentoshoras As L1
+    INNER JOIN Lancamentoshoras As L2 ON
+        L1.codpromotor = L2.codpromotor 
+        AND L1.Data = L2.Data 
+        AND L1.Pos = L2.Pos - 1 
+        AND L1.Pos % 2 = 1)
+
+SELECT codpromotor, datepart(WEEK,Data) as semana,
+    RIGHT('0' + CAST(SUM(DateDiff(Mi,Entrada,Saida)) / 60 As VARCHAR(2)),2) + ':' +
+    RIGHT('0' + CAST(SUM(DateDiff(Mi,Entrada,Saida)) % 60 As VARCHAR(2)),2)
+As CargaHoraria
+
+FROM LancamentosOrganizados 
+GROUP BY codpromotor, datepart(WEEK,Data)

@@ -15,8 +15,6 @@ namespace ControlePromotores
     public partial class Relatorios : Form
     {
 
-        DataSet DataSetPromotores = null;
-
         public Relatorios()
         {
             InitializeComponent();
@@ -56,6 +54,11 @@ namespace ControlePromotores
         {
             RelatorioMovimentacoes movimentacoes = new RelatorioMovimentacoes();
             movimentacoes.Show();
+        }
+
+        private void enviaRelatorioEmail_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(DateTime.Now.ToString());          
         }
     }
 }

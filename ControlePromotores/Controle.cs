@@ -57,9 +57,8 @@ namespace ControlePromotores
                     email.enviaEmail(emailSupervisorTextBox.ToString(), 
                                     "Atividade do funcionario "+nomeTextBox.Text.ToString()+ " - Atacadao DiaDia", 
                                     "Nova atividade do funcionário "+ nomeTextBox.Text +
-                                    "\n Dia - "+ DateTime.Now.ToString().Substring(0,10)+ "\n"+
-                                    "Hora: "+ DateTime.Now.TimeOfDay.ToString().Substring(0,5));
-
+                                    "<br> Dia - "+ DateTime.Now.ToString().Substring(0,10)+ "\n"+
+                                    "<br> Hora: "+ DateTime.Now.TimeOfDay.ToString().Substring(0,5));
                 }
                 catch (Exception)
                 {
@@ -104,13 +103,11 @@ namespace ControlePromotores
             }
             catch (SqlException)
             {
-                //MessageBox.Show("Não foi possível reconhecer sua digital, favor posicione o dedo novamente no leitor !");
 
             }
             finally
             {
-                conn.Close();
-                
+                conn.Close();                
             }
 
         }
@@ -127,8 +124,8 @@ namespace ControlePromotores
                 SqlParameter codparam = new SqlParameter("@codpromotor", codpromotor);
                 SqlParameter nomparam = new SqlParameter("@nome", nome);
                 SqlParameter empresaparam = new SqlParameter("@empresa", empresa);
-                SqlParameter dataparam = new SqlParameter("@data", DateTime.Now);
-                SqlParameter horaparam = new SqlParameter("@hora", DateTime.Now.TimeOfDay);
+                SqlParameter dataparam = new SqlParameter("@data", DateTime.Now.ToString("yyyy / MM / dd"));
+                SqlParameter horaparam = new SqlParameter("@hora", DateTime.Now);
 
                 command.Parameters.Add(codparam);
                 command.Parameters.Add(nomparam);
