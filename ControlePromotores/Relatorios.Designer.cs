@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Relatorios));
             this.backgroundPanel = new System.Windows.Forms.Panel();
+            this.enviaRelatorioEmail = new System.Windows.Forms.Button();
             this.tituloLabel = new System.Windows.Forms.Label();
             this.sairButton = new System.Windows.Forms.Button();
             this.imprimirButton = new System.Windows.Forms.Button();
             this.pesquisarButton = new System.Windows.Forms.Button();
             this.workPanel = new System.Windows.Forms.Panel();
             this.entradasGrid = new System.Windows.Forms.DataGridView();
-            this.enviaRelatorioEmail = new System.Windows.Forms.Button();
             this.backgroundPanel.SuspendLayout();
             this.workPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entradasGrid)).BeginInit();
@@ -57,6 +57,17 @@
             this.backgroundPanel.Name = "backgroundPanel";
             this.backgroundPanel.Size = new System.Drawing.Size(982, 583);
             this.backgroundPanel.TabIndex = 0;
+            // 
+            // enviaRelatorioEmail
+            // 
+            this.enviaRelatorioEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.enviaRelatorioEmail.Location = new System.Drawing.Point(426, 545);
+            this.enviaRelatorioEmail.Name = "enviaRelatorioEmail";
+            this.enviaRelatorioEmail.Size = new System.Drawing.Size(106, 26);
+            this.enviaRelatorioEmail.TabIndex = 5;
+            this.enviaRelatorioEmail.Text = "Enviar emails";
+            this.enviaRelatorioEmail.UseVisualStyleBackColor = true;
+            this.enviaRelatorioEmail.Click += new System.EventHandler(this.enviaRelatorioEmail_Click);
             // 
             // tituloLabel
             // 
@@ -125,21 +136,11 @@
             this.entradasGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.entradasGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.entradasGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entradasGrid.GridColor = System.Drawing.SystemColors.ControlLightLight;
             this.entradasGrid.Location = new System.Drawing.Point(0, 0);
             this.entradasGrid.Name = "entradasGrid";
             this.entradasGrid.Size = new System.Drawing.Size(958, 440);
             this.entradasGrid.TabIndex = 0;
-            // 
-            // enviaRelatorioEmail
-            // 
-            this.enviaRelatorioEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.enviaRelatorioEmail.Location = new System.Drawing.Point(426, 545);
-            this.enviaRelatorioEmail.Name = "enviaRelatorioEmail";
-            this.enviaRelatorioEmail.Size = new System.Drawing.Size(106, 26);
-            this.enviaRelatorioEmail.TabIndex = 5;
-            this.enviaRelatorioEmail.Text = "Enviar emails";
-            this.enviaRelatorioEmail.UseVisualStyleBackColor = true;
-            this.enviaRelatorioEmail.Click += new System.EventHandler(this.enviaRelatorioEmail_Click);
             // 
             // Relatorios
             // 
@@ -152,6 +153,7 @@
             this.Name = "Relatorios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatorios";
+            this.Load += new System.EventHandler(this.Relatorios_Load);
             this.backgroundPanel.ResumeLayout(false);
             this.backgroundPanel.PerformLayout();
             this.workPanel.ResumeLayout(false);
@@ -167,8 +169,8 @@
         private System.Windows.Forms.Button sairButton;
         private System.Windows.Forms.Button imprimirButton;
         private System.Windows.Forms.Button pesquisarButton;
-        private System.Windows.Forms.DataGridView entradasGrid;
         private System.Windows.Forms.Label tituloLabel;
         private System.Windows.Forms.Button enviaRelatorioEmail;
+        private System.Windows.Forms.DataGridView entradasGrid;
     }
 }
