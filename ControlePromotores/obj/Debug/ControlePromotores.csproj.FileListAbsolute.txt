@@ -1,6 +1,26 @@
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe.config
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.exe
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csprojResolveAssemblyReference.cache
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.CheckinPessoa.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.ConfiguraEmail.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Controle.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.FormCadastro.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.MenuPrincipal.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Properties.Resources.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Relatorios.resources
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csproj.GenerateResource.Cache
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\Relatorio.cs
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\Relatorio.rpt
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.pdb
+C:\Users\cpd\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Debug\nitgen.sdk.nbiobsp.dll
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\Relatorio.cs
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\Relatorio.rpt
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe.config
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\ControlePromotores.pdb
+C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\nitgen.sdk.nbiobsp.dll
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.CheckinPessoa.resources
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.ConfiguraEmail.resources
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.Controle.resources
@@ -12,7 +32,3 @@ C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\Con
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csprojResolveAssemblyReference.cache
-C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.RelatorioMovimentacoes.resources
-C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\Relatorio.cs
-C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\Relatorio.rpt
-C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\bin\Debug\nitgen.sdk.nbiobsp.dll

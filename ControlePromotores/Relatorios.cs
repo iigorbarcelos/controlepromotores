@@ -16,7 +16,9 @@ namespace ControlePromotores
     public partial class Relatorios : Form
     {
 
-        ArrayList<Promotor> listaPromotores = new ArrayList<Promotor>();
+
+        ArrayList listaPromotores = new ArrayList();
+        Promotor promotor = new Promotor();
         
         public Relatorios()
         {
@@ -30,36 +32,135 @@ namespace ControlePromotores
 
         private void pesquisarButton_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new ConnectionFactory().getConnection();
-
-            String command = "select"+
-                              " * "+
-                             "from movpromotores";
-
-            SqlDataAdapter adaptador = new SqlDataAdapter(command,conn);
-
-            //Cria a tabela movpromotores para receber os dados do adaptador
-            DataTable movpromotores = new DataTable();
-            //Criao dataset pra receber a tabela movpromotor
-            DataSet DataSetPromotores = new DataSet();
-            //Preenche a datatable movpromotores com os resultados do adaptador.
-            //adaptador.Fill(movpromotores);
- 
-            adaptador.Fill(DataSetPromotores);
-            //Preenche a grid com os dados
-            entradasGrid.DataSource = DataSetPromotores.Tables[0];
-
-            //Preenche o dataset com os dados do adaptador.
             
         }
 
         private void imprimirButton_Click(object sender, EventArgs e)
         {
-            RelatorioMovimentacoes movimentacoes = new RelatorioMovimentacoes();
-            movimentacoes.Show();
         }
 
         private void enviaRelatorioEmail_Click(object sender, EventArgs e)
+        {
+             //Pega conexão com o banco
+            SqlConnection conn = new ConnectionFactory().getConnection();
+
+            //Cria um novo comando sql
+            SqlCommand command = new SqlCommand(
+
+@";WITH Lancamentoshoras As (
+
+SELECT  
+    codpromotor, Data, hora,  
+   ROW_NUMBER() OVER ( 
+        PARTITION BY Data, codpromotor 
+        ORDER BY Data, codpromotor, hora) As Pos 
+FROM movpromotores),
+
+LancamentosOrganizados As ( 
+
+SELECT 
+    L1.codpromotor, L1.Data, 
+    L1.hora As Entrada, L2.hora As Saida
+FROM 
+    Lancamentoshoras As L1
+    INNER JOIN Lancamentoshoras As L2 ON
+        L1.codpromotor = L2.codpromotor 
+        AND L1.Data = L2.Data
+        AND L1.Pos = L2.Pos - 1
+        AND L1.Pos % 2 = 1) 
+
+SELECT codpromotor, datepart(WEEK,Data) as semana, 
+    RIGHT('0' + CAST(SUM(DateDiff(Mi,Entrada,Saida)) / 60 As VARCHAR(2)),2) + ',' +
+    RIGHT('0' + CAST(SUM(DateDiff(Mi,Entrada,Saida)) % 60 As VARCHAR(2)),2) 
+As CargaHoraria
+
+FROM LancamentosOrganizados
+GROUP BY codpromotor, datepart(WEEK,Data)", conn);
+
+            try
+            {
+                SqlDataReader relatorioSemanas = command.ExecuteReader();
+            
+                while (relatorioSemanas.Read())
+                {
+                    buscaDados(relatorioSemanas.GetInt32(0), relatorioSemanas.GetString(2), relatorioSemanas.GetInt32(1));                
+                }
+
+                entradasGrid.DataSource = listaPromotores;
+                entradasGrid.Refresh();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Erro ao consultar dados da semana \n" + exc);
+            }
+            finally
+            {
+                conn.Close();
+                listaPromotores = null;
+            }
+            
+            
+        }
+
+        public ArrayList buscaDados(int codpromotor, String horasAcumuladas, int semana)
+        {
+            
+            promotor.codpromotor = codpromotor;
+            promotor.horasAcumuladas = horasAcumuladas;
+            promotor.semana = semana;
+
+            SqlConnection conn = new ConnectionFactory().getConnection();
+
+            SqlCommand command = new SqlCommand(
+                @"SELECT
+                    NOME, 
+                    EMAILSUPERVISOR,
+                    CARGAHORARIA
+                  FROM PROMOTORES
+                  WHERE CODPROMOTOR = @CODPROMOTOR", conn);
+
+            SqlParameter codpromotorParametro = new SqlParameter("@CODPROMOTOR", codpromotor);
+
+            command.Parameters.Add(codpromotorParametro);
+
+            try
+            {
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    promotor.nome = (string)reader["nome"];
+                    promotor.emailSupervisor = (string)reader["emailsupervisor"];
+                    promotor.cargaHoraria = Convert.ToDouble(reader["cargaHoraria"]);
+
+                }
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Erro ao enviar todos os emails!");
+            }
+            finally
+            {
+                conn.Close();
+                
+            }
+
+            if (enviaEmail(promotor.emailSupervisor, "Relatório de atividade semanal de promotores Atacadao Dia a Dia", 
+                       "Funcionário: "+ promotor.nome + "<br>Horas atingidas: "+ promotor.horasAcumuladas.Replace(",", ":") + "hrs.<br>"+
+                       "Carga horária cadastrada: "+ promotor.cargaHoraria+ "hrs.<br>"
+                       +"Horas pendentes: "+ (Convert.ToDouble(promotor.cargaHoraria) - Convert.ToDouble(promotor.horasAcumuladas)).ToString().Replace(",",":")+ "hrs."))
+                MessageBox.Show("Email enviado com sucesso !");
+            else
+                MessageBox.Show("Falha ao enviar email");
+
+            listaPromotores.Add(promotor);
+
+            promotor = null;
+
+            return listaPromotores;
+        }
+
+        public bool enviaEmail(String destinatario, String assunto, String mensagem)
         {
             //Pega conexão com o banco
             SqlConnection conn = new ConnectionFactory().getConnection();
@@ -103,7 +204,7 @@ namespace ControlePromotores
                
                 while (reader.Read())
                 {
-                    promotor
+                    
                 }
             }
             catch (SqlException exc)
@@ -116,6 +217,22 @@ namespace ControlePromotores
             }
             
             
+
+            
+
+            ConfiguraEmail email = new ConfiguraEmail();
+            if (email.enviaEmail(destinatario, assunto, mensagem))
+                return true;
+            else
+                return false;
+
         }
+
+        private void Relatorios_Load(object sender, EventArgs e)
+        {
+
+
+        }      
+        
     }
 }

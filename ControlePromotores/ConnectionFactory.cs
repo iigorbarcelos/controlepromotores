@@ -11,11 +11,16 @@ namespace ControlePromotores
     class ConnectionFactory
     {
         //String de conexão
-  
+
         private static string connString =
-        @"server = IGOR\BIOMETRIC;
+        @"server = 10.10.0.100\BIOMETRIC;
         Database = biometria;
-        Trusted_Connection = true;";
+        User Id  = sa;
+        Password = @esw886;";
+        
+        
+        
+        //Trusted_Connection = true;;
 
         //Representa a conexão com o banco
         private static SqlConnection conn = null;
