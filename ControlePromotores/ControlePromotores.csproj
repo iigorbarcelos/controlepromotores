@@ -71,16 +71,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="biometriaDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>biometriaDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CargaHorariaSemanalDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CargaHorariaSemanalDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="CheckinPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,28 +158,6 @@
     <EmbeddedResource Include="Relatorios.resx">
       <DependentUpon>Relatorios.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="biometriaDataSet.xsc">
-      <DependentUpon>biometriaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="biometriaDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>biometriaDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="biometriaDataSet.xss">
-      <DependentUpon>biometriaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CargaHorariaSemanalDataSet.xsc">
-      <DependentUpon>CargaHorariaSemanalDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CargaHorariaSemanalDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CargaHorariaSemanalDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CargaHorariaSemanalDataSet.xss">
-      <DependentUpon>CargaHorariaSemanalDataSet.xsd</DependentUpon>
-    </None>
     <None Include="ClassDiagram1.cd" />
     <None Include="masterDataSet.xsc">
       <DependentUpon>masterDataSet.xsd</DependentUpon>

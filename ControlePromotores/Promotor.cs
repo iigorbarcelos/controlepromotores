@@ -12,6 +12,7 @@ namespace ControlePromotores
         //Declara todos os atributos e seus gets e sets
         public int codpromotor { get; set; }
         public  String nome {get ; set;}
+        public String mes { get; set; }
        // public String endereco {get ; set;}
        // public String cpf { get; set; }
        // public String empresa { get; set; }

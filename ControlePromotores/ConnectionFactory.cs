@@ -13,10 +13,10 @@ namespace ControlePromotores
         //String de conexão
 
         private static string connString =
-        @"server = 10.10.0.100\BIOMETRIC;
+        @"server = SRVBIOMETRIA;
         Database = biometria;
         User Id  = sa;
-        Password = @esw886;";
+        Password = pvcs88ss12;";
         
         
         
