@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfiguraEmail));
             this.senhaTexBox = new System.Windows.Forms.TextBox();
             this.usuarioTextBox = new System.Windows.Forms.TextBox();
             this.senhaLabel = new System.Windows.Forms.Label();
@@ -40,8 +41,8 @@
             this.cancelarButton = new System.Windows.Forms.Button();
             this.workTabControl = new System.Windows.Forms.TabControl();
             this.configurarTabpage = new System.Windows.Forms.TabPage();
-            this.cadastrarTabPage = new System.Windows.Forms.TabPage();
             this.hostTextBox = new System.Windows.Forms.TextBox();
+            this.cadastrarTabPage = new System.Windows.Forms.TabPage();
             this.workTabControl.SuspendLayout();
             this.configurarTabpage.SuspendLayout();
             this.SuspendLayout();
@@ -172,6 +173,13 @@
             this.configurarTabpage.Text = "Configurar";
             this.configurarTabpage.UseVisualStyleBackColor = true;
             // 
+            // hostTextBox
+            // 
+            this.hostTextBox.Location = new System.Drawing.Point(211, 59);
+            this.hostTextBox.Name = "hostTextBox";
+            this.hostTextBox.Size = new System.Drawing.Size(174, 20);
+            this.hostTextBox.TabIndex = 11;
+            // 
             // cadastrarTabPage
             // 
             this.cadastrarTabPage.Location = new System.Drawing.Point(4, 22);
@@ -182,23 +190,16 @@
             this.cadastrarTabPage.Text = "Cadastrar Provedor";
             this.cadastrarTabPage.UseVisualStyleBackColor = true;
             // 
-            // hostTextBox
-            // 
-            this.hostTextBox.Location = new System.Drawing.Point(211, 59);
-            this.hostTextBox.Name = "hostTextBox";
-            this.hostTextBox.Size = new System.Drawing.Size(174, 20);
-            this.hostTextBox.TabIndex = 11;
-            // 
             // ConfiguraEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(585, 458);
             this.Controls.Add(this.workTabControl);
             this.Controls.Add(this.tituloLabel);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ConfiguraEmail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

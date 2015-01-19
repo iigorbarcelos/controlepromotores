@@ -68,7 +68,7 @@ namespace ControlePromotores
             NetworkCredential credenciais = new NetworkCredential("controledepromotor@gmail.com", "igor1212");
 
             client.Credentials = credenciais;
-            client.Timeout = 100000;
+
 
             try
             {
