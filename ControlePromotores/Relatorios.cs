@@ -277,10 +277,7 @@ GROUP BY codpromotor, datepart(WEEK,Data)", conn);
                      gravaLog.Parameters.Add(@semana4);
                      break;
              }
-
-
-
-             
+           
             try
             {
                gravaLog.ExecuteNonQuery(); 

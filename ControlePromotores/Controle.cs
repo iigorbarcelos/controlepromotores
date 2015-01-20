@@ -75,7 +75,7 @@ namespace ControlePromotores
 
             SqlCommand command = new SqlCommand(
                 "select codpromotor, nome, empresa, "+
-                " isnull(foto, 'C:/Users/Igor Barcelos/Documents/Visual Studio 2012/Projects/projetosmercado/ControlePromotores/img/indigente.jpg') as foto "+
+                " isnull(foto, 'T:/img/indigente.jpg') as foto "+
                 ", emailsupervisor "+
                 "from promotores where codpromotor = @codpromotor", conn);
 
@@ -155,7 +155,7 @@ namespace ControlePromotores
                 codigoTextBox.Text = "";
                 nomeTextBox.Text = "";
                 empresaTextBox.Text = "";
-                fotoPictureBox.ImageLocation = "C:/Users/Igor Barcelos/Documents/Visual Studio 2012/Projects/projetosmercado/ControlePromotores/img/indigente.jpg";
+                fotoPictureBox.ImageLocation = "T:/img/indigente.jpg";
                 codpromotor = 0;
         }
 

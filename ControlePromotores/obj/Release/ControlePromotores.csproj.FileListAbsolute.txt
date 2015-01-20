@@ -14,4 +14,3 @@ C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\Con
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.csproj.GenerateResource.Cache
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.pdb
-C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.csprojResolveAssemblyReference.cache
