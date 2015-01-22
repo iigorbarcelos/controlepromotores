@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Text.RegularExpressions;
 
+
 namespace ControlePromotores
 {
     public partial class FormCadastro : Form
@@ -395,18 +396,19 @@ namespace ControlePromotores
         private void FormCadastro_Load(object sender, EventArgs e)
         {
 
-            //this.reportViewer1.RefreshReport();
+            
         }
 
         private void fotoButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog buscarFoto = new OpenFileDialog();
-            buscarFoto.Filter = "Imagem JPG|*.jpg| Imagem BMP|*.bmp| Imagem JPEG|*.jpeg| Imagem PNG|*.png;";
-            buscarFoto.Title = "Buscar foto do promotor";
-            if (buscarFoto.ShowDialog() == DialogResult.OK)
+            if (nomeTextBox.Text == "" || nomeTextBox.Text == " ")
             {
-                fotoTextBox.Text = buscarFoto.FileName;
-                fotoPictureBox.ImageLocation = fotoTextBox.Text;
+                MessageBox.Show("Por favor, preencha os dados do promotor a ser cadastrado primeiro.");
+            }
+            else
+            {
+                Webcam webcam = new Webcam(nomeTextBox.Text);
+                webcam.Show();
             }
         }
 

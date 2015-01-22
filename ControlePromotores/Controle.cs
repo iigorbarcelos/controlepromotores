@@ -18,6 +18,7 @@ namespace ControlePromotores
         private long codpromotor = 0;
         interfaceBiometria biometria = new interfaceBiometria();
         ConfiguraEmail email = new ConfiguraEmail();
+        System.Windows.Forms.Timer timer = null;
      
         public Controle()
         {
@@ -35,15 +36,15 @@ namespace ControlePromotores
         {
            
             biometria.carregaFIRCadastrada();
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 5000;
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 3000;
             timer.Start();
             timer.Tick += new EventHandler(timer_Tick);
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            limpaFormulario(); 
+            
             //Entra no laço quando houver um dedo no leitor.
             while (biometria.checkFinger() == true)
             {
@@ -145,8 +146,7 @@ namespace ControlePromotores
                 {
                     conn.Close();
                 }
-            }
-           
+            }        
 
         }
 
@@ -159,7 +159,6 @@ namespace ControlePromotores
                 codpromotor = 0;
         }
 
-        
         private void ativaButton_Click(object sender, EventArgs e)
         {
             ativaCaptura();
@@ -167,6 +166,14 @@ namespace ControlePromotores
 
         private void desativaButton_Click(object sender, EventArgs e)
         {
+            if (timer!=null){
+                timer.Dispose();
+                MessageBox.Show("Leitor desativado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("O leitor ja está desativado!");
+            }
 
         }
 
