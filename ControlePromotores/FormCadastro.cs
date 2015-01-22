@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Sql;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 
 namespace ControlePromotores
@@ -161,6 +162,7 @@ namespace ControlePromotores
                 CelularTextBox.Text = dados.Rows[linha]["celular"].ToString();
                 emailTextBox.Text = dados.Rows[linha]["email"].ToString();
                 telefoneTextBox.Text = dados.Rows[linha]["telefone"].ToString();
+                fotoTextBox.Text = dados.Rows[linha]["foto"].ToString();
                 //Ajuste da data para não gravar em formato incorreto no banco ao gravar o promotor atualizado.
                 NascimentoTextBox.Text = (Convert.ToDateTime(dados.Rows[linha]["dtnascimento"])).ToString("dd / MM / yyyy");
                 digitalTextBox.Text = dados.Rows[linha]["impressaodigital"].ToString();
@@ -393,12 +395,6 @@ namespace ControlePromotores
             }
         }
 
-        private void FormCadastro_Load(object sender, EventArgs e)
-        {
-
-            
-        }
-
         private void fotoButton_Click(object sender, EventArgs e)
         {
             if (nomeTextBox.Text == "" || nomeTextBox.Text == " ")
@@ -407,9 +403,16 @@ namespace ControlePromotores
             }
             else
             {
-                Webcam webcam = new Webcam(nomeTextBox.Text);
+                
+                Webcam webcam = new Webcam(nomeTextBox.Text, this);
                 webcam.Show();
             }
+        }
+
+        public void atualizaFoto()
+        {
+            fotoPictureBox.ImageLocation = ControlePromotores.Properties.Settings.Default.SomeProperty;
+            fotoTextBox.Text = ControlePromotores.Properties.Settings.Default.SomeProperty;
         }
 
         private void emailTextBox_Leave_1(object sender, EventArgs e)
@@ -437,5 +440,6 @@ namespace ControlePromotores
                 emailSupervisorInvalidoLabel.Visible = false;
             }
         }
+
     }
 }

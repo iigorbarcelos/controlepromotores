@@ -14,11 +14,23 @@ namespace ControlePromotores
 {
     public partial class SnapshotForm : Form
     {
+        //Nome de usuário que é passado do momento do cadastro, para salvar o arquivo no padrao correto.
         String nomeusuario;
-        public SnapshotForm(String nomePromotor)
+
+        //Variáveis que recebem parentesco de classes acima dela
+        //parentMaster = FormCadastro
+        //parentSec = Webcam
+        FormCadastro parentMaster;
+        Webcam parentSec;
+
+        public SnapshotForm(String nomePromotor, FormCadastro _parentMaster, Webcam _parentSec)
         {
             InitializeComponent();
+            //Formata o nome do usuário para o arquivo ficar em um padrao legivel e aceito.
             nomeusuario = nomePromotor.Replace(" ", "");
+
+            this.parentMaster = _parentMaster;
+            this.parentSec = _parentSec;
         }
 
         public void SetImage(Bitmap bitmap)
@@ -42,9 +54,9 @@ namespace ControlePromotores
             saveFileDialog.DefaultExt = ".jpg";
             ImageFormat format = ImageFormat.Jpeg;
             Bitmap image = (Bitmap)pictureBox.Image;
-            saveFileDialog.FileName = "T:/img/users/"+nomeusuario + "__" + DateTime.Now.ToString("dd / MM / yyyy").Replace("/", "_")+".jpg";
-            Properties.Settings.Default.SomeProperty = "T:/img/users/" + nomeusuario + "__" + DateTime.Now.ToString("dd / MM / yyyy").Replace("/", "_") + ".jpg";
-            Properties.Settings.Default.Save();
+            saveFileDialog.FileName = "T:/img/users/"+nomeusuario + "-" + DateTime.Now.ToString("dd / MM / yyyy").Replace("/", "_")+".jpg";
+            ControlePromotores.Properties.Settings.Default.SomeProperty = "T:/img/users/" + nomeusuario + "-" + DateTime.Now.ToString("dd / MM / yyyy").Replace("/", "_") + ".jpg";
+            ControlePromotores.Properties.Settings.Default.Save();
             bool result = true;
             try
             {
@@ -58,6 +70,11 @@ namespace ControlePromotores
 
             if (result == true)
                 MessageBox.Show("A imagem foi salva com sucesso!.");
+            //Após a imagem ser salva, atualiza a foto no formulario principal, juntamente com o caminho do arquivo no servidor.
+            //Fecha todos os formularios relacionados a Webcam
+            this.parentMaster.atualizaFoto();
+            this.parentSec.closeDevice();
+            this.parentSec.Dispose();
             this.Dispose();
         }
     }

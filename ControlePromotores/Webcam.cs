@@ -28,14 +28,18 @@ namespace ControlePromotores
         private VideoCapabilities[] snapshotCapabilities;
 
         private SnapshotForm snapshotForm = null;
+        //Nome do usuário que esta sendo herdado do cadastro, para ser passado ao nome do arquivo da foto.
+        private String nomePromotor;
+        //Recebe o parentesto do formulario do cadastro que o instanciou, permitindo utilizar de métodos do pai encapsulados como public.
+        FormCadastro parent;
 
-        private String nomePromotor = "";
-
-        public Webcam(String nome)
+        public Webcam(String nome, FormCadastro _parent)
         {
             InitializeComponent( );
             nomePromotor = nome;
+            this.parent = _parent;
         }
+
 
         // Main form is loaded
         private void MainForm_Load( object sender, EventArgs e )
@@ -50,6 +54,7 @@ namespace ControlePromotores
                 {
                     devicesCombo.Items.Add( device.Name );
                 }
+               
             }
             else
             {
@@ -198,7 +203,13 @@ namespace ControlePromotores
             if ( ( videoDevice != null ) && ( videoDevice.ProvideSnapshots ) )
             {
                 videoDevice.SimulateTrigger( );
+              
             }
+        }
+
+        public void closeDevice()
+        {
+            videoDevice.SignalToStop();
         }
 
         // New snapshot frame is available
@@ -219,9 +230,12 @@ namespace ControlePromotores
             {
                 if (snapshotForm == null)
                 {
-                    snapshotForm = new SnapshotForm(nomePromotor);
+                    //Instancia um novo snapshotForm passando como parametro o nome do promotor para salvar no arquivo
+                    // e os parentescos, do formCadastro e desta classe, nessa ordem.
+                    snapshotForm = new SnapshotForm(nomePromotor, this.parent, this);
                     snapshotForm.FormClosed += new FormClosedEventHandler(snapshotForm_FormClosed);
                     snapshotForm.Show();
+
                 }
 
                 snapshotForm.SetImage(foto);

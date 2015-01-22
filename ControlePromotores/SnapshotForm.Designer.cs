@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SnapshotForm));
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.salvarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
@@ -71,7 +72,9 @@
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.salvarButton);
             this.Controls.Add(this.pictureBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SnapshotForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SnapshotForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
