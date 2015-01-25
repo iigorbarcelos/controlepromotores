@@ -45,3 +45,4 @@ C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControleProm
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csproj.GenerateResource.Cache
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.exe
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.pdb
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Debug\ControlePromotores.csprojResolveAssemblyReference.cache

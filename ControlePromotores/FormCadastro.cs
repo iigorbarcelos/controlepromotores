@@ -126,6 +126,7 @@ namespace ControlePromotores
             digitalTextBox.Text = "";
             cpfTextBox.Text = "";
             fotoTextBox.Text = "";
+            fotoPictureBox.ImageLocation = "T:/img/indigente.jpg";
             enviaRelatorioCheckBox.Checked = true;
             dia = null;
             mes = null;

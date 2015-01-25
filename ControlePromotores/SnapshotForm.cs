@@ -51,7 +51,6 @@ namespace ControlePromotores
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = "T:/img/users/";
-            saveFileDialog.DefaultExt = ".jpg";
             ImageFormat format = ImageFormat.Jpeg;
             Bitmap image = (Bitmap)pictureBox.Image;
             saveFileDialog.FileName = "T:/img/users/"+nomeusuario + "-" + DateTime.Now.ToString("dd / MM / yyyy").Replace("/", "_")+".jpg";

@@ -154,6 +154,8 @@
       <DependentUpon>Relatorios.cs</DependentUpon>
     </Compile>
     <Compile Include="Validacoes.cs" />
+    <None Include="Resources\Luz.png" />
+    <None Include="Resources\91m.jpg" />
     <EmbeddedResource Include="CheckinPessoa.resx">
       <DependentUpon>CheckinPessoa.cs</DependentUpon>
     </EmbeddedResource>
