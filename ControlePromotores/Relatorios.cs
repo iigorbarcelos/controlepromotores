@@ -11,6 +11,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Collections;
 
+
 namespace ControlePromotores
 {
     public partial class Relatorios : Form
@@ -34,7 +35,63 @@ namespace ControlePromotores
 
         private void pesquisarButton_Click(object sender, EventArgs e)
         {
-            
+           SqlConnection conn = new ConnectionFactory().getConnection();
+
+           SqlCommand command = new SqlCommand();
+
+              // monta o filtro...
+              StringBuilder filter = new StringBuilder();
+              this.AppendFilter(filter, command, "codpromotor", TextBoxCodigo);
+              this.AppendFilter(filter, command, "nome", TextBoxNome);
+
+              command.CommandText = @"SELECT
+                              numtransent
+                              ,   codpromotor
+                              ,   nome
+                              ,   empresa
+                              ,   hora
+                              FROM MOVPROMOTORES WHERE " + filter.ToString();
+
+
+           command.Connection = conn;
+         
+            SqlDataAdapter adaptador = new SqlDataAdapter(command);
+
+            DataTable movpromotores = new DataTable();
+
+            adaptador.Fill(movpromotores);
+
+            entradasGrid.DataSource = movpromotores;            
+
+            entradasGrid.Refresh();
+        }
+
+        private void AppendFilter(StringBuilder filter, System.Data.SqlClient.SqlCommand command,
+         string fieldName, TextBox textBox)
+        {
+            // verifica se preencheu o textbox...
+            if (!string.IsNullOrEmpty(textBox.Text))
+            {
+                
+                if(fieldName.Equals("nome")){
+                    // adiciona o filtro...
+                    if (filter.Length > 0)
+                        filter.Append(" AND ");
+                    filter.Append(string.Format("{0} LIKE @{0}", fieldName));
+                    // adiciona o parâmetro...
+                    command.Parameters.AddWithValue(string.Format("@{0}", fieldName), "%"+textBox.Text+"%");
+                }
+                else
+                {
+                    // adiciona o filtro...
+                    if (filter.Length > 0)
+                        filter.Append(" AND ");
+                    filter.Append(string.Format("{0} = @{0}", fieldName));
+                    // adiciona o parâmetro...
+                    command.Parameters.AddWithValue(string.Format("@{0}", fieldName), textBox.Text);
+                }
+                
+            }
         }
 
         private void imprimirButton_Click(object sender, EventArgs e)

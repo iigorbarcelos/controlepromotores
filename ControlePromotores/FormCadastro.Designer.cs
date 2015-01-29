@@ -105,7 +105,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 649F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1285, 649);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1285, 582);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tabControl1
@@ -119,7 +119,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1277, 641);
+            this.tabControl1.Size = new System.Drawing.Size(1277, 574);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseClick);
             // 
@@ -130,7 +130,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1269, 612);
+            this.tabPage1.Size = new System.Drawing.Size(1269, 545);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pesquisar";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -147,12 +147,12 @@
             this.promotoresGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.promotoresGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.promotoresGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.promotoresGrid.Location = new System.Drawing.Point(9, 7);
+            this.promotoresGrid.Location = new System.Drawing.Point(0, 4);
             this.promotoresGrid.Margin = new System.Windows.Forms.Padding(4);
             this.promotoresGrid.MultiSelect = false;
             this.promotoresGrid.Name = "promotoresGrid";
             this.promotoresGrid.ReadOnly = true;
-            this.promotoresGrid.Size = new System.Drawing.Size(1249, 594);
+            this.promotoresGrid.Size = new System.Drawing.Size(1249, 533);
             this.promotoresGrid.TabIndex = 1;
             this.promotoresGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.promotoresGrid_CellClick);
             // 
@@ -163,7 +163,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1269, 612);
+            this.tabPage2.Size = new System.Drawing.Size(1269, 545);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Novo";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -206,18 +206,18 @@
             this.promotorGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.promotorGroupBox.Name = "promotorGroupBox";
             this.promotorGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.promotorGroupBox.Size = new System.Drawing.Size(1251, 610);
+            this.promotorGroupBox.Size = new System.Drawing.Size(1251, 543);
             this.promotorGroupBox.TabIndex = 12;
             this.promotorGroupBox.TabStop = false;
             this.promotorGroupBox.Text = "Dados do Promotor";
             // 
             // jornadaGroupBox
             // 
-            this.jornadaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.jornadaGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.jornadaGroupBox.Controls.Add(this.cargaHorariaTextBox);
             this.jornadaGroupBox.Controls.Add(this.enviaRelatorioCheckBox);
             this.jornadaGroupBox.Controls.Add(this.cargaLabel);
-            this.jornadaGroupBox.Location = new System.Drawing.Point(11, 332);
+            this.jornadaGroupBox.Location = new System.Drawing.Point(699, 396);
             this.jornadaGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.jornadaGroupBox.Name = "jornadaGroupBox";
             this.jornadaGroupBox.Padding = new System.Windows.Forms.Padding(4);
@@ -408,7 +408,7 @@
             this.SupervisorGroupBox.Controls.Add(this.emailSupervisorTextBox);
             this.SupervisorGroupBox.Controls.Add(this.emailSupervisorLabel);
             this.SupervisorGroupBox.Controls.Add(this.contatoSupervisorLabel);
-            this.SupervisorGroupBox.Location = new System.Drawing.Point(11, 463);
+            this.SupervisorGroupBox.Location = new System.Drawing.Point(11, 396);
             this.SupervisorGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.SupervisorGroupBox.Name = "SupervisorGroupBox";
             this.SupervisorGroupBox.Padding = new System.Windows.Forms.Padding(4);
@@ -619,7 +619,7 @@
             // 
             this.GravarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.GravarButton.Enabled = false;
-            this.GravarButton.Location = new System.Drawing.Point(341, 768);
+            this.GravarButton.Location = new System.Drawing.Point(341, 714);
             this.GravarButton.Margin = new System.Windows.Forms.Padding(4);
             this.GravarButton.Name = "GravarButton";
             this.GravarButton.Size = new System.Drawing.Size(100, 32);
@@ -631,7 +631,7 @@
             // sairButton
             // 
             this.sairButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.sairButton.Location = new System.Drawing.Point(1201, 768);
+            this.sairButton.Location = new System.Drawing.Point(1201, 714);
             this.sairButton.Margin = new System.Windows.Forms.Padding(4);
             this.sairButton.Name = "sairButton";
             this.sairButton.Size = new System.Drawing.Size(100, 32);
@@ -643,7 +643,7 @@
             // editarButton
             // 
             this.editarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editarButton.Location = new System.Drawing.Point(233, 768);
+            this.editarButton.Location = new System.Drawing.Point(233, 714);
             this.editarButton.Margin = new System.Windows.Forms.Padding(4);
             this.editarButton.Name = "editarButton";
             this.editarButton.Size = new System.Drawing.Size(100, 32);
@@ -655,7 +655,7 @@
             // novoButton
             // 
             this.novoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.novoButton.Location = new System.Drawing.Point(125, 768);
+            this.novoButton.Location = new System.Drawing.Point(125, 714);
             this.novoButton.Margin = new System.Windows.Forms.Padding(4);
             this.novoButton.Name = "novoButton";
             this.novoButton.Size = new System.Drawing.Size(100, 32);
@@ -667,7 +667,7 @@
             // pesquisarButton
             // 
             this.pesquisarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pesquisarButton.Location = new System.Drawing.Point(16, 768);
+            this.pesquisarButton.Location = new System.Drawing.Point(16, 714);
             this.pesquisarButton.Margin = new System.Windows.Forms.Padding(4);
             this.pesquisarButton.Name = "pesquisarButton";
             this.pesquisarButton.Size = new System.Drawing.Size(100, 32);
@@ -697,7 +697,7 @@
             this.AutoSize = true;
             this.BackgroundImage = global::ControlePromotores.Properties.Resources.MenuprincipalBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1313, 821);
+            this.ClientSize = new System.Drawing.Size(1313, 767);
             this.Controls.Add(this.sairButton);
             this.Controls.Add(this.GravarButton);
             this.Controls.Add(this.tituloLabel);

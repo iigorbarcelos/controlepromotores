@@ -85,7 +85,6 @@
             this.fotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.fotoPictureBox.TabIndex = 6;
             this.fotoPictureBox.TabStop = false;
-            this.fotoPictureBox.Visible = false;
             // 
             // codigoLabel
             // 
@@ -155,6 +154,7 @@
             // 
             // desativaButton
             // 
+            this.desativaButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.desativaButton.Location = new System.Drawing.Point(139, 575);
             this.desativaButton.Margin = new System.Windows.Forms.Padding(4);
             this.desativaButton.Name = "desativaButton";
@@ -192,12 +192,13 @@
             // 
             this.ImgDigital.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ImgDigital.Image = global::ControlePromotores.Properties.Resources._91m;
-            this.ImgDigital.Location = new System.Drawing.Point(832, 12);
+            this.ImgDigital.Location = new System.Drawing.Point(832, 17);
             this.ImgDigital.Name = "ImgDigital";
             this.ImgDigital.Size = new System.Drawing.Size(199, 240);
             this.ImgDigital.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ImgDigital.TabIndex = 12;
             this.ImgDigital.TabStop = false;
+            this.ImgDigital.Visible = false;
             // 
             // timer1
             // 
@@ -239,10 +240,10 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
             this.Name = "Controle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgDigital)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgLuz)).EndInit();

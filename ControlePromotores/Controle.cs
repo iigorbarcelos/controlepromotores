@@ -20,12 +20,16 @@ namespace ControlePromotores
         interfaceBiometria biometria = new interfaceBiometria();
         ConfiguraEmail email = new ConfiguraEmail();
         System.Windows.Forms.Timer timer = null;
+        
      
         public Controle()
         {
             InitializeComponent();
             codigoTextBox.TabIndex = 0;
             codigoTextBox.Focus();
+            fotoPictureBox.ImageLocation = "T:/img/indigente.jpg";
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
         }
                       
         private void sairButton_Click(object sender, EventArgs e)
@@ -49,39 +53,24 @@ namespace ControlePromotores
             
             //Entra no laço quando houver um dedo no leitor.
             if (biometria.checkFinger() == true)
-            {
-                try
-                {
-                    //limpaFormulario();
+            {              
+                    limpaFormulario();
                     biometria.abreDispositivo();
                     codpromotor = biometria.verificaIdentidade();
                     biometria.fechaDispositivo();
                     buscaDadosPromotor(codpromotor);
                     desabilitaTimerDesenho();                    
-                    fotoPictureBox.Visible = true;
                     registraEntrada(codpromotor, nomeTextBox.Text, empresaTextBox.Text);
-                    /*email.enviaEmail(emailSupervisorTextBox.ToString(), 
-                                    "Atividade do funcionario "+nomeTextBox.Text.ToString()+ " - Atacadao DiaDia", 
-                                    "Nova atividade do funcionário "+ nomeTextBox.Text +
-                                    "<br> Dia - "+ DateTime.Now.ToString().Substring(0,10)+ "\n"+
-                                    "<br> Hora: "+ DateTime.Now.TimeOfDay.ToString().Substring(0,5));*/
-                    //habilitaTimerDesenho();
-                    //limpaFormulario();           
-                }
-                catch (Exception)
-                {
 
-                }
-                finally
-                {
-                    
-                }         
+                    if (codpromotor != null || codpromotor != 0)
+                    {
+                        email.enviaEmail(emailSupervisorTextBox.ToString(),
+                        "Atividade do funcionario " + nomeTextBox.Text.ToString() + " - Atacadao DiaDia",
+                        "Nova atividade do funcionário " + nomeTextBox.Text +
+                        "<br> Dia - " + DateTime.Now.ToString().Substring(0, 10) + "\n" +
+                        "<br> Hora: " + DateTime.Now.TimeOfDay.ToString().Substring(0, 5));
+                    }
             }
-        }
-
-        public void atualizaFrame()
-        {
-            this.Refresh();
         }
        
         //Busca dados do promotor que está dando entrada
@@ -110,7 +99,6 @@ namespace ControlePromotores
 
                 while (reader.Read())
                 {
-
                         codigoTextBox.Text = codpromotor.ToString();
                         nomeTextBox.Text = reader.GetString(1);
                         empresaTextBox.Text = reader.GetString(2);
@@ -127,7 +115,6 @@ namespace ControlePromotores
             finally
             {
                 conn.Close();
-                this.Refresh();
             }
 
         }
@@ -164,7 +151,6 @@ namespace ControlePromotores
                 finally
                 {
                     conn.Close();
-                    this.Refresh();
                 }
             }        
 
@@ -177,12 +163,13 @@ namespace ControlePromotores
                 empresaTextBox.Text = "";
                 fotoPictureBox.ImageLocation = "T:/img/indigente.jpg";
                 codpromotor = 0;
-                this.Refresh();
         }
 
         private void ativaButton_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
+            //timer1.Enabled = true;
+            ImgDigital.Visible = false;
+            ImgLuz.Visible = false;
             ativaCaptura();
         }
 
@@ -191,11 +178,7 @@ namespace ControlePromotores
             timer1.Dispose();
             if (timer!=null){
                 timer.Dispose();
-                //MessageBox.Show("Leitor desativado com sucesso!");
-            }
-            else
-            {
-                MessageBox.Show("O leitor ja está desativado!");
+                MessageBox.Show("Leitor desativado com sucesso!");
             }
 
         }
@@ -225,6 +208,7 @@ namespace ControlePromotores
             timer1.Enabled = false;
             ImgDigital.Visible = false;
             ImgLuz.Visible = false;
+            fotoPictureBox.Visible = true;
         }
 
         public void habilitaTimerDesenho()

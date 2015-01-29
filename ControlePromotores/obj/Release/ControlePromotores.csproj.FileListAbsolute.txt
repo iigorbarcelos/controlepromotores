@@ -14,24 +14,16 @@ C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\Con
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.csproj.GenerateResource.Cache
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.exe
 C:\Users\Igor Barcelos\Documents\Visual Studio 2012\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.pdb
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\ControlePromotores.exe
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Imaging.dll
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\Relatorio.cs
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\Relatorio.rpt
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\ControlePromotores.exe.config
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\ControlePromotores.exe.manifest
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\ControlePromotores.application
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\ControlePromotores.exe
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\ControlePromotores.pdb
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Controls.dll
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.dll
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Video.DirectShow.dll
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Video.dll
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\nitgen.sdk.nbiobsp.dll
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Math.dll
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.xml
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Controls.xml
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Video.xml
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Video.DirectShow.xml
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Imaging.xml
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Math.xml
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\bin\Release\AForge.Imaging.dll
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.CheckinPessoa.resources
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.ConfiguraEmail.resources
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.Controle.resources
@@ -42,6 +34,7 @@ C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControleProm
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.SnapshotForm.resources
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.Webcam.resources
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.csproj.GenerateResource.Cache
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.exe.manifest
+C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.application
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.exe
 C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.pdb
-C:\Users\Igor\Documents\Visual Studio 2013\Projects\projetosmercado\ControlePromotores\obj\Release\ControlePromotores.csprojResolveAssemblyReference.cache

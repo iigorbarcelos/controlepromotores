@@ -54,5 +54,16 @@ namespace ControlePromotores.Properties {
                 this["SomeProperty"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.10.0.65;Initial Catalog=biometria;Persist Security Info=True;User " +
+            "ID=sa")]
+        public string connBanco {
+            get {
+                return ((string)(this["connBanco"]));
+            }
+        }
     }
 }

@@ -76,5 +76,10 @@ namespace ControlePromotores
             this.parentSec.Dispose();
             this.Dispose();
         }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
