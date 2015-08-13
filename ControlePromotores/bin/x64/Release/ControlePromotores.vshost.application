@@ -4,17 +4,17 @@
   <description asmv2:publisher="ControlePromotores" asmv2:product="ControlePromotores" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="ControlePromotores.exe.manifest" size="7693">
+    <dependentAssembly dependencyType="install" codebase="ControlePromotores.exe.manifest" size="27601">
       <assemblyIdentity name="ControlePromotores.exe" version="2.0.0.3" publicKeyToken="0000000000000000" language="pt-BR" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KnTwbRfDjPmvAlqsVT9a4UxqNyPJBGbAT4awfPbo84E=</dsig:DigestValue>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>WOFG1cd+4SNw1caJCZQKWQrEgV4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
