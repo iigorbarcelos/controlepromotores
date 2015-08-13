@@ -47,6 +47,7 @@
             this.tileGroup3 = new DevExpress.XtraEditors.TileGroup();
             this.tileItemCadFilial = new DevExpress.XtraEditors.TileItem();
             this.tileItemCadUsuarios = new DevExpress.XtraEditors.TileItem();
+            this.tileGroup5 = new DevExpress.XtraEditors.TileGroup();
             this.DispararTileItem = new DevExpress.XtraEditors.TileItem();
             this.versionLabel = new DevExpress.XtraEditors.LabelControl();
             this.timerLabel = new DevExpress.XtraEditors.LabelControl();
@@ -63,7 +64,6 @@
             this.sairButton = new DevExpress.XtraEditors.SimpleButton();
             this.TituloPictureBox = new System.Windows.Forms.PictureBox();
             this.fundoPictureBox = new System.Windows.Forms.PictureBox();
-            this.tileGroup5 = new DevExpress.XtraEditors.TileGroup();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupAlertas)).BeginInit();
@@ -245,6 +245,12 @@
             this.tileItemCadUsuarios.Name = "tileItemCadUsuarios";
             this.tileItemCadUsuarios.TextShowMode = DevExpress.XtraEditors.TileItemContentShowMode.Always;
             this.tileItemCadUsuarios.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.tileItemCadUsuarios_ItemClick);
+            // 
+            // tileGroup5
+            // 
+            this.tileGroup5.Items.Add(this.DispararTileItem);
+            this.tileGroup5.Name = "tileGroup5";
+            this.tileGroup5.Text = null;
             // 
             // DispararTileItem
             // 
@@ -430,12 +436,6 @@
             this.fundoPictureBox.TabIndex = 9;
             this.fundoPictureBox.TabStop = false;
             // 
-            // tileGroup5
-            // 
-            this.tileGroup5.Items.Add(this.DispararTileItem);
-            this.tileGroup5.Name = "tileGroup5";
-            this.tileGroup5.Text = null;
-            // 
             // MenuPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -455,6 +455,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Frequencia";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuPrincipalForm_FormClosing);
             this.Load += new System.EventHandler(this.MenuPrincipalForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

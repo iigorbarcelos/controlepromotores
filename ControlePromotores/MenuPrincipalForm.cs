@@ -175,5 +175,10 @@ namespace ControlePromotores
         {
             verificaAlertas();
         }
+
+        private void MenuPrincipalForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

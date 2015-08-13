@@ -31,8 +31,6 @@ namespace ControlePromotores
 
         private void ConfirmarButton_Click(object sender, EventArgs e)
         {
-            if (SenhaTextBox.Text.Equals(SenhaConfirmarTextBox.Text))
-            {
                 Cryptografia criptografarSenha = new Cryptografia();
                 SqlCommand updateSenha = new SqlCommand(@"update usuarios set senha = @SENHA
                                                         where matricula = @MATRICULA", conn);
@@ -52,14 +50,6 @@ namespace ControlePromotores
                 {
                     conn.Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("As senhas não coincidem! Favor verifique a senha digitada!");
-                SenhaTextBox.Text = "";
-                SenhaConfirmarTextBox.Text = "";
-                SenhaTextBox.Focus();
-            }
         }
 
         private void CancelarButton_Click(object sender, EventArgs e)
@@ -69,7 +59,15 @@ namespace ControlePromotores
 
         private void SenhaConfirmarTextBox_Leave(object sender, EventArgs e)
         {
-            if (SenhaTextBox.Text.Equals(SenhaConfirmarTextBox.Text))
+            if (!SenhaTextBox.Text.Equals(SenhaConfirmarTextBox.Text) || SenhaTextBox.Text.Equals(""))
+            {
+                MessageBox.Show("As senhas não coincidem!");
+                SenhaConfirmarTextBox.Text = "";
+                SenhaTextBox.Text = "";
+                SenhaTextBox.Focus();
+                ConfirmarButton.Enabled = false;
+            }
+            else
             {
                 ConfirmarButton.Enabled = true;
             }
