@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMovimentacoes" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ControlePromotores.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="connBiometriaFinal" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="connBiometriaFinal (Settings)" PropertyReference="ApplicationSettings.ControlePromotores.Properties.Settings.GlobalReference.Default.connBiometriaFinal" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="movpromotoresAdapter" GeneratorDataComponentClassName="movpromotoresAdapter" Name="movpromotores" UserDataComponentName="movpromotoresAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="connBiometriaFinal (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select ENTRADAS.data
+	  ,ENTRADAS.codpromotor
+                  ,ENTRADAS.CODFILIAL
+	  ,ENTRADAS.nome
+	  ,ENTRADAS.FORNECEDOR
+                  ,ENTRADAS.horasContratuais
+	  ,ENTRADAS.entrada1
+	  ,ENTRADAS.saida1
+	  ,ENTRADAS.entrada2
+	  ,ENTRADAS.saida2
+	  , dbo.func_cargaHoraria(entradas.saida2,entradas.entrada2,entradas.saida1,entradas.entrada1) as CARGAHORARIA
+	  , Convert(int,dbo.func_CalculaMinutosDiarios(entradas.saida2,entradas.entrada2,entradas.saida1,entradas.entrada1) )as MINUTOSDIARIOS
+
+ from 
+	(select convert(char,m.data,106) as data 
+	  , m.codpromotor
+                  , m.codfilial
+	  , p.nome
+	  , p.FORNECEDOR
+                  , p.cargaHoraria as horasContratuais
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=1) entrada1
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=2) saida1  
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=3) entrada2    
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=4) saida2
+	from 
+	  movpromotores m, promotores p
+	where m.registro is not null
+	and p.codpromotor = m.codpromotor
+	and m.data&gt; '2015-04-01') ENTRADAS
+
+group by  entradas.codpromotor
+         ,entradas.codfilial
+         ,entradas.nome
+         ,entradas.fornecedor
+         ,ENTRADAS.horasContratuais
+         ,ENTRADAS.data
+         ,ENTRADAS.entrada1
+         ,ENTRADAS.entrada2
+         ,ENTRADAS.saida1
+         ,ENTRADAS.saida2
+         
+order by ENTRADAS.data desc, ENTRADAS.FORNECEDOR, ENTRADAS.nome</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="codpromotor" DataSetColumn="codpromotor" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="data" DataSetColumn="data" />
+              <Mapping SourceColumn="entrada1" DataSetColumn="entrada1" />
+              <Mapping SourceColumn="saida1" DataSetColumn="saida1" />
+              <Mapping SourceColumn="entrada2" DataSetColumn="entrada2" />
+              <Mapping SourceColumn="saida2" DataSetColumn="saida2" />
+              <Mapping SourceColumn="CARGAHORARIA" DataSetColumn="CARGAHORARIA" />
+              <Mapping SourceColumn="MINUTOSDIARIOS" DataSetColumn="MINUTOSDIARIOS" />
+              <Mapping SourceColumn="horasContratuais" DataSetColumn="horasContratuais" />
+              <Mapping SourceColumn="FORNECEDOR" DataSetColumn="FORNECEDOR" />
+              <Mapping SourceColumn="CODFILIAL" DataSetColumn="CODFILIAL" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="filialTableAdapter" GeneratorDataComponentClassName="filialTableAdapter" Name="filial" UserDataComponentName="filialTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="connBiometriaFinal (Settings)" DbObjectName="biometria.dbo.filial" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [FILIAL] ([dtinativo], [razaoSocial], [cnpj], [fantasia], [endereco]) VALUES (?, ?, ?, ?, ?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="dtinativo" Precision="0" ProviderType="DBDate" Scale="0" Size="0" SourceColumn="dtinativo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="razaoSocial" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="razaoSocial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="cnpj" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="cnpj" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="fantasia" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="fantasia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="endereco" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="endereco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM FILIAL ORDER BY CODFILIAL</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="codfilial" DataSetColumn="codfilial" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="dtinativo" DataSetColumn="dtinativo" />
+              <Mapping SourceColumn="razaoSocial" DataSetColumn="razaoSocial" />
+              <Mapping SourceColumn="cnpj" DataSetColumn="cnpj" />
+              <Mapping SourceColumn="fantasia" DataSetColumn="fantasia" />
+              <Mapping SourceColumn="endereco" DataSetColumn="endereco" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="connBiometriaFinal (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="insertFilial" Modifier="Public" Name="insertFilial" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="insertFilial">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO FILIAL VALUES
+                                     (@DTINATIVO, @RAZAOSOCIAL, @CNPJ, @FANTASIA, @ENDERECO)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="DTINATIVO" ColumnName="codfilial" DataSourceName="biometria.dbo.filial" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="codfilial" Precision="0" ProviderType="Integer" Scale="0" Size="4" SourceColumn="codfilial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="RAZAOSOCIAL" ColumnName="dtinativo" DataSourceName="biometria.dbo.filial" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="dtinativo" Precision="0" ProviderType="DBDate" Scale="0" Size="3" SourceColumn="dtinativo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CNPJ" ColumnName="razaoSocial" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="razaoSocial" Precision="0" ProviderType="Char" Scale="0" Size="100" SourceColumn="razaoSocial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="FANTASIA" ColumnName="cnpj" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(150)" DbType="AnsiString" Direction="Input" ParameterName="cnpj" Precision="0" ProviderType="Char" Scale="0" Size="150" SourceColumn="cnpj" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ENDERECO" ColumnName="fantasia" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="fantasia" Precision="0" ProviderType="Char" Scale="0" Size="100" SourceColumn="fantasia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="connBiometriaFinal (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="updateFilial" Modifier="Public" Name="updateFilial" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="updateFilial">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE FILIAL 
+SET FANTASIA = @FANTASIA
+, RAZAOSOCIAL = @RAZAOSOCIAL
+, DTINATIVO = @DTINATIVO
+, ENDERECO = @ENDERECO
+, CNPJ = @CNPJ
+WHERE CODFILIAL = @CODFILIAL</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="fantasia" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="fantasia" Precision="0" ProviderType="Char" Scale="0" Size="100" SourceColumn="fantasia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param2" ColumnName="razaoSocial" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(100)" DbType="AnsiString" Direction="Input" ParameterName="razaoSocial" Precision="0" ProviderType="Char" Scale="0" Size="100" SourceColumn="razaoSocial" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Param3" ColumnName="dtinativo" DataSourceName="biometria.dbo.filial" DataTypeServer="date" DbType="AnsiString" Direction="Input" ParameterName="dtinativo" Precision="0" ProviderType="DBDate" Scale="0" Size="3" SourceColumn="dtinativo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param4" ColumnName="endereco" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(150)" DbType="AnsiString" Direction="Input" ParameterName="endereco" Precision="0" ProviderType="Char" Scale="0" Size="150" SourceColumn="endereco" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param5" ColumnName="cnpj" DataSourceName="biometria.dbo.filial" DataTypeServer="varchar(150)" DbType="AnsiString" Direction="Input" ParameterName="cnpj" Precision="0" ProviderType="Char" Scale="0" Size="150" SourceColumn="cnpj" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param6" ColumnName="codfilial" DataSourceName="biometria.dbo.filial" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="Original_codfilial" Precision="0" ProviderType="Integer" Scale="0" Size="4" SourceColumn="codfilial" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsuariosDataTable" GeneratorDataComponentClassName="UsuariosDataTable" Name="Usuarios" UserDataComponentName="UsuariosDataTable">
+            <MainSource>
+              <DbSource ConnectionRef="connBiometriaFinal (Settings)" DbObjectName="biometria.dbo.usuarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM USUARIOS ORDER BY MATRICULA</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="matricula" DataSetColumn="matricula" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+              <Mapping SourceColumn="endereco" DataSetColumn="endereco" />
+              <Mapping SourceColumn="telefone" DataSetColumn="telefone" />
+              <Mapping SourceColumn="senha" DataSetColumn="senha" />
+              <Mapping SourceColumn="dtfim" DataSetColumn="dtfim" />
+              <Mapping SourceColumn="nome_usuario" DataSetColumn="nome_usuario" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="biofornecTableAdapter" GeneratorDataComponentClassName="biofornecTableAdapter" Name="biofornec" UserDataComponentName="biofornecTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="connBiometriaFinal (Settings)" DbObjectName="biometria.dbo.biofornec" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [BIOFORNEC] ([nome]) VALUES (?)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="nome" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="nome" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT * FROM BIOFORNEC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="codfornec" DataSetColumn="codfornec" />
+              <Mapping SourceColumn="nome" DataSetColumn="nome" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMovimentacoes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="dsMovimentacoes" msprop:Generator_UserDSName="dsMovimentacoes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="movpromotores" msprop:Generator_TableClassName="movpromotoresDataTable" msprop:Generator_TableVarName="tablemovpromotores" msprop:Generator_RowChangedName="movpromotoresRowChanged" msprop:Generator_TablePropName="movpromotores" msprop:Generator_RowDeletingName="movpromotoresRowDeleting" msprop:Generator_RowChangingName="movpromotoresRowChanging" msprop:Generator_RowEvHandlerName="movpromotoresRowChangeEventHandler" msprop:Generator_RowDeletedName="movpromotoresRowDeleted" msprop:Generator_RowClassName="movpromotoresRow" msprop:Generator_UserTableName="movpromotores" msprop:Generator_RowEvArgName="movpromotoresRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codpromotor" msprop:Generator_ColumnVarNameInTable="columncodpromotor" msprop:Generator_ColumnPropNameInRow="codpromotor" msprop:Generator_ColumnPropNameInTable="codpromotorColumn" msprop:Generator_UserColumnName="codpromotor" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="data" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndata" msprop:Generator_ColumnPropNameInRow="data" msprop:Generator_ColumnPropNameInTable="dataColumn" msprop:Generator_UserColumnName="data" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="entrada1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnentrada1" msprop:Generator_ColumnPropNameInRow="entrada1" msprop:Generator_ColumnPropNameInTable="entrada1Column" msprop:Generator_UserColumnName="entrada1" type="xs:anyType" minOccurs="0" />
+              <xs:element name="saida1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsaida1" msprop:Generator_ColumnPropNameInRow="saida1" msprop:Generator_ColumnPropNameInTable="saida1Column" msprop:Generator_UserColumnName="saida1" type="xs:anyType" minOccurs="0" />
+              <xs:element name="entrada2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnentrada2" msprop:Generator_ColumnPropNameInRow="entrada2" msprop:Generator_ColumnPropNameInTable="entrada2Column" msprop:Generator_UserColumnName="entrada2" type="xs:anyType" minOccurs="0" />
+              <xs:element name="saida2" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsaida2" msprop:Generator_ColumnPropNameInRow="saida2" msprop:Generator_ColumnPropNameInTable="saida2Column" msprop:Generator_UserColumnName="saida2" type="xs:anyType" minOccurs="0" />
+              <xs:element name="CARGAHORARIA" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCARGAHORARIA" msprop:Generator_ColumnPropNameInRow="CARGAHORARIA" msprop:Generator_ColumnPropNameInTable="CARGAHORARIAColumn" msprop:Generator_UserColumnName="CARGAHORARIA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MINUTOSDIARIOS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMINUTOSDIARIOS" msprop:Generator_ColumnPropNameInRow="MINUTOSDIARIOS" msprop:Generator_ColumnPropNameInTable="MINUTOSDIARIOSColumn" msprop:Generator_UserColumnName="MINUTOSDIARIOS" type="xs:int" minOccurs="0" />
+              <xs:element name="horasContratuais" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnhorasContratuais" msprop:Generator_ColumnPropNameInRow="horasContratuais" msprop:Generator_ColumnPropNameInTable="horasContratuaisColumn" msprop:Generator_UserColumnName="horasContratuais" type="xs:double" minOccurs="0" />
+              <xs:element name="FORNECEDOR" msprop:Generator_ColumnVarNameInTable="columnFORNECEDOR" msprop:Generator_ColumnPropNameInRow="FORNECEDOR" msprop:Generator_ColumnPropNameInTable="FORNECEDORColumn" msprop:Generator_UserColumnName="FORNECEDOR">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CODFILIAL" msprop:Generator_ColumnVarNameInTable="columnCODFILIAL" msprop:Generator_ColumnPropNameInRow="CODFILIAL" msprop:Generator_ColumnPropNameInTable="CODFILIALColumn" msprop:Generator_UserColumnName="CODFILIAL" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="filial" msprop:Generator_TableClassName="filialDataTable" msprop:Generator_TableVarName="tablefilial" msprop:Generator_TablePropName="filial" msprop:Generator_RowDeletingName="filialRowDeleting" msprop:Generator_RowChangingName="filialRowChanging" msprop:Generator_RowEvHandlerName="filialRowChangeEventHandler" msprop:Generator_RowDeletedName="filialRowDeleted" msprop:Generator_UserTableName="filial" msprop:Generator_RowChangedName="filialRowChanged" msprop:Generator_RowEvArgName="filialRowChangeEvent" msprop:Generator_RowClassName="filialRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codfilial" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodfilial" msprop:Generator_ColumnPropNameInRow="codfilial" msprop:Generator_ColumnPropNameInTable="codfilialColumn" msprop:Generator_UserColumnName="codfilial" type="xs:int" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dtinativo" msprop:Generator_ColumnVarNameInTable="columndtinativo" msprop:Generator_ColumnPropNameInRow="dtinativo" msprop:Generator_ColumnPropNameInTable="dtinativoColumn" msprop:Generator_UserColumnName="dtinativo" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="razaoSocial" msprop:Generator_ColumnVarNameInTable="columnrazaoSocial" msprop:Generator_ColumnPropNameInRow="razaoSocial" msprop:Generator_ColumnPropNameInTable="razaoSocialColumn" msprop:Generator_UserColumnName="razaoSocial">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cnpj" msprop:Generator_ColumnVarNameInTable="columncnpj" msprop:Generator_ColumnPropNameInRow="cnpj" msprop:Generator_ColumnPropNameInTable="cnpjColumn" msprop:Generator_UserColumnName="cnpj">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fantasia" msprop:Generator_ColumnVarNameInTable="columnfantasia" msprop:Generator_ColumnPropNameInRow="fantasia" msprop:Generator_ColumnPropNameInTable="fantasiaColumn" msprop:Generator_UserColumnName="fantasia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="endereco" msprop:Generator_ColumnVarNameInTable="columnendereco" msprop:Generator_ColumnPropNameInRow="endereco" msprop:Generator_ColumnPropNameInTable="enderecoColumn" msprop:Generator_UserColumnName="endereco">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent" msprop:Generator_RowClassName="UsuariosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="matricula" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnmatricula" msprop:Generator_ColumnPropNameInRow="matricula" msprop:Generator_ColumnPropNameInTable="matriculaColumn" msprop:Generator_UserColumnName="matricula" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="endereco" msprop:Generator_ColumnVarNameInTable="columnendereco" msprop:Generator_ColumnPropNameInRow="endereco" msprop:Generator_ColumnPropNameInTable="enderecoColumn" msprop:Generator_UserColumnName="endereco" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefone" msprop:Generator_ColumnVarNameInTable="columntelefone" msprop:Generator_ColumnPropNameInRow="telefone" msprop:Generator_ColumnPropNameInTable="telefoneColumn" msprop:Generator_UserColumnName="telefone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="senha" msprop:Generator_ColumnVarNameInTable="columnsenha" msprop:Generator_ColumnPropNameInRow="senha" msprop:Generator_ColumnPropNameInTable="senhaColumn" msprop:Generator_UserColumnName="senha">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dtfim" msprop:Generator_ColumnVarNameInTable="columndtfim" msprop:Generator_ColumnPropNameInRow="dtfim" msprop:Generator_ColumnPropNameInTable="dtfimColumn" msprop:Generator_UserColumnName="dtfim" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nome_usuario" msprop:Generator_ColumnVarNameInTable="columnnome_usuario" msprop:Generator_ColumnPropNameInRow="nome_usuario" msprop:Generator_ColumnPropNameInTable="nome_usuarioColumn" msprop:Generator_UserColumnName="nome_usuario">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="biofornec" msprop:Generator_TableClassName="biofornecDataTable" msprop:Generator_TableVarName="tablebiofornec" msprop:Generator_TablePropName="biofornec" msprop:Generator_RowDeletingName="biofornecRowDeleting" msprop:Generator_RowChangingName="biofornecRowChanging" msprop:Generator_RowEvHandlerName="biofornecRowChangeEventHandler" msprop:Generator_RowDeletedName="biofornecRowDeleted" msprop:Generator_UserTableName="biofornec" msprop:Generator_RowChangedName="biofornecRowChanged" msprop:Generator_RowEvArgName="biofornecRowChangeEvent" msprop:Generator_RowClassName="biofornecRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codfornec" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncodfornec" msprop:Generator_ColumnPropNameInRow="codfornec" msprop:Generator_ColumnPropNameInTable="codfornecColumn" msprop:Generator_UserColumnName="codfornec" type="xs:int" />
+              <xs:element name="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnPropNameInTable="nomeColumn" msprop:Generator_UserColumnName="nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//movpromotores" />
+      <xs:field xpath="codpromotor" />
+    </xs:unique>
+    <xs:unique name="Usuarios_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//Usuarios" />
+      <xs:field xpath="matricula" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

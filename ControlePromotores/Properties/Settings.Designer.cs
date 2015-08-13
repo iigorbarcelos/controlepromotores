@@ -23,26 +23,6 @@ namespace ControlePromotores.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=IGOR\\BIOMETRIC;Initial Catalog=master;Integrated Security=True")]
-        public string biometricConnectionString {
-            get {
-                return ((string)(this["biometricConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=IGOR\\BIOMETRIC;Initial Catalog=biometria;Integrated Security=True")]
-        public string biometriaConnectionString {
-            get {
-                return ((string)(this["biometriaConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -58,11 +38,22 @@ namespace ControlePromotores.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.10.0.65;Initial Catalog=biometria;Persist Security Info=True;User " +
-            "ID=sa")]
-        public string connBanco {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=srvbiometria;Initial Catalog=biometria;User ID=sa;Password=pvcs88ss12" +
+            "")]
+        public string conn_Pravoce {
             get {
-                return ((string)(this["connBanco"]));
+                return ((string)(this["conn_Pravoce"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI11;Data Source=10.10.0.65;Persist Security Info=True;Password=pvc" +
+            "s88ss12;User ID=sa;Initial Catalog=biometria")]
+        public string connBiometriaFinal {
+            get {
+                return ((string)(this["connBiometriaFinal"]));
             }
         }
     }

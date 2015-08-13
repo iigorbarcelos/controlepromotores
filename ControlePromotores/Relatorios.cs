@@ -10,360 +10,239 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Collections;
-
+using System.Diagnostics;
+using Microsoft.Reporting.WinForms;    
+using System.IO;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ControlePromotores
 {
     public partial class Relatorios : Form
     {
-
-
+        StringBuilder selectPromotores = null;
+        
+        //Lista com todos os promotores e suas horas pendentes para envio de emails automático.
         ArrayList listaPromotores = new ArrayList();
         Promotor promotor = new Promotor();
-
   
         public Relatorios()
         {
             InitializeComponent();
-          
+            ImprimirButton.Enabled = false;
+
+            //Define qual o container responsável para ativar a transparência.
+            tituloLabel.Parent = FundoPictureBox;
+            filtrosGroupBox.Parent = FundoPictureBox;
+            qtRegistrosLabel.Parent = FundoPictureBox;
+            ativaTransparenciaLabel();
+            obtemVersao();
+            populaFiliais();
         }
 
-        private void sairButton_Click(object sender, EventArgs e)
+        private void ativaTransparenciaLabel()
         {
-            this.Dispose();
+            versionLabel.Parent = FundoPictureBox;
         }
 
-        private void pesquisarButton_Click(object sender, EventArgs e)
+
+        private void obtemVersao()
         {
-           SqlConnection conn = new ConnectionFactory().getConnection();
-
-           SqlCommand command = new SqlCommand();
-
-              // monta o filtro...
-              StringBuilder filter = new StringBuilder();
-              this.AppendFilter(filter, command, "codpromotor", TextBoxCodigo);
-              this.AppendFilter(filter, command, "nome", TextBoxNome);
-
-              command.CommandText = @"SELECT
-                              numtransent
-                              ,   codpromotor
-                              ,   nome
-                              ,   empresa
-                              ,   hora
-                              FROM MOVPROMOTORES WHERE " + filter.ToString();
-
-
-           command.Connection = conn;
-         
-            SqlDataAdapter adaptador = new SqlDataAdapter(command);
-
-            DataTable movpromotores = new DataTable();
-
-            adaptador.Fill(movpromotores);
-
-            entradasGrid.DataSource = movpromotores;            
-
-            entradasGrid.Refresh();
-        }
-
-        private void AppendFilter(StringBuilder filter, System.Data.SqlClient.SqlCommand command,
-         string fieldName, TextBox textBox)
-        {
-            // verifica se preencheu o textbox...
-            if (!string.IsNullOrEmpty(textBox.Text))
-            {
-                
-                if(fieldName.Equals("nome")){
-                    // adiciona o filtro...
-                    if (filter.Length > 0)
-                        filter.Append(" AND ");
-                    filter.Append(string.Format("{0} LIKE @{0}", fieldName));
-                    // adiciona o parâmetro...
-                    command.Parameters.AddWithValue(string.Format("@{0}", fieldName), "%"+textBox.Text+"%");
-                }
-                else
-                {
-                    // adiciona o filtro...
-                    if (filter.Length > 0)
-                        filter.Append(" AND ");
-                    filter.Append(string.Format("{0} = @{0}", fieldName));
-                    // adiciona o parâmetro...
-                    command.Parameters.AddWithValue(string.Format("@{0}", fieldName), textBox.Text);
-                }
-                
-            }
-        }
-
-        private void imprimirButton_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void enviaRelatorioEmail_Click(object sender, EventArgs e)
-        {
-
-            SqlConnection conn = new ConnectionFactory().getConnection();
-            
-            //Cria um novo comando sql
-            SqlCommand command = new SqlCommand(
-
-@";WITH Lancamentoshoras As (
-
-SELECT  
-    codpromotor, Data, hora,  
-   ROW_NUMBER() OVER ( 
-        PARTITION BY Data, codpromotor 
-        ORDER BY Data, codpromotor, hora) As Pos 
-FROM movpromotores),
-
-LancamentosOrganizados As ( 
-
-SELECT 
-    L1.codpromotor, L1.Data, 
-    L1.hora As Entrada, L2.hora As Saida
-FROM 
-    Lancamentoshoras As L1
-    INNER JOIN Lancamentoshoras As L2 ON
-        L1.codpromotor = L2.codpromotor 
-        AND L1.Data = L2.Data
-        AND L1.Pos = L2.Pos - 1
-        AND L1.Pos % 2 = 1) 
-
-SELECT codpromotor, datepart(WEEK,Data) as semana,  
-    RIGHT('0' + CAST(SUM(DateDiff(Mi,Entrada,Saida)) / 60 As VARCHAR(2)),2) + ',' +
-    RIGHT('0' + CAST(SUM(DateDiff(Mi,Entrada,Saida)) % 60 As VARCHAR(2)),2) 
-As CargaHoraria
-
-FROM LancamentosOrganizados
-where DATEPART(WEEK, Data) = DATEPART(WEEK,SYSDATETIME())
-GROUP BY codpromotor, datepart(WEEK,Data)", conn);
-
-            try
-            {
-
-                ArrayList listaGrid = new ArrayList();
-                SqlDataReader relatorioSemanas = command.ExecuteReader();
-            
-                while (relatorioSemanas.Read())
-                {
-                    /*O busca dados, completa os dados que são obtidos pelo select do acúmulo de horas, como nome, email do 
-                    supervisor e etc, para cada linha obtida com o select de carga horaria. Esse método, também ja inclui
-                    cada promotor na lista, com as informações completas.
-                    */
-                  listaGrid.AddRange(buscaDados(relatorioSemanas.GetInt32(0), relatorioSemanas.GetString(2), relatorioSemanas.GetInt32(1)));                
-                }
-
-                entradasGrid.DataSource = listaPromotores;
-
-                //popula a grid com os resultados da busca.
-                entradasGrid.DataSource = listaGrid;
-                // Atualiza o GUI do usuário.
-                entradasGrid.Refresh();
-
-            }
-
-            catch (SqlException exc)
-            {
-                MessageBox.Show("Erro ao consultar dados da semana \n" + exc);
-            }
-            finally
-            {
-                conn.Close();
-                          
-            }
-            
-            
-        }
-
-        //@param1 codpromotor
-        //@param2 horasaCUMULADAS - TOTAL DE HORAS DA SEMANA
-        //@param3 semana - INTEIRO COM NUMERO DA SEMANA CORRESPONDENTE
-        //@return Arraylist - contém todos os promotores que foram encontrados.
-        public ArrayList buscaDados(int codpromotor, String horasAcumuladas, int semana)
-        {
-          
-            ArrayList listaPromotores = new ArrayList();
-
-            SqlConnection conn = new ConnectionFactory().getConnection();
-            Promotor promotor = new Promotor();
-            promotor.codpromotor = codpromotor;
-            promotor.horasAcumuladas = horasAcumuladas;
-            promotor.semana = semana;
-
-            SqlCommand command = new SqlCommand(
-                @"SELECT
-                    NOME, 
-                    EMAILSUPERVISOR,
-                    CARGAHORARIA
-                  FROM PROMOTORES
-                  WHERE CODPROMOTOR = @CODPROMOTOR", conn);
-
-            SqlParameter codpromotorParametro = new SqlParameter("@CODPROMOTOR", codpromotor);
-
-            command.Parameters.Add(codpromotorParametro);
-
-            try
-            {
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    promotor.nome = (string)reader["nome"];
-                    promotor.emailSupervisor = (string)reader["emailsupervisor"];
-                    promotor.cargaHoraria = Convert.ToDouble(reader["cargaHoraria"]);
-
-                }
-
-                //reader.Close();
-                command.Dispose();
-            }
-            catch (SqlException exc)
-            {
-                MessageBox.Show("Erro ao enviar todos os emails!" + exc);
-            }
-            finally
-            {
-                conn.Close();
-                
-            }
-
-            //Calculo das horas pendentes do funcionario em questao, baseado na quantidade de horas acumuladas e horas cadastradas.
-            String horasPendentes = (Convert.ToDouble(promotor.cargaHoraria) - Convert.ToDouble(promotor.horasAcumuladas)).ToString().Replace(",",":");
-
-            if (enviaEmail(promotor.emailSupervisor, "Relatório de atividade semanal de promotores Atacadao Dia a Dia", 
-                       "Funcionário: "+ promotor.nome + "<br>Horas atingidas: "+ promotor.horasAcumuladas.Replace(",", ":") + "hrs.<br>"+
-                       "Carga horária cadastrada: "+ promotor.cargaHoraria+ "hrs.<br>"
-                       +"Horas pendentes: "+ horasPendentes + "hrs."))
-                MessageBox.Show("Email enviado com sucesso !");
-            else
-                MessageBox.Show("Falha ao enviar email");
-
-            listaPromotores.Add(promotor);
-
-            //Grava o log da pendencia do fornecedor
-            conn.Open();
-
-            string queryInsertLog = "";
-
-            if (promotor.semana == 1)
-            {
-                queryInsertLog = @"INSERT INTO LOGCARGAHORARIA
-                  (CODPROMOTOR
-                  ,NOME
-                  ,HORASPENDENTES
-                  ,SEMANA1
-                  ,MES)
-                   VALUES (
-                    '" + promotor.codpromotor + "','" +
-                       promotor.nome + "','" +
-                       horasPendentes + "'," +
-                       "@semana1" + "," +
-                       "@mes" + ")";
-            }
-            else if (semana == 2)
-            {
-                queryInsertLog = @"INSERT INTO LOGCARGAHORARIA
-                  (CODPROMOTOR
-                  ,NOME
-                  ,HORASPENDENTES
-                  ,SEMANA2
-                  ,MES)
-                   VALUES (
-                    '" + promotor.codpromotor + "','" +
-                       promotor.nome + "','" +
-                       horasPendentes + "'," +
-                       "@semana2" + "," +
-                       "@mes" + ")";
-            }
-            else if (semana == 3)
-            {
-                queryInsertLog = @"INSERT INTO LOGCARGAHORARIA
-                  (CODPROMOTOR
-                  ,NOME
-                  ,HORASPENDENTES
-                  ,SEMANA3
-                  ,MES)
-                   VALUES (
-                    '" + promotor.codpromotor + "','" +
-                       promotor.nome + "','" +
-                       horasPendentes + "'," +
-                       "@semana3" + "," +
-                       "@mes" + ")";
-            }
-            else
-            {
-                queryInsertLog = @"INSERT INTO LOGCARGAHORARIA
-                  (CODPROMOTOR
-                  ,NOME
-                  ,HORASPENDENTES
-                  ,SEMANA4
-                  ,MES)
-                   VALUES (
-                    '" + promotor.codpromotor + "','" +
-                       promotor.nome + "','" +
-                       horasPendentes + "'," +
-                       "@semana4" + "," +
-                       "@mes" + ")";
-            }
-            
-
-
-            SqlCommand gravaLog = new SqlCommand(queryInsertLog, conn);   
-            
-            SqlParameter @mes = new SqlParameter("@mes", DateTime.Now.Month);
-            gravaLog.Parameters.Add(@mes);
-
-           
-        
-             switch (semana)
-             {
-                 case 1:
-                                        
-                     SqlParameter @semana1 = new SqlParameter("@semana1", horasPendentes);
-                     gravaLog.Parameters.Add(@semana1);
-                     break;
-                 case 2:
-                     SqlParameter @semana2 = new SqlParameter("@semana2", horasPendentes);
-                     gravaLog.Parameters.Add(@semana2);
-                     break;
-                 case 3:
-                     SqlParameter @semana3 = new SqlParameter("@semana3", horasPendentes);
-                     gravaLog.Parameters.Add(@semana3);
-                     break;
-                 case 4:
-                     SqlParameter @semana4 = new SqlParameter("@semana4", horasPendentes);
-                     gravaLog.Parameters.Add(@semana4);
-                     break;
-             }
-           
-            try
-            {
-               gravaLog.ExecuteNonQuery(); 
-            } catch (SqlException exc){
-                MessageBox.Show("Erro ao gravar log de horas pendentes"+ exc);
-            } finally {
-                conn.Close();
-            }
-
-            promotor = null;
-            return listaPromotores;
-        }
-
-        public bool enviaEmail(String destinatario, String assunto, String mensagem)
-        {
-
-            ConfiguraEmail email = new ConfiguraEmail();
-            if (email.enviaEmail(destinatario, assunto, mensagem))
-                return true;
-            else
-                return false;
-
-        }
+            //Mostra a versão atual do programa.
+            versionLabel.Text = "versão: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        } 
 
         private void Relatorios_Load(object sender, EventArgs e)
         {
 
+        }
 
-        }      
-        
+        private void populaFiliais()
+        {
+            OracleConnection conn = new ConnectionFactory().getConnectionOracle();
+
+            OracleCommand cmdSelectFiliais = new OracleCommand(@"SELECT CODIGO, FANTASIA FROM PCFILIAL
+                                                                 WHERE CODIGO NOT IN (2, 5, 7, 6, 3, 99)
+                                                                 ORDER BY CODIGO", conn);
+
+            try
+            {
+                OracleDataReader rdSelectFiliais = cmdSelectFiliais.ExecuteReader();
+
+                while (rdSelectFiliais.Read())
+                {
+                    FilialComboBox.Items.Add(rdSelectFiliais["CODIGO"].ToString()+
+                                             " - "+ rdSelectFiliais["FANTASIA"].ToString());
+                }
+
+                rdSelectFiliais.Close();
+            }
+            catch (OracleException exc)
+            {
+                MessageBox.Show("Erro ao buscar filiais!"+ exc);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void entradasGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void entradasGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (this.entradasGrid.Columns[e.ColumnIndex].Name == "SAIDA")
+            {
+                if (e.Value == null)
+                {
+                    DataGridViewRow row = entradasGrid.Rows[e.RowIndex];
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                    e.CellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void PesquisarButton_Click_1(object sender, EventArgs e)
+        {         
+            SqlConnection conn = new ConnectionFactory().getConnection();
+
+            SqlCommand command = new SqlCommand();
+
+            ImprimirButton.Enabled = true;
+
+            //String que conterá o select responsável por buscar os promotores.
+            selectPromotores = new StringBuilder();
+
+            // Monta o select e adiciona os filtros caso necessário.
+            selectPromotores.Append(
+     @"select ENTRADAS.data
+	  ,ENTRADAS.codpromotor
+      ,ENTRADAS.CODFILIAL
+	  ,ENTRADAS.nome
+	  ,ENTRADAS.FORNECEDOR
+      ,ENTRADAS.horasContratuais
+	  ,ENTRADAS.entrada1
+	  ,ENTRADAS.saida1
+	  ,ENTRADAS.entrada2
+	  ,ENTRADAS.saida2
+	  , dbo.func_cargaHoraria(entradas.saida2,entradas.entrada2,entradas.saida1,entradas.entrada1) as CARGAHORARIA
+	  , dbo.func_CalculaMinutosDiarios(entradas.saida2,entradas.entrada2,entradas.saida1,entradas.entrada1) as MINUTOSDIARIOS
+
+ from 
+	(select convert(char,m.data,106) as data 
+	  , m.codpromotor
+      , M.CODFILIAL
+	  , p.nome
+	  , p.FORNECEDOR
+      , p.cargaHoraria as horasContratuais
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=1) entrada1
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=2) saida1  
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=3) entrada2    
+	  ,(select max(x.hora) from  movpromotores x where x.codpromotor=m.codpromotor and x.data=m.data and x.registro=4) saida2
+	from 
+	  movpromotores m, promotores p
+	where m.registro is not null
+	and p.codpromotor = m.codpromotor
+	and m.data BETWEEN '" + dtPickerInicio.Value.ToString("yyyy/MM/dd") + "' AND '" +
+                                       dtPickerFim.Value.ToString("yyyy/MM/dd") + "'");
+
+            //Adiciona os filtros caso necessário
+
+            if (!TextBoxCodigo.Text.Equals(""))
+            {
+                selectPromotores.Append(" AND M.CODPROMOTOR = " + TextBoxCodigo.Text);
+            }
+            if (!TextBoxNome.Text.Equals(""))
+            {
+                selectPromotores.Append(" AND P.NOME LIKE '%" + TextBoxNome.Text + "%'");
+            }
+            if (!CodFornecTextBox.Text.Equals(""))
+            {
+                selectPromotores.Append(" AND P.CODFORNEC = " + Convert.ToInt32(CodFornecTextBox.Text) + " ");
+            }
+            if (FilialComboBox.SelectedItem != null)
+            {
+                selectPromotores.Append(" AND M.CODFILIAL = "+ Convert.ToInt32(FilialComboBox.SelectedItem.ToString().Substring(0, FilialComboBox.SelectedItem.ToString().IndexOf("-")-1))+ " ");
+            }
+
+            //Termina de montar o select após os filtros.
+            selectPromotores.Append(") ENTRADAS ");
+            selectPromotores.Append(
+             @"group by  entradas.codpromotor
+                 ,ENTRADAS.CODFILIAL
+                 ,entradas.nome
+                 ,entradas.FORNECEDOR
+                 ,entradas.horasContratuais
+                 ,ENTRADAS.data
+                 ,ENTRADAS.entrada1
+                 ,ENTRADAS.entrada2
+                 ,ENTRADAS.saida1
+                 ,ENTRADAS.saida2         
+                
+                 order by ENTRADAS.data desc, ENTRADAS.FORNECEDOR, ENTRADAS.nome");
+
+            //Define o comando do select que será executado após ser montado.
+            command.CommandText = selectPromotores.ToString();
+
+            //Conexão que será usada no select.
+            command.Connection = conn;
+
+            try
+            {
+                //Adaptador que irá buscar os dados no banco
+                SqlDataAdapter adaptador = new SqlDataAdapter(command);
+
+                DataTable movpromotores = new DataTable();
+
+                adaptador.Fill(movpromotores);
+
+                //Popula o Data Grid
+                entradasGrid.DataSource = movpromotores;
+
+                qtRegistrosTextBox.Text = entradasGrid.Rows.Count.ToString();
+
+                //Atuliza o dataGrid
+                entradasGrid.Refresh();
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show("Erro ao buscar os dados! \n"+ exc);
+            }
+            finally
+            {
+                conn.Close();
+            }         
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            formRelOptions previewImpressao = new formRelOptions(selectPromotores.ToString());
+            previewImpressao.Show();
+        }
+
+        private void SairButton_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void procuraButton_Click(object sender, EventArgs e)
+        {
+            PesquisaForm pesquisaFornec = new PesquisaForm("SELECT CODFORNEC, FORNECEDOR, CGC AS CNPJ FROM PCFORNEC"
+                                                      , "Pesquisar fornecedores", "CODFORNEC", "FORNECEDOR");
+
+            if (pesquisaFornec.ShowDialog() == DialogResult.OK)
+            {
+                CodFornecTextBox.Text = pesquisaFornec.codfornec.ToString();
+                FornecedorTextBox.Text = pesquisaFornec.empresa;
+            }
+            else
+            {
+                CodFornecTextBox.Text = "";
+                FornecedorTextBox.Text = "";
+            }
+        }   
     }
+
 }

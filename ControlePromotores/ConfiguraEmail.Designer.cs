@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfiguraEmail));
-            this.senhaTexBox = new System.Windows.Forms.TextBox();
+            this.senhaTextBox = new System.Windows.Forms.TextBox();
             this.usuarioTextBox = new System.Windows.Forms.TextBox();
             this.senhaLabel = new System.Windows.Forms.Label();
             this.usuarioLabel = new System.Windows.Forms.Label();
@@ -37,39 +37,46 @@
             this.sslLabel = new System.Windows.Forms.Label();
             this.hostEmailLabel = new System.Windows.Forms.Label();
             this.tituloLabel = new System.Windows.Forms.Label();
-            this.gravarButton = new System.Windows.Forms.Button();
-            this.cancelarButton = new System.Windows.Forms.Button();
             this.workTabControl = new System.Windows.Forms.TabControl();
             this.configurarTabpage = new System.Windows.Forms.TabPage();
+            this.devCancelarButton = new DevExpress.XtraEditors.SimpleButton();
+            this.devGravarButton = new DevExpress.XtraEditors.SimpleButton();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
+            this.EmailLabel = new System.Windows.Forms.Label();
             this.hostTextBox = new System.Windows.Forms.TextBox();
-            this.cadastrarTabPage = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.workTabControl.SuspendLayout();
             this.configurarTabpage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // senhaTexBox
+            // senhaTextBox
             // 
-            this.senhaTexBox.Location = new System.Drawing.Point(211, 187);
-            this.senhaTexBox.Name = "senhaTexBox";
-            this.senhaTexBox.PasswordChar = '*';
-            this.senhaTexBox.Size = new System.Drawing.Size(174, 20);
-            this.senhaTexBox.TabIndex = 8;
-            this.senhaTexBox.UseSystemPasswordChar = true;
+            this.senhaTextBox.Location = new System.Drawing.Point(281, 223);
+            this.senhaTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.senhaTextBox.Name = "senhaTextBox";
+            this.senhaTextBox.PasswordChar = '*';
+            this.senhaTextBox.Size = new System.Drawing.Size(231, 22);
+            this.senhaTextBox.TabIndex = 4;
+            this.senhaTextBox.UseSystemPasswordChar = true;
             // 
             // usuarioTextBox
             // 
-            this.usuarioTextBox.Location = new System.Drawing.Point(211, 145);
+            this.usuarioTextBox.Location = new System.Drawing.Point(281, 178);
+            this.usuarioTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.usuarioTextBox.Name = "usuarioTextBox";
-            this.usuarioTextBox.Size = new System.Drawing.Size(174, 20);
-            this.usuarioTextBox.TabIndex = 7;
+            this.usuarioTextBox.Size = new System.Drawing.Size(231, 22);
+            this.usuarioTextBox.TabIndex = 3;
             // 
             // senhaLabel
             // 
             this.senhaLabel.AutoSize = true;
             this.senhaLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.senhaLabel.Location = new System.Drawing.Point(133, 185);
+            this.senhaLabel.Location = new System.Drawing.Point(177, 221);
+            this.senhaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.senhaLabel.Name = "senhaLabel";
-            this.senhaLabel.Size = new System.Drawing.Size(65, 19);
+            this.senhaLabel.Size = new System.Drawing.Size(80, 24);
             this.senhaLabel.TabIndex = 6;
             this.senhaLabel.Text = "Senha:";
             // 
@@ -77,27 +84,33 @@
             // 
             this.usuarioLabel.AutoSize = true;
             this.usuarioLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioLabel.Location = new System.Drawing.Point(121, 143);
+            this.usuarioLabel.Location = new System.Drawing.Point(161, 176);
+            this.usuarioLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usuarioLabel.Name = "usuarioLabel";
-            this.usuarioLabel.Size = new System.Drawing.Size(77, 19);
+            this.usuarioLabel.Size = new System.Drawing.Size(94, 24);
             this.usuarioLabel.TabIndex = 5;
             this.usuarioLabel.Text = "Usuario:";
             // 
             // sslComboBox
             // 
             this.sslComboBox.FormattingEnabled = true;
-            this.sslComboBox.Location = new System.Drawing.Point(211, 101);
+            this.sslComboBox.Items.AddRange(new object[] {
+            "SIM",
+            "NAO"});
+            this.sslComboBox.Location = new System.Drawing.Point(281, 87);
+            this.sslComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.sslComboBox.Name = "sslComboBox";
-            this.sslComboBox.Size = new System.Drawing.Size(174, 21);
-            this.sslComboBox.TabIndex = 4;
+            this.sslComboBox.Size = new System.Drawing.Size(231, 24);
+            this.sslComboBox.TabIndex = 1;
             // 
             // sslLabel
             // 
             this.sslLabel.AutoSize = true;
             this.sslLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sslLabel.Location = new System.Drawing.Point(156, 103);
+            this.sslLabel.Location = new System.Drawing.Point(202, 87);
+            this.sslLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sslLabel.Name = "sslLabel";
-            this.sslLabel.Size = new System.Drawing.Size(49, 19);
+            this.sslLabel.Size = new System.Drawing.Size(60, 24);
             this.sslLabel.TabIndex = 3;
             this.sslLabel.Text = "SSL: ";
             // 
@@ -105,9 +118,10 @@
             // 
             this.hostEmailLabel.AutoSize = true;
             this.hostEmailLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hostEmailLabel.Location = new System.Drawing.Point(146, 57);
+            this.hostEmailLabel.Location = new System.Drawing.Point(195, 43);
+            this.hostEmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.hostEmailLabel.Name = "hostEmailLabel";
-            this.hostEmailLabel.Size = new System.Drawing.Size(52, 19);
+            this.hostEmailLabel.Size = new System.Drawing.Size(62, 24);
             this.hostEmailLabel.TabIndex = 1;
             this.hostEmailLabel.Text = "Host:";
             // 
@@ -116,90 +130,134 @@
             this.tituloLabel.AutoSize = true;
             this.tituloLabel.BackColor = System.Drawing.Color.Transparent;
             this.tituloLabel.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tituloLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.tituloLabel.Location = new System.Drawing.Point(120, 9);
+            this.tituloLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tituloLabel.Location = new System.Drawing.Point(176, 19);
+            this.tituloLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tituloLabel.Name = "tituloLabel";
-            this.tituloLabel.Size = new System.Drawing.Size(312, 42);
+            this.tituloLabel.Size = new System.Drawing.Size(391, 53);
             this.tituloLabel.TabIndex = 1;
             this.tituloLabel.Text = "Configurar Email";
-            // 
-            // gravarButton
-            // 
-            this.gravarButton.Location = new System.Drawing.Point(154, 256);
-            this.gravarButton.Name = "gravarButton";
-            this.gravarButton.Size = new System.Drawing.Size(75, 23);
-            this.gravarButton.TabIndex = 9;
-            this.gravarButton.Text = "Gravar";
-            this.gravarButton.UseVisualStyleBackColor = true;
-            this.gravarButton.Click += new System.EventHandler(this.gravarButton_Click);
-            // 
-            // cancelarButton
-            // 
-            this.cancelarButton.Location = new System.Drawing.Point(322, 256);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 10;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
-            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // workTabControl
             // 
             this.workTabControl.Controls.Add(this.configurarTabpage);
-            this.workTabControl.Controls.Add(this.cadastrarTabPage);
-            this.workTabControl.Location = new System.Drawing.Point(12, 86);
+            this.workTabControl.Location = new System.Drawing.Point(16, 106);
+            this.workTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.workTabControl.Name = "workTabControl";
             this.workTabControl.SelectedIndex = 0;
-            this.workTabControl.Size = new System.Drawing.Size(558, 363);
+            this.workTabControl.Size = new System.Drawing.Size(744, 447);
             this.workTabControl.TabIndex = 2;
             // 
             // configurarTabpage
             // 
+            this.configurarTabpage.Controls.Add(this.devCancelarButton);
+            this.configurarTabpage.Controls.Add(this.devGravarButton);
+            this.configurarTabpage.Controls.Add(this.EmailTextBox);
+            this.configurarTabpage.Controls.Add(this.EmailLabel);
             this.configurarTabpage.Controls.Add(this.hostTextBox);
-            this.configurarTabpage.Controls.Add(this.cancelarButton);
-            this.configurarTabpage.Controls.Add(this.gravarButton);
             this.configurarTabpage.Controls.Add(this.hostEmailLabel);
-            this.configurarTabpage.Controls.Add(this.senhaTexBox);
+            this.configurarTabpage.Controls.Add(this.senhaTextBox);
             this.configurarTabpage.Controls.Add(this.usuarioTextBox);
             this.configurarTabpage.Controls.Add(this.sslLabel);
             this.configurarTabpage.Controls.Add(this.senhaLabel);
             this.configurarTabpage.Controls.Add(this.sslComboBox);
             this.configurarTabpage.Controls.Add(this.usuarioLabel);
-            this.configurarTabpage.Location = new System.Drawing.Point(4, 22);
+            this.configurarTabpage.Location = new System.Drawing.Point(4, 25);
+            this.configurarTabpage.Margin = new System.Windows.Forms.Padding(4);
             this.configurarTabpage.Name = "configurarTabpage";
-            this.configurarTabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.configurarTabpage.Size = new System.Drawing.Size(550, 337);
+            this.configurarTabpage.Padding = new System.Windows.Forms.Padding(4);
+            this.configurarTabpage.Size = new System.Drawing.Size(736, 418);
             this.configurarTabpage.TabIndex = 0;
             this.configurarTabpage.Text = "Configurar";
             this.configurarTabpage.UseVisualStyleBackColor = true;
+            this.configurarTabpage.Click += new System.EventHandler(this.configurarTabpage_Click);
+            // 
+            // devCancelarButton
+            // 
+            this.devCancelarButton.Image = ((System.Drawing.Image)(resources.GetObject("devCancelarButton.Image")));
+            this.devCancelarButton.Location = new System.Drawing.Point(389, 307);
+            this.devCancelarButton.LookAndFeel.SkinName = "VS2010";
+            this.devCancelarButton.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.devCancelarButton.Name = "devCancelarButton";
+            this.devCancelarButton.Size = new System.Drawing.Size(134, 38);
+            this.devCancelarButton.TabIndex = 14;
+            this.devCancelarButton.Text = "Cancelar";
+            this.devCancelarButton.Click += new System.EventHandler(this.devCancelarButton_Click);
+            // 
+            // devGravarButton
+            // 
+            this.devGravarButton.Image = ((System.Drawing.Image)(resources.GetObject("devGravarButton.Image")));
+            this.devGravarButton.Location = new System.Drawing.Point(189, 307);
+            this.devGravarButton.LookAndFeel.SkinName = "VS2010";
+            this.devGravarButton.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.devGravarButton.Name = "devGravarButton";
+            this.devGravarButton.Size = new System.Drawing.Size(134, 38);
+            this.devGravarButton.TabIndex = 13;
+            this.devGravarButton.Text = "Gravar";
+            this.devGravarButton.Click += new System.EventHandler(this.devGravarButton_Click);
+            // 
+            // EmailTextBox
+            // 
+            this.EmailTextBox.Location = new System.Drawing.Point(281, 133);
+            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(231, 22);
+            this.EmailTextBox.TabIndex = 2;
+            // 
+            // EmailLabel
+            // 
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailLabel.Location = new System.Drawing.Point(185, 133);
+            this.EmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(72, 24);
+            this.EmailLabel.TabIndex = 12;
+            this.EmailLabel.Text = "Email:";
             // 
             // hostTextBox
             // 
-            this.hostTextBox.Location = new System.Drawing.Point(211, 59);
+            this.hostTextBox.Location = new System.Drawing.Point(281, 46);
+            this.hostTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.hostTextBox.Name = "hostTextBox";
-            this.hostTextBox.Size = new System.Drawing.Size(174, 20);
-            this.hostTextBox.TabIndex = 11;
+            this.hostTextBox.Size = new System.Drawing.Size(231, 22);
+            this.hostTextBox.TabIndex = 0;
             // 
-            // cadastrarTabPage
+            // pictureBox1
             // 
-            this.cadastrarTabPage.Location = new System.Drawing.Point(4, 22);
-            this.cadastrarTabPage.Name = "cadastrarTabPage";
-            this.cadastrarTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.cadastrarTabPage.Size = new System.Drawing.Size(550, 337);
-            this.cadastrarTabPage.TabIndex = 1;
-            this.cadastrarTabPage.Text = "Cadastrar Provedor";
-            this.cadastrarTabPage.UseVisualStyleBackColor = true;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(780, 564);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.versionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.versionLabel.Location = new System.Drawing.Point(574, 0);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.versionLabel.Size = new System.Drawing.Size(206, 23);
+            this.versionLabel.TabIndex = 4;
             // 
             // ConfiguraEmail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(585, 458);
-            this.Controls.Add(this.workTabControl);
+            this.ClientSize = new System.Drawing.Size(780, 564);
+            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.tituloLabel);
+            this.Controls.Add(this.workTabControl);
+            this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ConfiguraEmail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -208,6 +266,7 @@
             this.workTabControl.ResumeLayout(false);
             this.configurarTabpage.ResumeLayout(false);
             this.configurarTabpage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,15 +278,18 @@
         private System.Windows.Forms.Label tituloLabel;
         private System.Windows.Forms.ComboBox sslComboBox;
         private System.Windows.Forms.Label sslLabel;
-        private System.Windows.Forms.TextBox senhaTexBox;
+        private System.Windows.Forms.TextBox senhaTextBox;
         private System.Windows.Forms.TextBox usuarioTextBox;
         private System.Windows.Forms.Label senhaLabel;
         private System.Windows.Forms.Label usuarioLabel;
-        private System.Windows.Forms.Button cancelarButton;
-        private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.TabControl workTabControl;
         private System.Windows.Forms.TabPage configurarTabpage;
-        private System.Windows.Forms.TabPage cadastrarTabPage;
         private System.Windows.Forms.TextBox hostTextBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox EmailTextBox;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label versionLabel;
+        private DevExpress.XtraEditors.SimpleButton devCancelarButton;
+        private DevExpress.XtraEditors.SimpleButton devGravarButton;
     }
 }

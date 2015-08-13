@@ -2,32 +2,24 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ControlePromotores.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="biometricConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=IGOR\BIOMETRIC;Initial Catalog=master;Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=IGOR\BIOMETRIC;Initial Catalog=master;Integrated Security=True</Value>
-    </Setting>
-    <Setting Name="biometriaConnectionString" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=IGOR\BIOMETRIC;Initial Catalog=biometria;Integrated Security=True&lt;/ConnectionString&gt;
-  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=IGOR\BIOMETRIC;Initial Catalog=biometria;Integrated Security=True</Value>
-    </Setting>
     <Setting Name="SomeProperty" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="connBanco" Type="(Connection string)" Scope="Application">
+    <Setting Name="conn_Pravoce" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=10.10.0.65;Initial Catalog=biometria;Persist Security Info=True;User ID=sa&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=srvbiometria;Initial Catalog=biometria;User ID=sa;Password=pvcs88ss12&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=10.10.0.65;Initial Catalog=biometria;Persist Security Info=True;User ID=sa</Value>
+      <Value Profile="(Default)">Data Source=srvbiometria;Initial Catalog=biometria;User ID=sa;Password=pvcs88ss12</Value>
+    </Setting>
+    <Setting Name="connBiometriaFinal" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Provider=SQLNCLI11;Data Source=10.10.0.65;Persist Security Info=True;Password=pvcs88ss12;User ID=sa;Initial Catalog=biometria&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.OleDb&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Provider=SQLNCLI11;Data Source=10.10.0.65;Persist Security Info=True;Password=pvcs88ss12;User ID=sa;Initial Catalog=biometria</Value>
     </Setting>
   </Settings>
 </SettingsFile>

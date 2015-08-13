@@ -57,6 +57,7 @@ namespace ControlePromotores
             ControlePromotores.Properties.Settings.Default.SomeProperty = "T:/img/users/" + nomeusuario + "-" + DateTime.Now.ToString("dd / MM / yyyy").Replace("/", "_") + ".jpg";
             ControlePromotores.Properties.Settings.Default.Save();
             bool result = true;
+            
             try
             {
                 image.Save(saveFileDialog.FileName, format);
@@ -79,6 +80,7 @@ namespace ControlePromotores
 
         private void cancelarButton_Click(object sender, EventArgs e)
         {
+            this.parentSec.closeDevice();
             this.Dispose();
         }
     }

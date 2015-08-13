@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ControlePromotores</RootNamespace>
     <AssemblyName>ControlePromotores</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>C:\Users\Igor\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -42,13 +43,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icone.ico</ApplicationIcon>
@@ -61,6 +63,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -75,10 +78,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Debug\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>72C96598016D1B52086CD4AA04B58DFF0B92CC48</ManifestCertificateThumbprint>
@@ -109,13 +114,60 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Windows\System32\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v13.2.UI, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v13.2.Wizard, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v13.2.Extensions, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v13.2.Core, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v13.2, Version=13.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="NITGEN.SDK.NBioBSP, Version=1.2.3.0, Culture=neutral, PublicKeyToken=96eee45103d523d1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Windows\System32\NITGEN.SDK.NBioBSP.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\NITGEN eNBSP x64\SDK\dotNET\NITGEN.SDK.NBioBSP.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>lib\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="PasswordHash">
+      <HintPath>..\packages\PasswordHash.1.1\lib\net40\PasswordHash.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -127,12 +179,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckinPessoa.cs">
+    <Compile Include="CadFornecForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckinPessoa.Designer.cs">
-      <DependentUpon>CheckinPessoa.cs</DependentUpon>
+    <Compile Include="CadFornecForm.Designer.cs">
+      <DependentUpon>CadFornecForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CadUsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadUsuariosForm.Designer.cs">
+      <DependentUpon>CadUsuariosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CarregaRelatorio.cs" />
     <Compile Include="ConfiguraEmail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,11 +199,29 @@
       <DependentUpon>ConfiguraEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="ConnectionFactory.cs" />
-    <Compile Include="Controle.cs">
+    <Compile Include="Cryptografia.cs" />
+    <Compile Include="dsMovimentacoes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMovimentacoes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPromotores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPromotores.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EnviaEmail.cs" />
+    <Compile Include="formDispararRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controle.Designer.cs">
-      <DependentUpon>Controle.cs</DependentUpon>
+    <Compile Include="formDispararRelatorio.Designer.cs">
+      <DependentUpon>formDispararRelatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAlteraSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAlteraSenha.Designer.cs">
+      <DependentUpon>FormAlteraSenha.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCadastro.cs">
       <SubType>Form</SubType>
@@ -153,11 +230,28 @@
       <DependentUpon>FormCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="interfaceBiometria.cs" />
-    <Compile Include="MenuPrincipal.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuPrincipal.Designer.cs">
-      <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipalForm.Designer.cs">
+      <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PesquisaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PesquisaForm.Designer.cs">
+      <DependentUpon>PesquisaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Promotor.cs" />
@@ -167,12 +261,50 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Relatorio\relatorioDisparo1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relatorioDisparo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorio\relatorioSinteticoPromotores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relatorioSinteticoPromotores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorio\RelCadpromotores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RelCadpromotores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RelOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelOptions.Designer.cs">
+      <DependentUpon>RelOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="relPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="relPreview.Designer.cs">
+      <DependentUpon>relPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="SnapshotForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SnapshotForm.Designer.cs">
       <DependentUpon>SnapshotForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="T:\rel\relatorioAnaliticoPromotores.cs">
+      <Link>Relatorio\relatorioAnaliticoPromotores.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relatorioAnaliticoPromotores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="Webcam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,26 +318,91 @@
       <DependentUpon>Relatorios.cs</DependentUpon>
     </Compile>
     <Compile Include="Validacoes.cs" />
-    <None Include="ControlePromotores_TemporaryKey.pfx" />
-    <None Include="Resources\Luz.png" />
-    <None Include="Resources\91m.jpg" />
-    <EmbeddedResource Include="CheckinPessoa.resx">
-      <DependentUpon>CheckinPessoa.cs</DependentUpon>
+    <Compile Include="XtraCadFilial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XtraCadFilial.Designer.cs">
+      <DependentUpon>XtraCadFilial.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CadFornecForm.resx">
+      <DependentUpon>CadFornecForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CadUsuariosForm.resx">
+      <DependentUpon>CadUsuariosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formDispararRelatorio.resx">
+      <DependentUpon>formDispararRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAlteraSenha.resx">
+      <DependentUpon>FormAlteraSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipalForm.resx">
+      <DependentUpon>MenuPrincipalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PesquisaForm.resx">
+      <DependentUpon>PesquisaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\relatorioDisparo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>relatorioDisparo1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\relatorioSinteticoPromotores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>relatorioSinteticoPromotores.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\RelCadpromotores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelCadpromotores.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelOptions.resx">
+      <DependentUpon>RelOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relPreview.resx">
+      <DependentUpon>relPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraCadFilial.resx">
+      <DependentUpon>XtraCadFilial.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ControlePromotores_TemporaryKey.pfx" />
+    <None Include="dsMovimentacoes.xsc">
+      <DependentUpon>dsMovimentacoes.xsd</DependentUpon>
+    </None>
+    <None Include="dsMovimentacoes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMovimentacoes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsMovimentacoes.xss">
+      <DependentUpon>dsMovimentacoes.xsd</DependentUpon>
+    </None>
+    <None Include="dsPromotores.xsc">
+      <DependentUpon>dsPromotores.xsd</DependentUpon>
+    </None>
+    <None Include="dsPromotores.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPromotores.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsPromotores.xss">
+      <DependentUpon>dsPromotores.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <EmbeddedResource Include="ConfiguraEmail.resx">
       <DependentUpon>ConfiguraEmail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controle.resx">
-      <DependentUpon>Controle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadastro.resx">
       <DependentUpon>FormCadastro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipal.resx">
-      <DependentUpon>MenuPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -257,19 +454,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone.ico" />
+    <None Include="img\emails.jpg" />
+    <None Include="img\FundoPrincipal.png" />
+    <None Include="img\icones\cadUsuario.png" />
+    <None Include="img\icones\cadFiliais.png" />
+    <None Include="img\icones\Relatorios.png" />
+    <None Include="img\icones\configEmail.png" />
+    <None Include="img\icones\cadFornecEdit.png" />
+    <None Include="img\promotorFundo.png" />
     <None Include="img\email.png" />
     <None Include="img\gmail.png" />
     <None Include="img\indigente.jpg" />
-    <None Include="img\MenuprincipalBG.png" />
     <None Include="img\titulo.png" />
     <None Include="img\catraca.png" />
-    <None Include="img\relatorios.png" />
-    <None Include="img\cadastro.png" />
-    <None Include="img\sair.png" />
-    <None Include="img\configuracoes.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
